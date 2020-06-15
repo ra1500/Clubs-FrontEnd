@@ -66,7 +66,7 @@ class QuestionSetsNetworkProfile extends React.Component {
         { this.state.showList &&
          <div class="secondParentDiv">
          <p> Created Stats </p>
-         <p class="alertsSmallP">(to answer these go to 'Answer -> Network Stats')</p>
+         <p class="alertsSmallP"> &nbsp;(none)</p>
             <table>
                <tbody>
                <tr><th>Title</th><th>Description</th></tr>

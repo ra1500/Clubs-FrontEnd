@@ -47,7 +47,7 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .topParentDiv { padding-top: 15px; padding-bottom: 0px; margin: auto; margin-top: 0px; width: 800px;}
 
  /** 2nd-level Parent Div Box **/
-.secondParentDiv {border-style: solid; border-width: 1px; padding: 10px;}
+.secondParentDiv {border-style: solid; border-width: 0px; padding: 10px;}
 
  /** Home (Introduction) **/
 .introPadding {margin-top: 15px;}

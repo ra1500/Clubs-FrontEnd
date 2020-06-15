@@ -329,7 +329,7 @@ class QuestionSetSelector extends React.Component {
 
         { this.state.renderQuestions &&
          <div class="topParentDiv">
-        <p> Answer </p>
+        <p> Stats </p>
         <div id="questionsComponent">
         <Questions questionSetVersion={this.state.questionSetVersion} questionSetSize={this.state.questionSetSize} questionToGoTo={this.state.questionToGoTo}
         maxPoints={this.state.maxPoints} title={this.state.title} description={this.state.description} showScoring={this.state.showScoring}

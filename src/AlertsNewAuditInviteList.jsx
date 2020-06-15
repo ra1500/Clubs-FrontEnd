@@ -57,7 +57,7 @@ class AlertsNewAuditInviteList extends React.Component {
 
         { !this.state.auditInvitesExist &&
          <div>
-         <p class="alertsSmallP"> &nbsp;(nothing new here)</p>
+         <p class="alertsSmallP"> &nbsp;(nothing blah blahnew here)</p>
          </div> }
 
         { this.state.auditInvitesExist &&
