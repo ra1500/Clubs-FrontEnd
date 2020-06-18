@@ -1,10 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import ScoresNetworkContactPages from "./ScoresNetworkContactPages";
-import AuditQuestions from "./AuditQuestions";
 import ManageMyContacts from "./ManageMyContacts";
-import NetworkContactAudit from "./NetworkContactAudit";
-import QuestionSetsNetworkProfile from "./QuestionSetsNetworkProfile";
 import FriendsContactsList from "./FriendsContactsList";
 
 class NetworkContactPages extends React.Component {
@@ -12,13 +8,11 @@ class NetworkContactPages extends React.Component {
     super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.goToAudit = this.goToAudit.bind(this);
         this.goToContactSettings = this.goToContactSettings.bind(this);
         this.goToGoodStuff = this.goToGoodStuff.bind(this);
         this.goToContactsList = this.goToContactsList.bind(this);
         this.goToNetworkListDetails = this.goToNetworkListDetails.bind(this);
         this.inviteToJoinMyNetwork = this.inviteToJoinMyNetwork.bind(this);
-        this.auditMe = this.auditMe.bind(this);
         this.state = {
           error: null,
           isLoaded: false,
@@ -31,9 +25,6 @@ class NetworkContactPages extends React.Component {
           inviter: null,
           isAfriend: false,
           hasPendingInvitations: false,
-          showQuestionSetAuditing: false,
-          showAuditQuestions: false,
-          showContactScores: false,
           invitationStatusMessage: null,
           showUpdateButton: false,
           isInvitee: false,
@@ -102,9 +93,7 @@ class NetworkContactPages extends React.Component {
     goToContactSettings() {
         this.setState({showQuestionSetAuditing: false, isAfriend: false, hasPendingInvitations: false, showSettings: true, showAuditQuestions: false, showFriendsContactsList: false});
     }
-    goToAudit() {
-        this.setState({ showQuestionSetAuditing: true, isAfriend: true, hasPendingInvitations: false, showSettings: false, showContactScores: false, showAuditQuestions: false, showFriendsContactsList: false});
-    }
+
     goToContactsList() {
         this.getFriendships();
         this.setState({showQuestionSetAuditing: false, isAfriend: true, hasPendingInvitations: false, showSettings: false, showContactScores: false, showAuditQuestions: false, showFriendsContactsList: true,});
@@ -113,11 +102,6 @@ class NetworkContactPages extends React.Component {
         this.setState({showQuestionSetAuditing: false, isAfriend: false, showSettings: false, showAuditQuestions: false, showFriendsContactsList: false});
         this.isAFriendOrInvitation();
     }
-    auditMe(event) {
-        this.setState({showQuestionSetAuditing: false, showAuditQuestions: true, showFriendsContactsList: false});
-        this.setState({questionSetVersionEntityId: event.target.value});
-    }
-
 
    handleChange(event) {
      this.setState({connectionStatus: event.target.value});
@@ -241,14 +225,13 @@ class NetworkContactPages extends React.Component {
     <React.Fragment>
 
         <div class="NetworkSingleContactDiv">
-            <p> My Network: Contacts - {this.state.friend} </p>
+            <p> Contacts - {this.state.friend} </p>
         </div>
 
         <div class="topParentDiv">
-            <button class="singleNetworkContactButton" onClick={this.goToGoodStuff}> Profile </button>
-            <button class="singleNetworkContactButton" onClick={this.goToAudit}> Review Them </button>
-            <button class="singleNetworkContactButton" onClick={this.goToContactsList}> Contacts </button>
-            <button class="singleNetworkContactButton" onClick={this.goToContactSettings}> Settings </button>
+            <button class="singleNetworkContactButton" onClick={this.goToGoodStuff}> Their Profile </button>
+            <button class="singleNetworkContactButton" onClick={this.goToContactsList}> Their Contacts </button>
+            <button class="singleNetworkContactButton" onClick={this.goToContactSettings}> Their Settings </button>
         </div>
 
            { this.state.showSettings &&
@@ -273,30 +256,12 @@ class NetworkContactPages extends React.Component {
                 <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p>
                 </div>
 
-                <ScoresNetworkContactPages friendId={this.props.friendId} />
-                <QuestionSetsNetworkProfile friendId={this.props.friendId} />
                 </div> }
 
                { this.state.showFriendsContactsList &&
                <div>
                 <FriendsContactsList showInvite={this.state.showInvite} inviteToJoinMyNetwork={this.inviteToJoinMyNetwork} showNetworkListDetails={this.state.showNetworkListDetails} goToNetworkListDetails={this.goToNetworkListDetails}showNetworkListNone={this.state.showNetworkListNone} list={this.state.list} invitedFriend={this.state.invitedFriend}/>
                </div> }
-
-                {this.state.showQuestionSetAuditing &&
-                <div class="secondParentDiv">
-                  <p> Review Them </p>
-                  <p> Review your contact's answers. You can choose and submit different answers and also add comments.
-                  Your contact can then see how you scored them and read your comments.
-                  (Note that once you have submitted your own answer to a question it will be saved and you will not be able to see
-                  your contact's original answer again.)</p>
-                  <p> The following were selected by {this.state.friend} for you to review:</p>
-                  <NetworkContactAudit auditMe={this.auditMe} friendId={this.state.friendId}/>
-                </div> }
-
-                {this.state.showAuditQuestions &&
-                <div id="AuditQuestionsComponent">
-                <AuditQuestions questionSetVersionEntityId={this.state.questionSetVersionEntityId} friend={this.state.friend} friendId={this.state.friendId} goToAudit={this.goToAudit}/>
-                </div> }
 
           </div> }
 

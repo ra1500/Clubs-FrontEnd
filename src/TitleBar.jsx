@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 
 class TitleBar extends React.Component {
 
+//        <Link className="menuLinks" to="/answer"> STATS </Link>
+//        <Link className="menuLinks" to="/ask"> CREATE </Link>
+
 
   render() {
     return (
@@ -11,14 +14,14 @@ class TitleBar extends React.Component {
 
         <Link onClick={this.props.showIntroStuff} id="NJ" to="/"> NeuralJuice </Link>
         <div id="titleLinksDiv">
-        <Link id="menuLinksFirst" to="/welcome"> HOME </Link>
-        <Link className="menuLinks" to="/network"> MY NETWORK </Link>
-        <Link className="menuLinks" to="/me"> MY PROFILE </Link>
-        <Link className="menuLinks" to="/answer"> STATS </Link>
-        <Link className="menuLinks" to="/ask"> CREATE </Link>
+        <Link id="menuLinksFirst" to="/welcome"> Alerts </Link>
+        <Link className="menuLinks" to="/me"> Profile </Link>
+        <Link className="menuLinks" to="/network"> Contacts </Link>
+        <Link className="menuLinks" to="/clubs"> Clubs </Link>
+        <Link className="menuLinks" to="/guilds"> Guilds </Link>
         </div>
-        <LoginStatus showSignIn={this.props.showSignIn} signUpCreate={this.props.signUpCreate} />
 
+        <LoginStatus showSignIn={this.props.showSignIn} signUpCreate={this.props.signUpCreate} />
     </div>
 
     );

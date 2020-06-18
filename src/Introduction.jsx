@@ -17,7 +17,7 @@ class Introduction extends React.Component {
           showSignIn: false,
           showIntro: true,
           showSignUpForm: false,
-          showSample: false,
+          //showSample: false,
         };
   }
 
@@ -45,6 +45,15 @@ class Introduction extends React.Component {
         }
     }
 
+
+   // {this.state.showSample &&
+   // <div id="questionsComponent">
+   //     <SampleQuestions />
+   // </div> }
+
+   //<button id="sampleButton" onClick={() => this.viewSample()}>Sample Stat: Animal Trivia Intelligence</button>
+
+
   render() {
 
     return (
@@ -63,20 +72,14 @@ class Introduction extends React.Component {
     <p> NeuralJuice </p>
     <p></p>
     <div class="secondParentDiv">
-         <p> Social networking made easy. </p>
-         <p>  - See who your friends' friends are. </p>
-         <p>  - Add stats to your profile to better show who you are. </p>
-         <p>  - Create new specialized stats for use in your network. </p>
-         <p>  - Invite your network to review and comment.  </p>
-         <p>  - No trackers or cookies.  </p>
-         <button id="sampleButton" onClick={() => this.viewSample()}>Sample Stat: Animal Trivia Intelligence</button>
+         <p>  Privately connect with your friends, family and associates. </p>
+         <p>  See who they are connected with and make new friends. </p>
+         <p>  Setup a club with your friends to share your ideas and news. </p>
+         <p>  Create guilds to get answers, solve problems and collaborate. </p>
+         <p>  No cookies. No outsider trolls.  </p>
+
     </div>
 
-    </div> }
-
-    {this.state.showSample &&
-    <div id="questionsComponent">
-        <SampleQuestions />
     </div> }
 
     <div class="introPadding"></div>

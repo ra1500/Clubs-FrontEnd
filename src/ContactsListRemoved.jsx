@@ -26,7 +26,7 @@ class ContactsListRemoved extends React.Component {
         return (
         <React.Fragment>
         <div class="topParentDiv">
-        <p> My Network: Removed List </p>
+        <p> Contacts: Contacts Removed List </p>
         <p></p>
         <div class="secondParentDiv">
 

@@ -8,6 +8,10 @@ import PublicUserPages from './PublicUserPages';
 import { AuthContext } from "./context/auth";
 import Network from "./Network";
 import Profile from "./Profile";
+import Clubs from "./Clubs.jsx";
+import Guilds from "./Guilds.jsx";
+import Settings from "./Settings.jsx";
+import About from "./About.jsx";
 import Ask from "./Ask";
 import Start from "./Start";
 
@@ -18,6 +22,16 @@ function App(props) {
     sessionStorage.setItem("tokens", JSON.stringify(data));
     setAuthTokens(data);
   }
+
+        //  ** put below after finished development **
+       //                 <PrivateRoute path="/welcome" component={Start} />
+       //                 <PrivateRoute path="/answer" component={Answer} />
+       //                 <PrivateRoute path="/ask" component={Ask} />
+       //                 <PrivateRoute path="/network" component={Network} />
+       //                 <PrivateRoute path="/me" component={Profile} />
+       //                 <PrivateRoute path="/clubs" component={Clubs} />
+       //                 <PrivateRoute path="/guilds" component={Guilds} />
+       //                 <PrivateRoute path="/settings" component={Settings} />
 
   return (
             <React.Fragment>
@@ -31,6 +45,10 @@ function App(props) {
                         <PrivateRoute path="/ask" component={Ask} />
                         <PrivateRoute path="/network" component={Network} />
                         <PrivateRoute path="/me" component={Profile} />
+                        <PrivateRoute path="/clubs" component={Clubs} />
+                        <PrivateRoute path="/guilds" component={Guilds} />
+                        <PrivateRoute path="/settings" component={Settings} />
+                        <Route exact path="/about" component={About} />
                       </div>
                     </Router>
                     </AuthContext.Provider>

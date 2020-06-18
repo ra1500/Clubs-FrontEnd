@@ -1,7 +1,6 @@
 import React from 'react';
-import ProfilePicture from "./ProfilePicture";
 
-class ContactsList extends React.Component {
+class ClubsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,32 +11,31 @@ class ContactsList extends React.Component {
    renderTableData() {
       return this.state.list.map((data, index) => {
          return (
-            <tr class="friendsTR"key={data.friend}>
-               <td> <ProfilePicture friendId={data.id} /> </td>
-               <td class="friendsTD2"> <button class="titleButton" value={data.id} onClick={e => this.props.renderSingleContact(e)}> {data.friend} </button> </td>
-               <td class="friendsTD"> <p class="secondP"> Status: {data.connectionStatus} </p></td>
-               <td class="friendsTD3"> <p class="secondP"> Type: {data.connectionType} </p></td>
+            <tr class="friendsTR"key={data.clubName}>
+               <td class="friendsTD2"> <button class="titleButton" value={data.id} onClick={e => this.props.renderSingleContact(e)}> {data.clubName} </button> </td>
+               <td class="friendsTD"> <p class="secondP"> Status: {data.description} </p></td>
             </tr>
          )
       })
    }
 
+//                <td> <ProfilePicture friendId={data.id} /> </td>
 // <tr><th class=""></th><th class="thContact">Contact</th><th class="">Status</th><th>Type</th><th>View Permission</th></tr>
 
     render() {
         return (
         <React.Fragment>
          <div class="topParentDiv">
-         <p> Contacts List </p>
+         <p> Clubs List </p>
         <p></p>
         <div class="secondParentDiv">
 
-        { !this.props.showNetworkListDetails &&
+        { !this.props.showClubsList2 &&
          <div>
          <p class="alertsSmallP"> &nbsp;(none)</p>
          </div> }
 
-        { this.props.showNetworkListDetails &&
+        { this.props.showClubsList2 &&
          <div>
             <table>
                <tbody>
@@ -53,4 +51,4 @@ class ContactsList extends React.Component {
 
 }
 
-export default ContactsList;
+export default ClubsList;

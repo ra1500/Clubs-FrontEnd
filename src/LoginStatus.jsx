@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import Logout from "./Logout";
+import { Link } from 'react-router-dom'
 
 class LoginStatus extends React.Component {
   constructor(props) {
@@ -51,6 +52,9 @@ class LoginStatus extends React.Component {
     return (
     <React.Fragment>
            <div id="loginStatusDiv">
+                           <Link className="menuLinks" to="/settings"> Settings </Link>
+                           <Link className="menuLinks" to="/about"> About </Link>
+
             <button id="logoutButton" onClick={() => this.logOut()}>{this.state.logStatus}</button>
             {this.state.showUserName &&
             <p id="userName"> {this.state.userName}  </p> }

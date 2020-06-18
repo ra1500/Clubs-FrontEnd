@@ -138,9 +138,9 @@ class Network extends React.Component {
         <TitleBar />
 
           <div class="settings3ButtonsDiv">
-            <button class="settingsButton" onClick={this.goToNetwork}> Contacts </button>
-            <button class="settingsButton" onClick={this.goToInvite}> Invite </button>
-            <button class="settingsButton" onClick={this.goToRemovedContacts}> Removed List </button>
+            <button class="settingsButton" onClick={this.goToNetwork}> Contacts List </button>
+            <button class="settingsButton" onClick={this.goToInvite}> Send New Invitation </button>
+            <button class="settingsButton" onClick={this.goToRemovedContacts}> Removed Contacts List </button>
           </div>
 
         {this.state.showNetworkList &&
