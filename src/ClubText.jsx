@@ -13,9 +13,6 @@ class ClubText extends React.Component {
     const u = name.userName;
     this.state = {
     userName: u,
-    clubName: null,
-    description: null,
-    maxSize: null,
     alpha: u,
     updatedMessage: null,
     };
@@ -25,23 +22,26 @@ class ClubText extends React.Component {
   }
 
      handleChange2(event) {
-       this.setState({clubName: event.target.value});
+        this.state = {clubName2: event.target.value};
+        this.setState({clubName: this.state.clubName2});
      }
      handleChange3(event) {
-       this.setState({description: event.target.value});
+        this.state = {description2: event.target.value};
+        this.setState({description: this.state.description2});
      }
      handleChange6(event) {
-       this.setState({maxSize: event.target.value});
+        this.state = {maxSize2: event.target.value};
+        this.setState({maxSize: this.state.maxSize2});
+
      }
      handleChange7(event) {
-       this.setState({alpha: event.target.value});
+       this.state = {alpha2: event.target.value};
+       this.setState({alpha: this.state.alpha2});
      }
 
   handleSubmit1(event) {
     event.preventDefault();
-    if (this.state.maxSize === null) {
-        this.state = {maxSize: "20"};
-    }
+
     this.postClubText();
   }
 

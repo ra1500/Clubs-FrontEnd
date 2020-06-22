@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ClubsList extends React.Component {
+class MessagesList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,32 +11,30 @@ class ClubsList extends React.Component {
    renderTableData() {
       return this.state.list.map((data, index) => {
          return (
-            <tr class="friendsTR"key={data.id}>
-               <td class="friendsTD2"> <button class="titleButton" value={data.id} onClick={e => this.props.renderSingleClub(e)}> {data.id} </button> </td>
-               <td class="friendsTD"> <p class="secondP"> Club Name {data.clubName} </p></td>
-               <td class="friendsTD"> <p class="secondP"> Desc. {data.description} </p></td>
+            <tr class="friendsTR"key={data.message}>
+                <td class="friendsTD"> <p class="secondP"> Posted By: {data.sender.userName} </p></td>
+                <td class="friendsTD"> <p class="secondP"> Time Stamp: {data.created} </p></td>
+                <td class="friendsTD"> <p class="secondP"> Message: {data.message} </p></td>
             </tr>
          )
       })
    }
 
-//                <td> <ProfilePicture friendId={data.id} /> </td>
-// <tr><th class=""></th><th class="thContact">Contact</th><th class="">Status</th><th>Type</th><th>View Permission</th></tr>
 
     render() {
         return (
         <React.Fragment>
          <div class="topParentDiv">
-         <p> Clubs List </p>
+         <p> Messages List </p>
         <p></p>
         <div class="secondParentDiv">
 
-        { !this.props.showClubsList2 &&
+        { !this.props.showMessagesList2 &&
          <div>
          <p class="alertsSmallP"> &nbsp;(none)</p>
          </div> }
 
-        { this.props.showClubsList2 &&
+        { this.props.showMessagesList2 &&
          <div>
             <table>
                <tbody>
@@ -52,4 +50,4 @@ class ClubsList extends React.Component {
 
 }
 
-export default ClubsList;
+export default MessagesList;

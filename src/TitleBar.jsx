@@ -14,7 +14,7 @@ class TitleBar extends React.Component {
 
         <Link onClick={this.props.showIntroStuff} id="NJ" to="/"> NeuralJuice </Link>
         <div id="titleLinksDiv">
-        <Link id="menuLinksFirst" to="/welcome"> Alerts </Link>
+        <Link id="menuLinksFirst" to="/welcome"> Messages </Link>
         <Link className="menuLinks" to="/me"> Profile </Link>
         <Link className="menuLinks" to="/network"> Contacts </Link>
         <Link className="menuLinks" to="/clubs"> Clubs </Link>

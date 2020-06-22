@@ -1,10 +1,11 @@
 import React from 'react';
+import ProfilePicture from "./ProfilePicture";
 
-class ClubsList extends React.Component {
+class ClubMembers extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: this.props.list, //
+            list: this.props.membersList, //
         };
     }
 
@@ -12,31 +13,31 @@ class ClubsList extends React.Component {
       return this.state.list.map((data, index) => {
          return (
             <tr class="friendsTR"key={data.id}>
-               <td class="friendsTD2"> <button class="titleButton" value={data.id} onClick={e => this.props.renderSingleClub(e)}> {data.id} </button> </td>
-               <td class="friendsTD"> <p class="secondP"> Club Name {data.clubName} </p></td>
-               <td class="friendsTD"> <p class="secondP"> Desc. {data.description} </p></td>
+               <td> <ProfilePicture friendId={data.id} /> </td>
+               <td class="friendsTD2"> {data.userName} </td>
+               <td class="friendsTD"> <p class="secondP"> Location: {data.location} </p></td>
+               <td class="friendsTD2"> <button class="titleButton" value={data.id} onClick={e => this.props.sendMessageClubMember(e)}> Send a Message </button> </td>
             </tr>
          )
       })
    }
 
-//                <td> <ProfilePicture friendId={data.id} /> </td>
 // <tr><th class=""></th><th class="thContact">Contact</th><th class="">Status</th><th>Type</th><th>View Permission</th></tr>
 
     render() {
         return (
         <React.Fragment>
          <div class="topParentDiv">
-         <p> Clubs List </p>
+         <p> Members List </p>
         <p></p>
         <div class="secondParentDiv">
 
-        { !this.props.showClubsList2 &&
+        { !this.props.showMembersList2 &&
          <div>
          <p class="alertsSmallP"> &nbsp;(none)</p>
          </div> }
 
-        { this.props.showClubsList2 &&
+        { this.props.showMembersList2 &&
          <div>
             <table>
                <tbody>
@@ -52,4 +53,4 @@ class ClubsList extends React.Component {
 
 }
 
-export default ClubsList;
+export default ClubMembers;

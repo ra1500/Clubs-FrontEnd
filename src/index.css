@@ -39,7 +39,7 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
  /** Buttons First Level **/
 .settings2ButtonsDiv { margin: auto; width: 320px; margin-top: 40px;}
 .settings3ButtonsDiv { margin: auto; width: 480px; margin-top: 40px;}
-.settingsButton { border-radius: 14px; margin-right: 10px; width: 150px; display: inline; background-color: white; border: 1px solid; text-decoration: none; font-size: 14px; font-family: "Geneva";}
+.settingsButton { border-radius: 0px; margin-right: 10px; width: 150px; display: inline; background-color: white; border: 1px solid; text-decoration: none; font-size: 14px; font-family: "Geneva";}
 .settingsButton:hover {background-color: #e6e6e6}
 .settingsButton:active {background-color: #e6e6e6}
 
