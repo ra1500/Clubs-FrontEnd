@@ -1,10 +1,10 @@
 import React from "react";
-import TitleBar from "./TitleBar";
 import axios from 'axios';
 import ScoreUrl from "./ScoreUrl";
 import UpdateUserInfo from "./UpdateUserInfo";
 import Picture from "./Picture";
 import ProfileText from "./ProfileText";
+import { Link } from 'react-router-dom';
 
 
 class Profile extends React.Component {
@@ -128,17 +128,15 @@ class Profile extends React.Component {
    render() {
     return (
         <React.Fragment>
-              <TitleBar />
 
               <div class="settings2ButtonsDiv">
-                <button class="settingsButton" onClick={this.goToPrivateProfile}> Profile </button>
-                <button class="settingsButton" onClick={this.goToUserSettings}> Edit </button>
+                <button id="myProfileButton" onClick={this.goToPrivateProfile}> My Profile </button>
+                <button id="editButton" onClick={this.goToUserSettings}> Edit </button>
               </div>
 
               { this.state.showProfile &&
               <div>
               <div class="NetworkSingleContactDiv">
-              <p> My Profile</p>
               </div>
               <div class="topParentDiv">
 
@@ -158,7 +156,6 @@ class Profile extends React.Component {
 
               { this.state.showSettingsSection &&
               <div class="topParentDiv">
-                <p> My Profile: Edit & Settings </p>
                 <Picture profilePicture={this.state.profilePicture} getProfilePicture={this.getProfilePicture} deleteProfilePicture={this.deleteProfilePicture} />
                 <ProfileText />
               </div> }

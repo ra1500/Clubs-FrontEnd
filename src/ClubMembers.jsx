@@ -16,7 +16,7 @@ class ClubMembers extends React.Component {
                <td> <ProfilePicture friendId={data.id} /> </td>
                <td class="friendsTD2"> {data.userName} </td>
                <td class="friendsTD"> <p class="secondP"> Location: {data.location} </p></td>
-               <td class="friendsTD2"> <button class="titleButton" value={data.id} onClick={e => this.props.sendMessageClubMember(e)}> Send a Message </button> </td>
+               <td class="friendsTD2"> <button class="titleButton" value={data.id} onClick={e => this.props.goToSingleClubMember(e)}> Go To Member </button> </td>
             </tr>
          )
       })
@@ -28,8 +28,6 @@ class ClubMembers extends React.Component {
         return (
         <React.Fragment>
          <div class="topParentDiv">
-         <p> Members List </p>
-        <p></p>
         <div class="secondParentDiv">
 
         { !this.props.showMembersList2 &&

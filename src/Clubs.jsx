@@ -1,5 +1,4 @@
 import React from "react";
-import TitleBar from "./TitleBar";
 import axios from 'axios';
 import ClubText from "./ClubText";
 import ClubsList from "./ClubsList";
@@ -7,6 +6,7 @@ import ClubMembers from "./ClubMembers";
 import MessageBoard from "./MessageBoard";
 import ClubVoting from "./ClubVoting";
 import ClubManage from "./ClubManage";
+import { Link } from 'react-router-dom';
 
 class Clubs extends React.Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class Clubs extends React.Component {
     this.showClubMessageBoard = this.showClubMessageBoard.bind(this);
     this.showClubVoting = this.showClubVoting.bind(this);
     this.showClubManage = this.showClubManage.bind(this);
+    this.goToSingleClubMember = this.goToSingleClubMember.bind(this);
     this.state = {
         isLoaded: null,
         list: null,
@@ -35,6 +36,8 @@ class Clubs extends React.Component {
         showClubMessageBoard: false,
         showClubVoting: false,
         showClubManage: false,
+        showSingleClubMember: false,
+        memberUserName: null,
         };
     };
 
@@ -92,44 +95,73 @@ class Clubs extends React.Component {
                });
     }
 
+  goToSingleClubMember(e) {
+    const name = JSON.parse(sessionStorage.getItem('tokens'));
+    const u = name.userName;
+    const p = name.password;
+    const token = u +':' + p;
+    const hash = btoa(token);
+    const Basic = 'Basic ' + hash;
+    axios.get("http://localhost:8080/api/user/pu?mid=" + e.target.value + "&cid=" + this.state.clubId,
+    {headers : { 'Authorization' : Basic }})
+    .then((response) => {
+      this.setState({
+        isLoaded: true,
+        memberUserName: response.data.userName,
+        title: response.data.title,
+        blurb: response.data.blurb,
+        education: response.data.education,
+        occupation: response.data.occupation,
+        relationshipStatus: response.data.relationshipStatus,
+        location: response.data.location,
+        contactInfo: response.data.contactInfo,
+      });
+      if (response.data.education === 1) {this.setState({education2: "High School"})};
+      if (response.data.education === 2) {this.setState({education2: "College"})};
+      if (response.data.education === 3) {this.setState({education2: "Masters"})};
+      if (response.data.education === 4) {this.setState({education2: "Phd or MD"})};
+      if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
+      if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
+      if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
+      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "Irrelevant"})};
+           }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
+           });
+    }
+
   goToClubsList() {
-          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubManage: false, showClubVoting: false});
+          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false});
           this.getClubsList();
     }
   goToCreateClub() {
-          this.setState({showCreateClubs: true, showClubsList: false, showSingleClub: false, showMembersList: false, showClubManage: false, showClubVoting: false});
+          this.setState({showCreateClubs: true, showClubsList: false, showSingleClub: false, showMembersList: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false});
     }
     showMembers() {
-           this.setState({showMembersList: !this.state.showMembersList, showClubMessageBoard: false, showClubManage: false, showClubVoting: false});
+           this.setState({showMembersList: !this.state.showMembersList, showClubMessageBoard: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false});
     }
     showClubMessageBoard() {
-           this.setState({showMembersList: false, showClubMessageBoard: !this.state.showClubMessageBoard, showClubManage: false, showClubVoting: false});
+           this.setState({showMembersList: false, showClubMessageBoard: !this.state.showClubMessageBoard, showClubManage: false, showClubVoting: false, showSingleClubMember: false});
     }
     showClubVoting() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubManage: false, showClubVoting: !this.state.showClubVoting});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubManage: false, showClubVoting: !this.state.showClubVoting, showSingleClubMember: false});
     }
     showClubManage() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubManage: !this.state.showClubManage, showClubVoting: false});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubManage: !this.state.showClubManage, showClubVoting: false, showSingleClubMember: false});
     }
 
    render() {
     return (
         <React.Fragment>
-              <TitleBar />
-
+            { !this.state.showSingleClub &&
               <div class="settings2ButtonsDiv">
-                <button class="settingsButton" onClick={this.goToClubsList}> My Clubs </button>
-                <button class="settingsButton" onClick={this.goToCreateClub}> Start a Club </button>
-              </div>
+                <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
+                <button id="removedContactsButton" onClick={this.goToCreateClub}> Start a Club </button>
+              </div> }
 
-              <div class="topParentDiv">
-
-      <div class="topParentDiv">
+        <div class="topParentDiv">
 
 
         { this.state.showClubsList &&
         <div>
-        <p> My Clubs </p>
         <ClubsList list={this.state.list} showClubsList2={this.state.showClubsList2} renderSingleClub={this.renderSingleClub} />
         </div> }
 
@@ -141,16 +173,22 @@ class Clubs extends React.Component {
 
         { this.state.showSingleClub &&
         <div>
-        <p> {this.state.clubName} </p>
-        <p> {this.state.description} </p>
-        <p> Alpha: {this.state.clubAlpha} </p>
-        <button class="settingsButton" onClick={this.showMembers}> Members </button>
-        <button class="settingsButton" onClick={this.showClubMessageBoard}> Message Board </button>
-        <button class="settingsButton" onClick={this.showClubVoting}> Voting </button>
-        <button class="settingsButton" onClick={this.showClubManage}> Settings </button>
+        <div class="menuBoxDiv">
+        <table>
+            <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
+            <tr><td>Description:</td><td class="clubTD"> {this.state.description} </td></tr>
+            <tr><td>Club Alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
+        </table>
+        </div>
+                      <div class="secondLevelDiv">
+                        <button id="removedContactsButton" onClick={this.showClubMessageBoard}> Message Board </button>
+                        <button id="myClubsButton" onClick={this.showMembers}> Members </button>
+                        <button id="removedContactsButton" onClick={this.showClubVoting}> Voting </button>
+                        <button id="removedContactsButton" onClick={this.showClubManage}> Settings </button>
+                      </div>
             { this.state.showMembersList &&
             <div>
-             <ClubMembers membersList={this.state.membersList} showMembersList2={this.state.showMembersList2} />
+             <ClubMembers membersList={this.state.membersList} showMembersList2={this.state.showMembersList2} goToSingleClubMember={this.goToSingleClubMember} />
             </div> }
 
             { this.state.showClubMessageBoard &&
@@ -168,11 +206,22 @@ class Clubs extends React.Component {
              <ClubManage clubId={this.state.clubId} />
             </div> }
 
+          { this.state.showSingleClubMember &&
+          <div class="topParentDiv">
+                <img id="profilePic" src={this.state.profilePicture}></img>
+                <div class="scoresListTD">
+                <p class="secondP"> Title: {this.state.memberUserName}</p><br></br>
+                <p class="secondP"> Title: {this.state.title}</p><br></br>
+                <p class="secondP"> About me: {this.state.blurb}</p><br></br>
+                <p class="secondP"> Location: {this.state.location}</p><br></br>
+                <p class="secondP"> Contact Info: {this.state.contactInfo}</p><br></br>
+                <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p>
+                </div>
+                </div> }
+
         </div> }
 
-              </div>
-            </div>
-
+        </div>
 
         </React.Fragment>
     ); // end return

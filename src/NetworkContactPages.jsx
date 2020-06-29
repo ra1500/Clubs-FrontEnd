@@ -224,16 +224,16 @@ class NetworkContactPages extends React.Component {
     return (
     <React.Fragment>
 
-        <div class="NetworkSingleContactDiv">
-            <p> Contacts - {this.state.friend} </p>
-        </div>
-
         <div class="topParentDiv">
-            <button class="singleNetworkContactButton" onClick={this.goToGoodStuff}> Their Profile </button>
-            <button class="singleNetworkContactButton" onClick={this.goToContactsList}> Their Contacts </button>
-            <button class="singleNetworkContactButton" onClick={this.goToContactSettings}> Their Settings </button>
+        <div class="menuBoxDiv">
+            <button id="theirProfileButton" onClick={this.goToGoodStuff}> Their Profile </button>
+            <button id="theirProfileButton" onClick={this.goToContactsList}> Their Contacts </button>
+            <button id="theirProfileButton" onClick={this.goToContactSettings}> Their Settings </button>
+            <table>
+                <tr><td>Name:</td><td class="clubTD"> {this.state.friend} </td></tr>
+            </table>
         </div>
-
+        </div>
            { this.state.showSettings &&
            <div class="topParentDiv">
            <div class="secondParentDiv">

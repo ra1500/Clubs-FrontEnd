@@ -25,9 +25,7 @@ class MessagesList extends React.Component {
         return (
         <React.Fragment>
          <div class="topParentDiv">
-         <p> Messages List </p>
-        <p></p>
-        <div class="secondParentDiv">
+         <div class="secondParentDiv">
 
         { !this.props.showMessagesList2 &&
          <div>

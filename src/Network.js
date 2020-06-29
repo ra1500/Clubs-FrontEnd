@@ -1,12 +1,12 @@
 import React from "react";
 import axios from 'axios';
-import TitleBar from "./TitleBar";
 import ContactsList from "./ContactsList";
 import ContactsListRemoved from "./ContactsListRemoved";
 import InvitationForm from "./InvitationForm";
 import ManageMyContactsRemoved from "./ManageMyContactsRemoved";
 import NetworkContactPages from "./NetworkContactPages";
 //import NetworkContactAudit from "./NetworkContactAudit";
+import { Link } from 'react-router-dom';
 
 class Network extends React.Component {
   constructor(props) {
@@ -135,13 +135,13 @@ class Network extends React.Component {
   render() {
     return (
     <React.Fragment>
-        <TitleBar />
 
+            {!this.state.showSingleContact &&
           <div class="settings3ButtonsDiv">
-            <button class="settingsButton" onClick={this.goToNetwork}> Contacts List </button>
-            <button class="settingsButton" onClick={this.goToInvite}> Send New Invitation </button>
-            <button class="settingsButton" onClick={this.goToRemovedContacts}> Removed Contacts List </button>
-          </div>
+            <button id="myContactsButton" onClick={this.goToNetwork}> My Contacts </button>
+            <button id="connectButton" onClick={this.goToInvite}> Connect </button>
+            <button id="removedContactsButton" onClick={this.goToRemovedContacts}> Removed Contacts </button>
+          </div> }
 
         {this.state.showNetworkList &&
         <div>

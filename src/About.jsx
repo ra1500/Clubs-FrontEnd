@@ -1,5 +1,4 @@
 import React from "react";
-import TitleBar from "./TitleBar";
 import axios from 'axios';
 
 
@@ -17,7 +16,6 @@ class About extends React.Component {
    render() {
     return (
         <React.Fragment>
-              <TitleBar />
 
               <div class="settings2ButtonsDiv">
               </div>

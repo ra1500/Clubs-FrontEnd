@@ -78,17 +78,15 @@ class MessageBoard extends React.Component {
   render() {
     return (
     <div id="meSettingsDiv">
-        <p> Post New Message </p>
 
           <div class="askDiv">
           <input id="newQuestion" maxlength="80" type="text" value={this.state.clubMessage} onChange={this.handleChange}  autocomplete="off" placeholder="Message"/>
           </div>
-            <button type="submit" onClick={this.handleSubmit1} className="inviteAuditButton"> Post </button>
+            <button type="submit" onClick={this.handleSubmit1} className="inviteAuditButton"> Send </button>
             <span class="updateParagraph">{this.state.updatedMessage}</span>
 
         { this.state.showMessagesList &&
         <div>
-        <p> Messages </p>
         <MessagesList list={this.state.list} showMessagesList2={this.state.showMessagesList2}  />
         </div> }
 

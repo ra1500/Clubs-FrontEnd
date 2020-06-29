@@ -64,7 +64,6 @@ class Picture extends React.Component {
   render() {
     return (
     <div id="meSettingsDiv">
-        <p class="questionsParagraph">Profile Image</p>
         <p class="askFormQsetSmallP">&nbsp; (must be &lt; 250kb in size and in .jpg or .jpeg format. display is 80px X 80px.)</p>
         <p></p>
         <img id="profilePic2" src={this.props.profilePicture}></img>

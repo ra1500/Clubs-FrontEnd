@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
-import { Form } from "../components/AuthForms";
 import { useAuth } from "../context/auth";
 
 function Signup(props) {
@@ -15,9 +14,9 @@ function Signup(props) {
   const { setAuthTokens } = useAuth();
 
   function postSignup() {
-    if (password !== verifyPassword) { setVerifyMessage("Please check your input. Password fields did not match.");}
-    else if (userName.length < 4) { setVerifyMessage("Please ensure username is at least 4 characters in length");}
-    else if (password.length < 4) { setVerifyMessage("Please ensure password is at least 4 characters in length");}
+    if (password !== verifyPassword) { setVerifyMessage("Password fields did not match.");}
+    else if (userName.length < 4) { setVerifyMessage("username should be at least 4 characters long.");}
+    else if (password.length < 4) { setVerifyMessage("password should be at least 4 characters long");}
     else {
     axios.post("http://localhost:8080/api/user/signup", {
       userName,
@@ -28,7 +27,7 @@ function Signup(props) {
         setLoggedIn(true);
       }
       else if (result.status === 204){
-        { setVerifyMessage("Sorry, that username is already taken. Please choose another.");}
+        { setVerifyMessage("Sorry, username already used. Please choose another.");}
       }
       else {
         setIsError(true);
@@ -40,31 +39,20 @@ function Signup(props) {
   }
 
   if (isLoggedIn) {
+    props.toggleLogin();
     return <Redirect to={referer} />;
   }
 
   return (
     <React.Fragment>
-      <div class="settings2ButtonsDiv">
+      <div id="signupDiv">
+            <p id="easyP"> Easy sign up: </p>
+            <input class="signupBox" maxlength="100" type="username" value={userName} onChange={e => {setUserName(e.target.value);}}placeholder="username" />
+            <input class="signupBox" maxlength="100" type="password" value={password} onChange={e => {setPassword(e.target.value);}}placeholder="password" />
+            <input class="signupBox" maxlength="100" type="password" value={verifyPassword} onChange={e => {setVerifyPassword(e.target.value);}}placeholder="password again" />
+            <button id="signupButton" onClick={postSignup}>Sign up</button>
       </div>
-      <div class="topParentDiv">
-        <p> Sign up </p>
-        <p></p>
-        <div class="secondParentDiv">
-          <Form>
-            <input class="loginInput" maxlength="100" type="username" value={userName} onChange={e => {setUserName(e.target.value);}}placeholder="username" /> <p class="questionsDescriptionParagraph"> (must be at least 4 characters in length) </p><br></br>
-            <input class="loginInput" maxlength="100" type="password" value={password} onChange={e => {setPassword(e.target.value);}}placeholder="password" /> <p class="questionsDescriptionParagraph"> (must be at least 4 characters in length) </p><br></br>
-            <input class="loginInput" maxlength="100" type="password" value={verifyPassword} onChange={e => {setVerifyPassword(e.target.value);}}placeholder="password again" /><br></br>
-            <button class="greenButton" onClick={postSignup}>Sign up</button>
-
-            <br></br>
-            <div>
-            <p>{verifyMessage}</p>
-            </div>
-          </Form>
-        </div>
-      </div>
-
+            <p id="signupMessage">{verifyMessage}</p>
     </React.Fragment>
   );
 }

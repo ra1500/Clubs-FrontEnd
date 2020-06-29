@@ -1,5 +1,4 @@
 import React from "react";
-import TitleBar from "./TitleBar";
 import axios from 'axios';
 import ScoreUrl from "./ScoreUrl";
 import UpdateUserInfo from "./UpdateUserInfo";
@@ -23,7 +22,6 @@ class Settings extends React.Component {
    render() {
     return (
         <React.Fragment>
-              <TitleBar />
 
               <div class="settings2ButtonsDiv">
               </div>

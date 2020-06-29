@@ -14,6 +14,7 @@ import Settings from "./Settings.jsx";
 import About from "./About.jsx";
 import Ask from "./Ask";
 import Start from "./Start";
+import TitleBar from "./TitleBar";
 
 function App(props) {
   const [authTokens, setAuthTokens] = useState();
@@ -37,6 +38,7 @@ function App(props) {
             <React.Fragment>
                     <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
                     <Router>
+                    <TitleBar />
                       <div>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/flavor" component={PublicUserPages} />

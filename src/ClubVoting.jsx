@@ -2,15 +2,17 @@ import React from "react";
 import axios from 'axios';
 import ClubInvite from "./ClubInvite";
 import ClubQuit from "./ClubQuit";
-
+import ClubVoteCast from "./ClubVoteCast";
 
 class ClubVoting extends React.Component {
   constructor(props) {
     super(props);
+    this.refreshMyCurrentAlphaVote = this.refreshMyCurrentAlphaVote.bind(this);
     this.state = {
         clubId: this.props.clubId,
         showClubVoting: true,
         clubAlpha: this.props.clubAlpha,
+        myAlphaVote: 'tbd',
         };
     };
 
@@ -29,15 +31,23 @@ class ClubVoting extends React.Component {
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
          if (response.status === 200) {
+            let i = 0;
+            for (i = 0; i < response.data.length; i++) {
+                if (response.data[i].voteType == 1)
+                    this.setState({myAlphaVote: response.data[i].voteCast});
+         }
           this.setState({
             isLoaded: true,
-
           });
           } // end if
           //this.renderTableData();
           else { this.setState({}); }
                }).catch(error => {this.setState({ isLoaded: true, error,});
                });
+    }
+
+    refreshMyCurrentAlphaVote(e) {
+        this.setState({myAlphaVote: e});
     }
 
 
@@ -47,13 +57,9 @@ class ClubVoting extends React.Component {
 
         { this.state.showClubVoting &&
         <div>
-            {this.props.clubName}
-           Current Club Alpha: {this.state.clubAlpha}
-           My current Alpha vote:
-           Update alpha vote:
+           <p id="noLineSpaceP"> My alpha vote: {this.state.myAlphaVote}</p>
+           <ClubVoteCast clubId={this.state.clubId}  refreshMyCurrentAlphaVote={this.refreshMyCurrentAlphaVote}/>
         </div> }
-
-
 
 
         </React.Fragment>

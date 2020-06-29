@@ -1,12 +1,11 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import Logout from "./Logout";
-import { Link } from 'react-router-dom'
+
 
 class LoginStatus extends React.Component {
   constructor(props) {
     super(props);
-    //LoginStatus.contextType = Context;
         this.state = {
           error: null,
           isLoaded: false,
@@ -14,37 +13,19 @@ class LoginStatus extends React.Component {
           name: null,
           goHome: "/",
           redirect: false,
-          logStatus: "Sign in",
-          showSignUpLink: true,
-          showUserName: false,
           value: null,
           goToLogout: false,
         };
   }
 
     componentDidMount() {
-        if ( sessionStorage.getItem('tokens') === "undefined" || sessionStorage.getItem('tokens') === null ) {   // TODO check state instead? Context?
-            this.setState({userName: "(easy sign up)"});
+        if ( sessionStorage.getItem('tokens') === "undefined" || sessionStorage.getItem('tokens') === null ) {
+            this.setState({userName: "error"});
         }
         else {
          this.setState({ userName: JSON.parse(sessionStorage.getItem('tokens')).userName });
-         this.setState({logStatus: "Log out"});
-         this.setState({showUserName: true, showSignUpLink: false});
         }
     }
-
-
-  logOut() {
-    if ( sessionStorage.getItem('tokens') === "undefined" || sessionStorage.getItem('tokens') === null ) {
-    this.props.showSignIn(); }
-    else {
-    //sessionStorage.clear();
-    this.setState({goToLogout: true});
-    this.setState({redirect: true});
-    this.setState({showUserName: false, showSignUpLink: true});
-    this.setState({logStatus: "Sign in"});
-    }
-  }
 
 
   render() {
@@ -52,20 +33,9 @@ class LoginStatus extends React.Component {
     return (
     <React.Fragment>
            <div id="loginStatusDiv">
-                           <Link className="menuLinks" to="/settings"> Settings </Link>
-                           <Link className="menuLinks" to="/about"> About </Link>
-
-            <button id="logoutButton" onClick={() => this.logOut()}>{this.state.logStatus}</button>
-            {this.state.showUserName &&
-            <p id="userName"> {this.state.userName}  </p> }
-            {this.state.showSignUpLink &&
-            <button id="easySignUpButton" onClick={() => this.props.signUpCreate()}>(easy sign up)</button> }
+           <p id="userName"> {this.state.userName}  </p>
+            <button id="logoutButton" onClick={() => this.props.toggleLogin2()}>Log Out</button>
            </div>
-    {this.state.redirect &&
-    <Redirect to={this.state.goHome} /> }
-
-    {this.state.goToLogout &&
-    <Logout /> }
 
     </React.Fragment>
     );

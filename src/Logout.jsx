@@ -1,5 +1,6 @@
-//import React, { useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "./context/auth";
+import { Redirect } from "react-router-dom";
 
 function Logout(props) {
    const { setAuthTokens } = useAuth();
@@ -8,8 +9,10 @@ function Logout(props) {
   function logOut() {
     setAuthTokens();
     sessionStorage.clear();
+    //props.toggleLogin();
   }
-  return (null);
+
+  return (null)
 
 }
 

@@ -27,8 +27,6 @@ class ClubsList extends React.Component {
         return (
         <React.Fragment>
          <div class="topParentDiv">
-         <p> Clubs List </p>
-        <p></p>
         <div class="secondParentDiv">
 
         { !this.props.showClubsList2 &&

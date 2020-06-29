@@ -27,9 +27,8 @@ class ContactsList extends React.Component {
     render() {
         return (
         <React.Fragment>
+
          <div class="topParentDiv">
-         <p> Contacts List </p>
-        <p></p>
         <div class="secondParentDiv">
 
         { !this.props.showNetworkListDetails &&

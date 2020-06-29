@@ -142,8 +142,6 @@ class ProfileText extends React.Component {
   render() {
     return (
     <div id="meSettingsDiv">
-        <p>Profile </p>
-
           <div class="askDiv"><span class="askText">Title &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
           <input id="newQuestion" maxlength="80" type="text" value={this.state.title} onChange={this.handleChange2}  autocomplete="off" placeholder="optional: name & occupation"/>
           </div>
