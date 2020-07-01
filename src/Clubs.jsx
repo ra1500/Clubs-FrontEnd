@@ -7,6 +7,7 @@ import MessageBoard from "./MessageBoard";
 import ClubVoting from "./ClubVoting";
 import ClubManage from "./ClubManage";
 import { Link } from 'react-router-dom';
+import MessageBoardSingle from "./MessageBoardSingle";
 
 class Clubs extends React.Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class Clubs extends React.Component {
         showClubManage: false,
         showSingleClubMember: false,
         memberUserName: null,
+        singleClubMemberId: null,
         };
     };
 
@@ -96,13 +98,16 @@ class Clubs extends React.Component {
     }
 
   goToSingleClubMember(e) {
+
+    const dude = e.target.value;
+
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
     const p = name.password;
     const token = u +':' + p;
     const hash = btoa(token);
     const Basic = 'Basic ' + hash;
-    axios.get("http://localhost:8080/api/user/pu?mid=" + e.target.value + "&cid=" + this.state.clubId,
+    axios.get("http://localhost:8080/api/user/pu?mid=" + dude + "&cid=" + this.state.clubId,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {
       this.setState({
@@ -115,6 +120,7 @@ class Clubs extends React.Component {
         relationshipStatus: response.data.relationshipStatus,
         location: response.data.location,
         contactInfo: response.data.contactInfo,
+        singleClubMemberId: dude,
       });
       if (response.data.education === 1) {this.setState({education2: "High School"})};
       if (response.data.education === 2) {this.setState({education2: "College"})};
@@ -124,6 +130,7 @@ class Clubs extends React.Component {
       if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
       if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
       if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "Irrelevant"})};
+      this.setState({showMembersList: false, showSingleClubMember: true});
            }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
            });
     }
@@ -210,13 +217,14 @@ class Clubs extends React.Component {
           <div class="topParentDiv">
                 <img id="profilePic" src={this.state.profilePicture}></img>
                 <div class="scoresListTD">
-                <p class="secondP"> Title: {this.state.memberUserName}</p><br></br>
+                <p class="secondP"> Club Member: {this.state.memberUserName}</p><br></br>
                 <p class="secondP"> Title: {this.state.title}</p><br></br>
                 <p class="secondP"> About me: {this.state.blurb}</p><br></br>
                 <p class="secondP"> Location: {this.state.location}</p><br></br>
                 <p class="secondP"> Contact Info: {this.state.contactInfo}</p><br></br>
                 <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p>
                 </div>
+                <MessageBoardSingle singleClubMemberId={this.state.singleClubMemberId}/>
                 </div> }
 
         </div> }

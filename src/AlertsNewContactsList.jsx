@@ -4,15 +4,70 @@ import axios from 'axios';
 class AlertsNewContactsList extends React.Component {
     constructor(props) {
         super(props);
+        this.accept = this.accept.bind(this);
+        this.decline = this.decline.bind(this);
+        this.goToDetails = this.goToDetails.bind(this);
         this.state = {
             list1: null,
             showNewContacts: false,
-            date: new Date().getDate(),
         };
     }
 
     componentDidMount() {
         this.getFriendships();
+    }
+
+    accept(e) {
+        if (window.confirm('Please confirm acceptance')) {
+
+        this.setState({showNewContacts: false });
+
+        const friendshipId = e.target.value;
+
+        const name = JSON.parse(sessionStorage.getItem('tokens'));
+        const u = name.userName;
+        const p = name.password;
+        const token = u + ':' + p;
+        const hash = btoa(token);
+        const Basic = 'Basic ' + hash;
+        let data = { id: friendshipId, connectionStatus: "Connected", visibilityPermission: "Yes" };
+        axios.post("http://localhost:8080/api/f/a", data,
+        {headers : { 'Authorization' : Basic }})
+        .then((response) => {
+        this.getFriendships();
+        this.setState({isLoaded: true, showNewContacts: true });
+               }).catch(error => {this.setState({ isLoaded: true, error});
+               });
+         }
+    }
+
+    decline(e) {
+        if (window.confirm('Please confirm decline')) {
+
+        this.setState({showNewContacts: false });
+
+        const friendshipId = e.target.value;
+
+        const name = JSON.parse(sessionStorage.getItem('tokens'));
+        const u = name.userName;
+        const p = name.password;
+        const token = u + ':' + p;
+        const hash = btoa(token);
+        const Basic = 'Basic ' + hash;
+        let data = { id: friendshipId, connectionStatus: "removed", visibilityPermission: "Yes" };
+        axios.post("http://localhost:8080/api/f/a", data,
+        {headers : { 'Authorization' : Basic }})
+        .then((response) => {
+        this.getFriendships();
+        this.setState({isLoaded: true, showNewContacts: true });
+               }).catch(error => {this.setState({ isLoaded: true, error});
+               });
+         }
+    }
+
+
+    goToDetails() {
+
     }
 
     getFriendships() {
@@ -40,10 +95,19 @@ class AlertsNewContactsList extends React.Component {
    renderTableData() {
       return this.state.list2.map((data, index) => {
          return (
+            <div>
             <tr key={data.friend}>
                <td> {data.friend} </td>
                <td>{data.connectionType} </td>
+               <td>
+               <button id="signupButton" value={data.id} onClick={e => this.accept(e)}> Accept </button>
+               <button class="titleButton" value={data.id} onClick={e => this.decline(e)}> Decline </button>
+               <button class="titleButton" value={data.id} onClick={e => this.goToDetails(e)}> See Details </button>
+               </td>
             </tr>
+            <tr>
+            </tr>
+            </div>
          )
       })
    }
@@ -64,7 +128,6 @@ class AlertsNewContactsList extends React.Component {
             { this.state.showNewContacts &&
             <table>
                <tbody>
-                  <tr><th>Contact</th><th>Type</th></tr>
                   {this.renderTableData()}
                </tbody>
             </table> }

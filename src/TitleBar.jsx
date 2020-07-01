@@ -50,15 +50,15 @@ class TitleBar extends React.Component {
         <div id="titleBarDiv2">
         <Link onClick={this.props.showIntroStuff} id="NJ" to="/">&nbsp; NeuralJuice &nbsp; </Link>
         {!this.state.signup &&
-        <Link id="menuLinksFirst" to="/welcome"> Messages </Link> }
-        {!this.state.signup &&
-        <Link className="menuLinks" to="/me"> Profile </Link> }
+        <Link id="menuLinksFirst" to="/welcome"> New </Link> }
         {!this.state.signup &&
         <Link className="menuLinks" to="/network"> Contacts </Link> }
         {!this.state.signup &&
         <Link className="menuLinks" to="/clubs"> Clubs </Link> }
         {!this.state.signup &&
         <Link className="menuLinks" to="/guilds"> Guilds </Link> }
+        {!this.state.signup &&
+        <Link className="menuLinks" to="/me"> Profile </Link> }
 
         {this.state.login &&
         <Login toggleLogin={this.toggleLogin} /> }

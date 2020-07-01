@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 import ManageMyContacts from "./ManageMyContacts";
 import FriendsContactsList from "./FriendsContactsList";
+import MessageBoardFriend from "./MessageBoardFriend";
 
 class NetworkContactPages extends React.Component {
   constructor(props) {
@@ -255,7 +256,7 @@ class NetworkContactPages extends React.Component {
                 <p class="secondP"> Contact Info: {this.state.contactInfo}</p><br></br>
                 <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p>
                 </div>
-
+                <MessageBoardFriend friendshipsEntityId={this.state.friendId}/>
                 </div> }
 
                { this.state.showFriendsContactsList &&
