@@ -34,7 +34,7 @@ class Clubs extends React.Component {
         clubAlpha: 'none',
         showMembersList: false,
         showMembersList2: true,
-        showClubMessageBoard: false,
+        showClubMessageBoard: true,
         showClubVoting: false,
         showClubManage: false,
         showSingleClubMember: false,

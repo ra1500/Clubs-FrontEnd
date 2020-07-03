@@ -7,18 +7,24 @@ import AlertsNewClubInvitations from "./AlertsNewClubInvitations";
 import AlertsNewMessagesContacts from "./AlertsNewMessagesContacts";
 import AlertsNewMessagesClubs from "./AlertsNewMessagesClubs";
 import AlertsNewMessagesGuilds from "./AlertsNewMessagesGuilds";
-
+import AlertsNewContactDetails from "./AlertsNewContactDetails";
+import AlertsClubDetails from "./AlertsClubDetails";
 
 class Start extends React.Component {
   constructor(props) {
     super(props);
     this.goToNewMessages = this.goToNewMessages.bind(this);
     this.goToNewInvitations = this.goToNewInvitations.bind(this);
+    this.goToContactDetails = this.goToContactDetails.bind(this);
+    this.goToClubDetails = this.goToClubDetails.bind(this);
         this.state = {
           error: null,
           isLoaded: false,
           showNewInvitations: false,
           showNewMessages: true,
+          showAlertsNewContactDetails: false,
+          friendId: null,
+          showAlertsClubDetails: false,
         };
   }
 
@@ -26,12 +32,17 @@ class Start extends React.Component {
     }
 
     goToNewMessages() {
-    this.setState({showNewMessages: true, showNewInvitations: false, });
+    this.setState({showNewMessages: true, showNewInvitations: false, showAlertsNewContactDetails: false, showAlertsClubDetails: false });
     }
     goToNewInvitations() {
-    this.setState({showNewMessages: false, showNewInvitations: true, });
+    this.setState({showNewMessages: false, showNewInvitations: true, showAlertsNewContactDetails: false, showAlertsClubDetails: false});
     }
-
+    goToContactDetails(e) {
+        this.setState({showNewMessages: false, showNewInvitations: false, showAlertsNewContactDetails: true, friendId: e.target.value, showAlertsClubDetails: false});
+    }
+    goToClubDetails(e) {
+        this.setState({showNewMessages: false, showNewInvitations: false, showAlertsNewContactDetails: false, clubInvitationId: e.target.value, showAlertsClubDetails: true});
+    }
 
   render() {
     return (
@@ -66,9 +77,19 @@ class Start extends React.Component {
             { this.state.showNewInvitations &&
             <div>
             <p class="noLineSpaceP"> Contact Invitations </p>
-            <AlertsNewContactsList /><br></br>
+            <AlertsNewContactsList goToContactDetails={this.goToContactDetails}/><br></br>
             <p class="noLineSpaceP"> Club Invitations </p>
-            <AlertsNewClubInvitations />
+            <AlertsNewClubInvitations goToClubDetails={this.goToClubDetails}/>
+            </div> }
+
+            { this.state.showAlertsNewContactDetails &&
+            <div>
+            <AlertsNewContactDetails friendId={this.state.friendId}/>
+            </div> }
+
+            { this.state.showAlertsClubDetails &&
+            <div>
+            <AlertsClubDetails clubInvitationId={this.state.clubInvitationId}/>
             </div> }
 
         </div>

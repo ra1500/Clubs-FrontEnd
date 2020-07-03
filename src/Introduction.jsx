@@ -29,7 +29,7 @@ class Introduction extends React.Component {
     <div class="topParentDiv">
          <p id="intro1p">  Stay connected with your friends, family and associates. </p>
          <ul class="introUL">
-         <li>   Create and join clubs. </li>
+         <li>  Create and join clubs. </li>
          <li>  Expand your network through your connections. </li>
          <li>  Form guilds to get answers, solve problems and collaborate. </li>
          <li>  Private and secure.  </li>

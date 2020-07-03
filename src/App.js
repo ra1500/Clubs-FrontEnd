@@ -24,15 +24,8 @@ function App(props) {
     setAuthTokens(data);
   }
 
-        //  ** put below after finished development **
-       //                 <PrivateRoute path="/welcome" component={Start} />
-       //                 <PrivateRoute path="/answer" component={Answer} />
-       //                 <PrivateRoute path="/ask" component={Ask} />
-       //                 <PrivateRoute path="/network" component={Network} />
-       //                 <PrivateRoute path="/me" component={Profile} />
-       //                 <PrivateRoute path="/clubs" component={Clubs} />
-       //                 <PrivateRoute path="/guilds" component={Guilds} />
-       //                 <PrivateRoute path="/settings" component={Settings} />
+// TODO title bar in each route instead of above. eliminate the 2 in each below which is employed
+// so that you can go back to 'blank state' when button is pressed. i.e. go to top parent.
 
   return (
             <React.Fragment>
@@ -42,15 +35,20 @@ function App(props) {
                       <div>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/flavor" component={PublicUserPages} />
-                        <PrivateRoute path="/welcome" component={Start} />
-                        <PrivateRoute path="/answer" component={Answer} />
-                        <PrivateRoute path="/ask" component={Ask} />
-                        <PrivateRoute path="/network" component={Network} />
-                        <PrivateRoute path="/me" component={Profile} />
-                        <PrivateRoute path="/clubs" component={Clubs} />
-                        <PrivateRoute path="/guilds" component={Guilds} />
-                        <PrivateRoute path="/settings" component={Settings} />
                         <Route exact path="/about" component={About} />
+                       <PrivateRoute path="/welcome" component={Start} />
+                       <PrivateRoute path="/welcome_" component={Start} />
+                       <PrivateRoute path="/network" component={Network} />
+                       <PrivateRoute path="/network_" component={Network} />
+                       <PrivateRoute path="/me" component={Profile} />
+                       <PrivateRoute path="/me_" component={Profile} />
+                       <PrivateRoute path="/clubs" component={Clubs} />
+                       <PrivateRoute path="/clubs_" component={Clubs} />
+                       <PrivateRoute path="/guilds" component={Guilds} />
+                       <PrivateRoute path="/guilds_" component={Guilds} />
+                       <PrivateRoute path="/settings" component={Settings} />
+                       <PrivateRoute path="/answer" component={Answer} />
+                       <PrivateRoute path="/ask" component={Ask} />
                       </div>
                     </Router>
                     </AuthContext.Provider>

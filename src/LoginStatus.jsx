@@ -33,8 +33,12 @@ class LoginStatus extends React.Component {
     return (
     <React.Fragment>
            <div id="loginStatusDiv">
-           <p id="userName"> {this.state.userName}  </p>
+           <table>
+           <tr>
+           <td><p id="userName"> {this.state.userName}  </p> </td>
             <button id="logoutButton" onClick={() => this.props.toggleLogin2()}>Log Out</button>
+           </tr>
+           </table>
            </div>
 
     </React.Fragment>

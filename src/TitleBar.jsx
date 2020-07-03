@@ -11,11 +11,26 @@ class TitleBar extends React.Component {
     super(props);
     this.toggleLogin = this.toggleLogin.bind(this);
     this.toggleLogin2 = this.toggleLogin2.bind(this);
+    this.redirectClubs = this.redirectClubs.bind(this);
+    this.redirectNetwork = this.redirectNetwork.bind(this);
+    this.redirectWelcome = this.redirectWelcome.bind(this);
+    this.redirectMe = this.redirectMe.bind(this);
+    this.redirectGuilds = this.redirectGuilds.bind(this);
         this.state = {
             login: true,
             loginStatus: false,
             redirect: false,
             signup: true,
+            clubs: false,
+            clubs2: false,
+            network: false,
+            network2: false,
+            me: false,
+            me2: false,
+            guilds: false,
+            guilds2: false,
+            welcome: false,
+            welcome2: false,
         };
   }
 
@@ -43,22 +58,63 @@ class TitleBar extends React.Component {
         )
     }
 
+    redirectClubs() {
+        this.setState({clubs: !this.state.clubs, clubs2: this.state.clubs, network: false, network2: false, me: false, me2: false,welcome: false, welcome2: false, guilds: false, guilds2: false});
+    }
+    redirectNetwork() {
+        this.setState({network: !this.state.network, network2: this.state.network, clubs: false, clubs: false, me: false, me2: false,welcome: false, welcome2: false, guilds: false, guilds2: false});
+    }
+     redirectWelcome() {
+         this.setState({welcome: !this.state.welcome, welcome2: this.state.welcome, clubs: false, clubs: false, me: false, me2: false, network: false, network2: false, guilds: false, guilds2: false});
+     }
+    redirectMe() {
+        this.setState({me: !this.state.me, me2: this.state.me, clubs: false, clubs: false, network: false, network2: false,welcome: false, welcome2: false, guilds: false, guilds2: false});
+    }
+    redirectGuilds() {
+        this.setState({guilds: !this.state.guilds, guilds2: this.state.guilds, clubs: false, clubs: false, me: false, me2: false,welcome: false, welcome2: false, network: false, network2: false});
+    }
+
+
 
   render() {
     return (
     <div id="titleBarDiv">
         <div id="titleBarDiv2">
-        <Link onClick={this.props.showIntroStuff} id="NJ" to="/">&nbsp; NeuralJuice &nbsp; </Link>
+        <Link id="NJ" to="/">&nbsp; NeuralJuice &nbsp; </Link>
+
         {!this.state.signup &&
-        <Link id="menuLinksFirst" to="/welcome"> New </Link> }
-        {!this.state.signup &&
-        <Link className="menuLinks" to="/network"> Contacts </Link> }
-        {!this.state.signup &&
-        <Link className="menuLinks" to="/clubs"> Clubs </Link> }
-        {!this.state.signup &&
-        <Link className="menuLinks" to="/guilds"> Guilds </Link> }
-        {!this.state.signup &&
-        <Link className="menuLinks" to="/me"> Profile </Link> }
+        <div id="titleBarDiv3">
+        <button class="menuLinks" onClick={this.redirectWelcome}> New </button>
+        <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
+        <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
+        <button class="menuLinks" onClick={this.redirectGuilds}> Guilds </button>
+        <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
+        </div> }
+
+        {this.state.welcome &&
+        <Redirect to="/welcome" />}
+        {this.state.welcome2 &&
+        <Redirect to="/welcome_" />}
+
+        {this.state.network &&
+        <Redirect to="/network" />}
+        {this.state.network2 &&
+        <Redirect to="/network_" />}
+
+        {this.state.clubs &&
+        <Redirect to="/clubs" />}
+        {this.state.clubs2 &&
+        <Redirect to="/clubs_" />}
+
+        {this.state.guilds &&
+        <Redirect to="/guilds" />}
+        {this.state.guilds2 &&
+        <Redirect to="/guilds_" />}
+
+        {this.state.me &&
+        <Redirect to="/me" />}
+        {this.state.me2 &&
+        <Redirect to="/me_" />}
 
         {this.state.login &&
         <Login toggleLogin={this.toggleLogin} /> }

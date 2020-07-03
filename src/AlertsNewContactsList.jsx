@@ -6,7 +6,6 @@ class AlertsNewContactsList extends React.Component {
         super(props);
         this.accept = this.accept.bind(this);
         this.decline = this.decline.bind(this);
-        this.goToDetails = this.goToDetails.bind(this);
         this.state = {
             list1: null,
             showNewContacts: false,
@@ -65,11 +64,6 @@ class AlertsNewContactsList extends React.Component {
          }
     }
 
-
-    goToDetails() {
-
-    }
-
     getFriendships() {
         const name = JSON.parse(sessionStorage.getItem('tokens'));
         const u = name.userName;
@@ -102,7 +96,7 @@ class AlertsNewContactsList extends React.Component {
                <td>
                <button id="signupButton" value={data.id} onClick={e => this.accept(e)}> Accept </button>
                <button class="titleButton" value={data.id} onClick={e => this.decline(e)}> Decline </button>
-               <button class="titleButton" value={data.id} onClick={e => this.goToDetails(e)}> See Details </button>
+               <button class="titleButton" value={data.id} onClick={e => this.props.goToContactDetails(e)}> See Details </button>
                </td>
             </tr>
             <tr>
