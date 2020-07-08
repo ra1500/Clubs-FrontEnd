@@ -5,6 +5,7 @@ class MessagesList extends React.Component {
         super(props);
         this.state = {
             list: this.props.list, //
+            messagesEnd: true,
         };
     }
 
@@ -12,20 +13,26 @@ class MessagesList extends React.Component {
       return this.state.list.map((data, index) => {
          return (
             <tr class="friendsTR"key={data.message}>
-                <td class="friendsTD"> <p class="secondP"> Posted By: {data.sender.userName} </p></td>
-                <td class="friendsTD"> <p class="secondP"> Time Stamp: {data.created} </p></td>
-                <td class="friendsTD"> <p class="secondP"> Message: {data.message} </p></td>
+                    <td id="timeStampTD"> <p class="timeStampP">   {new Intl.DateTimeFormat("en-GB", {
+                                                month: "short",
+                                                day: "numeric",
+                                                weekday: "short",
+                                                hour: "numeric",
+                                                minute: "numeric"
+                                              }).format(    Date.parse(   data.created )    )} </p></td>
+                <td id="userNameTD"> <p class="userNameMSG">{data.sender.userName} </p></td>
+                <td> <div class="messagesDiv2"><p class="messagesP"> {data.message} </p></div></td>
             </tr>
          )
       })
    }
 
 
+
     render() {
         return (
         <React.Fragment>
          <div class="topParentDiv">
-         <div class="secondParentDiv">
 
         { !this.props.showMessagesList2 &&
          <div>
@@ -33,14 +40,16 @@ class MessagesList extends React.Component {
          </div> }
 
         { this.props.showMessagesList2 &&
+         <div class="messagesDiv">
          <div>
             <table>
                <tbody>
                   {this.renderTableData()}
                </tbody>
             </table>
-         </div> }
+            <div id="end"> </div>
          </div>
+         </div> }
          </div>
         </React.Fragment>
         )

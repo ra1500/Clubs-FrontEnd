@@ -24,8 +24,16 @@ class Guilds extends React.Component {
               <div class="topParentDiv">
 
       <div class="topParentDiv">
-        <p> Guilds </p>
 
+        <p className="noLineSpaceP"> Guilds will be very similar to clubs but with additional functionality. </p>
+        <ul>
+            <li> Project and goal management. </li>
+            <li> Issue tasks to members and track progress. </li>
+            <li> Put out short questionnaires for members to approve and vote on decisions. </li>
+            <li> Project manager has direct control over membership and communications. </li>
+        </ul>
+        <br></br>
+        <p className="noLineSpaceP">  </p><br></br>
 
 
               </div>

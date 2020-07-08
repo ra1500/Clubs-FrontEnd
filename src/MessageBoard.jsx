@@ -7,16 +7,17 @@ class MessageBoard extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit1 = this.handleSubmit1.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
     this.state = {
     userName: u,
     clubMessage: null,
-    updatedMessage: null,
     receiverId: null,
     receiverType: null,
     showMessagesList: false,
     showMessagesList2: false,
+    showMessagesList3: true,
     list: null,
     };
   }
@@ -34,6 +35,17 @@ class MessageBoard extends React.Component {
     this.postClubMessage();
   }
 
+//  handleKeyDown = (e) => {
+//    if (e.key === 'Enter') {
+//      this.postClubMessage();
+//    }
+//  }
+
+//scrollToBottom = () => {
+//  let elmnt = document.getElementById("end");
+//  elmnt.scrollIntoView();
+//}
+
   postClubMessage() {
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
@@ -45,9 +57,8 @@ class MessageBoard extends React.Component {
     axios.post("http://localhost:8080/api/m/b", data,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {
-    this.setState({isLoaded: true,
-            updatedMessage: " Message Posted.",
-              });
+    this.setState({isLoaded: true,});
+    this.getMessagesList();
            }).catch(error => {this.setState({ isLoaded: true, error});
            });
   }
@@ -66,9 +77,12 @@ class MessageBoard extends React.Component {
           this.setState({
             isLoaded: true,
             list: response.data,
-            showMessagesList2: true,
-            showMessagesList: true,
+            showMessagesList: !this.state.showMessagesList, // initial list rendering
+            showMessagesList2: true, // stays true since response is '200' and there is content to pass down to child.
+            showMessagesList3: !this.state.showMessagesList3,
+            clubMessage: null,
           });
+          this.scrollToBottom();
           } // end if
                }).catch(error => {this.setState({ isLoaded: true, error,});
                });
@@ -79,18 +93,25 @@ class MessageBoard extends React.Component {
     return (
     <div id="meSettingsDiv">
 
-          <div class="askDiv">
-          <input id="newQuestion" maxlength="80" type="text" value={this.state.clubMessage} onChange={this.handleChange}  autocomplete="off" placeholder="Message"/>
-          </div>
-            <button type="submit" onClick={this.handleSubmit1} className="inviteAuditButton"> Send </button>
-            <span class="updateParagraph">{this.state.updatedMessage}</span>
-
         { this.state.showMessagesList &&
         <div>
         <MessagesList list={this.state.list} showMessagesList2={this.state.showMessagesList2}  />
         </div> }
+        { this.state.showMessagesList3 &&
+        <div>
+        <MessagesList list={this.state.list} showMessagesList2={this.state.showMessagesList2}  />
+        </div> }
 
-
+        { this.state.showMessagesList &&
+        <div id="msgInputDiv">
+        <input id="newQuestion" onKeyDown={this.handleKeyDown} maxlength="254" type="text" value={this.state.clubMessage} onChange={this.handleChange}  autocomplete="off" autoFocus="autoFocus" />
+        <button type="submit" onClick={this.handleSubmit1} className="msgSendButton"> Send </button>
+        </div> }
+        { this.state.showMessagesList3 &&
+        <div id="msgInputDiv">
+        <input id="newQuestion" onKeyDown={this.handleKeyDown} maxlength="254" type="text" value={this.state.clubMessage} onChange={this.handleChange}  autocomplete="off" autoFocus="autoFocus" />
+        <button type="submit" onClick={this.handleSubmit1} className="msgSendButton"> Send </button>
+        </div> }
 
     </div>
 

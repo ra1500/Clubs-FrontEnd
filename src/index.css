@@ -5,8 +5,6 @@ code {font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", mono
 
  /** General **/
 p {font-family: "Geneva";}
-tr:nth-child(even) {}
-tr:nth-child(odd) {}
 th { text-decoration: underline; font-weight: normal; padding-right: 5px; padding-bottom: 5px; }
 .tableData {  padding-right: 0px; margin-bottom: 0px; }
 .thTitle { padding-left: 58px; }
@@ -14,6 +12,9 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .nowrapTd { white-space:nowrap; }
 .greenButton {border-radius: 14px; height: 23px; margin-right: 5px; width: 150px;border: 1px solid; background-color: white; color: #29a329; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
 .tableTitleCenteredData {  width: 170px; text-align: center; }
+.greenButtonSmall {border-radius: 14px; height: 23px; margin-right: 5px; width: 40px;border: 1px solid; background-color: white; color: #29a329; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
+.orangeButtonSmall {border-radius: 14px; height: 23px; margin-right: 5px; width: 50px;border: 1px solid; background-color: white; color: #ff8000; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
+.msgSendButton {display: inline; margin-left: 10px; border-radius: 14px; height: 23px; margin-right: 5px; width: 60px; border: 1px solid; background-color: white; color: #29a329; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
 
  /** TitleBar **/
 #titleBarDiv { height: 42px; position: fixed; top: 0; width: 100%; background-color: #737373}
@@ -30,7 +31,6 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 #logoutButton { font-family: "Arial"; font-size: 13px; background-color: #3333ff; color: white; font-weight: bold; border: none; border-radius: 14px; width: 70px;}
 #logoutButton:hover {background-color: #1a1aff}
 #userName {font-family: "Arial"; color: #ffff00;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; padding-right: 10px; }
-#easySignUpButton {border: none; background-color: #737373; color: white; text-decoration: none; font-weight: bold; font-size: 14px; font-family: "Geneva"}
 .loginBox {display: inline; margin-right: 10px; height: 25px; width: 150px;}
 .signupBox { display: block; margin-bottom: 2px; height: 25px; width: 150px;}
 #signupDiv { margin-top: 30px; float: right; clear: both; padding-right: 150px; }
@@ -114,7 +114,6 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .askFormQsetSmallP {display: inline; font-size: 12px; height: 9px;}
 
  /** Ask - Create/Manage (AskFormQuestion) **/
-.askDiv {}
 #newQuestion {display: inline-block; width: 80%;}
 .newAnswer {display: inline-block; width: 50%;}
 .newAnswerPoints {display: inline-block; width: 10%;}
@@ -197,8 +196,22 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .friendsTD2 {display: block; padding-top: 5px;}
 .friendsTD3 {display: block; padding-bottom: 5px;}
 .friendsTD {display: block;}
-.friendsTR { padding-bottom: 500px;}
+.friendsTR { margin-bottom: 500px;}
 
 .secondLevelDiv { padding-top: 10px; }
 .noLineSpaceP { margin: 0 }
 .clubTD { padding-left: 15px; }
+.clubTextBox { width: 400px; }
+#clubTextBoxSize { width: 50px; }
+.userNameMSG {display: inline; font-family: "Arial"; color: #3333ff;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; padding-right: 10px; }
+.timeStampP { display: inline; color: #737373; font-size: 12px;}
+#timeStampTD { width: 125px; }
+.messagesP { display: inline; margin-left: 2px; padding-left: 10px; }
+.messagesDiv { height: 300px; overflow: scroll; border: solid 1px; }
+.messagesDiv2 { min-height:101%; border-left: solid 2px red;}
+#userNameTD { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px; }
+#msgInputDiv { margin-top: 10px; }
+.acceptButton     {border-radius: 14px; height: 23px; margin-left: 5px; margin-right: 5px; width: 75px;border: 1px solid; background-color: white; color: #29a329; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
+.declineButton    {border-radius: 14px; height: 23px; margin-left: 5px; margin-right: 5px; width: 75px;border: 1px solid; background-color: white; color: #ff0000; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
+.seeDetailsButton {border-radius: 14px; height: 23px; margin-left: 5px; margin-right: 5px; width: 105px;border: 1px solid; background-color: white; color: #ff8000; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
+.alertsNewDiv { border-bottom: solid 1px blue; }

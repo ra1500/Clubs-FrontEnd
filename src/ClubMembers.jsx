@@ -10,6 +10,7 @@ class ClubMembers extends React.Component {
     }
 
    renderTableData() {
+      const sortedList = this.state.list.sort((a,b) => (a.userName > b.userName) ? 1 : ((b.userName > a.userName) ? -1 : 0));
       return this.state.list.map((data, index) => {
          return (
             <tr class="friendsTR"key={data.id}>

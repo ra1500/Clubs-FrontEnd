@@ -1,5 +1,7 @@
 import React from 'react';
 
+// this.state.list.sort((a,b) => (a.sequenceNumber > b.sequenceNumber) ? 1 : ((b.sequenceNumber > a.sequenceNumber) ? -1 : 0));
+
 class ClubsList extends React.Component {
     constructor(props) {
         super(props);
@@ -9,19 +11,17 @@ class ClubsList extends React.Component {
     }
 
    renderTableData() {
-      return this.state.list.map((data, index) => {
+      const sortedList = this.state.list.sort((a,b) => (a.created > b.created) ? 1 : ((b.created > a.created) ? -1 : 0));
+      return sortedList.map((data, index) => {
          return (
-            <tr class="friendsTR"key={data.id}>
-               <td class="friendsTD2"> <button class="titleButton" value={data.id} onClick={e => this.props.renderSingleClub(e)}> {data.id} </button> </td>
-               <td class="friendsTD"> <p class="secondP"> Club Name {data.clubName} </p></td>
-               <td class="friendsTD"> <p class="secondP"> Desc. {data.description} </p></td>
+            <tr key={data.id}>
+                <td> <button class="greenButtonSmall" value={data.id} onClick={e => this.props.renderSingleClub(e)}> &#9658; </button> </td>
+                <td> <p class="noLineSpaceP"> {data.clubName} </p></td>
             </tr>
          )
       })
    }
 
-//                <td> <ProfilePicture friendId={data.id} /> </td>
-// <tr><th class=""></th><th class="thContact">Contact</th><th class="">Status</th><th>Type</th><th>View Permission</th></tr>
 
     render() {
         return (
@@ -35,9 +35,9 @@ class ClubsList extends React.Component {
          </div> }
 
         { this.props.showClubsList2 &&
-         <div>
+         <div >
             <table>
-               <tbody>
+               <tbody >
                   {this.renderTableData()}
                </tbody>
             </table>

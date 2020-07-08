@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 
-class ClubText extends React.Component {
+class ClubTextEdit extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange2 = this.handleChange2.bind(this);
@@ -16,11 +16,14 @@ class ClubText extends React.Component {
     alpha: u,
     updatedMessage: null,
     showSubmit: true,
-    maxSize: 20, // default size.
+    clubName: null,
+    description: null,
+    maxSize: 20,
     };
   }
 
   componentDidMount() {
+    this.renderSingleClub();
   }
 
      handleChange2(event) {
@@ -43,22 +46,50 @@ class ClubText extends React.Component {
 
   handleSubmit1(event) {
     event.preventDefault();
-    this.postClubText();
+    this.postClubEditText();
   }
 
-  postClubText() {
+  renderSingleClub() {
+        const name = JSON.parse(sessionStorage.getItem('tokens'));
+        const u = name.userName;
+        const p = name.password;
+        const token = u +':' + p;
+        const hash = btoa(token);
+        const Basic = 'Basic ' + hash;
+        axios.get("http://localhost:8080/api/c/a?cId=" + this.props.clubId,
+        {headers : { 'Authorization' : Basic }})
+        .then((response) => {
+         if (response.status === 200) {
+          this.setState({
+            isLoaded: true,
+            clubId: response.data.id,
+            clubName: response.data.clubName,
+            description: response.data.description,
+            clubAlpha: response.data.alpha,
+            membersList: response.data.members,
+            maxSize: response.data.maxSize,
+            showClubsList: false,
+            showSingleClub: true,
+          });
+          } // end if
+          else { this.setState({showClubsList: false}); }
+               }).catch(error => {this.setState({ isLoaded: true, error,});
+               });
+    }
+
+  postClubEditText() {
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
     const p = name.password;
     const token = u + ':' + p;
     const hash = btoa(token);
     const Basic = 'Basic ' + hash;
-    let data = {clubName : this.state.clubName, description: this.state.description, maxSize: this.state.maxSize,
+    let data = {id: this.props.clubId, clubName : this.state.clubName, description: this.state.description, maxSize: this.state.maxSize,
      alpha: this.state.alpha,};
-    axios.post("http://localhost:8080/api/c/b", data,
+    axios.post("http://localhost:8080/api/c/d", data,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {
-    this.setState({isLoaded: true, updatedMessage: " Club has been added.", showSubmit: false, maxSize: response.data.maxSize,
+    this.setState({isLoaded: true, updatedMessage: " Club has been updated.", showSubmit: false, maxSize: response.data.maxSize,
               });
            }).catch(error => {this.setState({ isLoaded: true, error});
            });
@@ -81,7 +112,7 @@ class ClubText extends React.Component {
           </tr>
           <tr>
           <td> Alpha Member: </td>
-          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.alpha} onChange={this.handleChange7}  autocomplete="off" placeholder=""/></td>
+          <td> {this.state.alpha} </td>
           </tr>
           <tr>
           <td> Max. Membership Size: </td>
@@ -113,7 +144,7 @@ class ClubText extends React.Component {
           </div> }
 
            { this.state.showSubmit &&
-           <button type="submit" onClick={this.handleSubmit1} id="signupButton"> Submit </button> }
+           <button type="submit" onClick={this.handleSubmit1} className="inviteAuditButton"> Update </button> }
            { !this.state.showSubmit &&
            <span class="updateParagraph">{this.state.updatedMessage}</span> }
     </div>
@@ -122,4 +153,4 @@ class ClubText extends React.Component {
   }
 }
 
-export default ClubText;
+export default ClubTextEdit;

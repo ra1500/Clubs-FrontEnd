@@ -25,7 +25,6 @@ class PublicUserPages extends React.Component {
     }
 
   componentDidMount() {
-    this.getQsets();
     this.getProfileText();
   }
 
@@ -57,6 +56,7 @@ class PublicUserPages extends React.Component {
            });
     }
 
+    // not used. but save for Guilds use later....
   getQsets() {
         let url = this.props.location.search;
         let params = queryString.parse(url);

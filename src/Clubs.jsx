@@ -8,6 +8,7 @@ import ClubVoting from "./ClubVoting";
 import ClubManage from "./ClubManage";
 import { Link } from 'react-router-dom';
 import MessageBoardSingle from "./MessageBoardSingle";
+import ClubsEdit from "./ClubsEdit";
 
 class Clubs extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class Clubs extends React.Component {
     this.showClubVoting = this.showClubVoting.bind(this);
     this.showClubManage = this.showClubManage.bind(this);
     this.goToSingleClubMember = this.goToSingleClubMember.bind(this);
+    this.goToEditClubs = this.goToEditClubs.bind(this);
     this.state = {
         isLoaded: null,
         list: null,
@@ -40,6 +42,7 @@ class Clubs extends React.Component {
         showSingleClubMember: false,
         memberUserName: null,
         singleClubMemberId: null,
+        showEditClubs: false,
         };
     };
 
@@ -136,23 +139,26 @@ class Clubs extends React.Component {
     }
 
   goToClubsList() {
-          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false});
+          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false});
           this.getClubsList();
     }
   goToCreateClub() {
-          this.setState({showCreateClubs: true, showClubsList: false, showSingleClub: false, showMembersList: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false});
+          this.setState({showCreateClubs: true, showClubsList: false, showSingleClub: false, showMembersList: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false});
+    }
+  goToEditClubs() {
+          this.setState({showCreateClubs: false, showClubsList: false, showSingleClub: false, showMembersList: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: true});
     }
     showMembers() {
-           this.setState({showMembersList: !this.state.showMembersList, showClubMessageBoard: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false});
+           this.setState({showMembersList: !this.state.showMembersList, showClubMessageBoard: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false});
     }
     showClubMessageBoard() {
-           this.setState({showMembersList: false, showClubMessageBoard: !this.state.showClubMessageBoard, showClubManage: false, showClubVoting: false, showSingleClubMember: false});
+           this.setState({showMembersList: false, showClubMessageBoard: !this.state.showClubMessageBoard, showClubManage: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false});
     }
     showClubVoting() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubManage: false, showClubVoting: !this.state.showClubVoting, showSingleClubMember: false});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubManage: false, showClubVoting: !this.state.showClubVoting, showSingleClubMember: false, showEditClubs: false});
     }
     showClubManage() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubManage: !this.state.showClubManage, showClubVoting: false, showSingleClubMember: false});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubManage: !this.state.showClubManage, showClubVoting: false, showSingleClubMember: false, showEditClubs: false});
     }
 
    render() {
@@ -161,11 +167,16 @@ class Clubs extends React.Component {
             { !this.state.showSingleClub &&
               <div class="settings2ButtonsDiv">
                 <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
+                <button id="removedContactsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
                 <button id="removedContactsButton" onClick={this.goToCreateClub}> Start a Club </button>
               </div> }
 
         <div class="topParentDiv">
 
+        { this.state.showEditClubs &&
+        <div>
+        <ClubsEdit />
+        </div> }
 
         { this.state.showClubsList &&
         <div>
@@ -183,7 +194,7 @@ class Clubs extends React.Component {
         <div class="menuBoxDiv">
         <table>
             <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
-            <tr><td>Description:</td><td class="clubTD"> {this.state.description} </td></tr>
+            <tr><td>Description:</td><td class="clubTD"> {this.state.clubDescription} </td></tr>
             <tr><td>Club Alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
         </table>
         </div>
@@ -226,6 +237,8 @@ class Clubs extends React.Component {
                 </div>
                 <MessageBoardSingle singleClubMemberId={this.state.singleClubMemberId}/>
                 </div> }
+
+
 
         </div> }
 

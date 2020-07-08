@@ -12,6 +12,7 @@ class Profile extends React.Component {
     super(props);
     this.goToUserSettings = this.goToUserSettings.bind(this);
     this.goToPrivateProfile = this.goToPrivateProfile.bind(this);
+    this.goToProfileSettings = this.goToProfileSettings.bind(this);
     this.deleteProfilePicture = this.deleteProfilePicture.bind(this);
     this.getProfilePicture = this.getProfilePicture.bind(this);
     this.state = {
@@ -31,6 +32,7 @@ class Profile extends React.Component {
         profileContactInfo: null,
         education2: null,
         relationshipStatus2: null,
+        showProfileSettings: false,
         };
     };
 
@@ -118,12 +120,16 @@ class Profile extends React.Component {
     }
 
     goToUserSettings() {
-        this.setState({showSettingsSection: true, showProfile: false,});
+        this.setState({showSettingsSection: true, showProfile: false, showProfileSettings: false});
     }
     goToPrivateProfile() {
         this.getProfileText();
-        this.setState({showSettingsSection: false, showProfile: true,});
+        this.setState({showSettingsSection: false, showProfile: true, showProfileSettings: false});
     }
+    goToProfileSettings() {
+        this.setState({showSettingsSection: false, showProfile: false, showProfileSettings: true});
+    }
+
 
    render() {
     return (
@@ -132,6 +138,7 @@ class Profile extends React.Component {
               <div class="settings2ButtonsDiv">
                 <button id="myProfileButton" onClick={this.goToPrivateProfile}> My Profile </button>
                 <button id="editButton" onClick={this.goToUserSettings}> Edit </button>
+                <button id="removedContactsButton" onClick={this.goToProfileSettings}> Profile Settings </button>
               </div>
 
               { this.state.showProfile &&
@@ -143,11 +150,13 @@ class Profile extends React.Component {
                 <div>
                 <img id="profilePic" src={this.state.profilePicture}></img>
                 <div class="scoresListTD">
-                <p class="secondP"> Title: {this.state.profileTitle} </p><br></br>
-                <p class="secondP"> About Me: {this.state.profileBlurb} </p><br></br>
-                <p class="secondP"> Location: {this.state.profileLocation} </p><br></br>
-                <p class="secondP"> Contact Details: {this.state.profileContactInfo} </p><br></br>
-                <p class="secondP"> Relationship Status: {this.state.relationshipStatus2} </p>
+                <table>
+                <tr><td> Title: {this.state.profileTitle} </td></tr>
+                <tr><td> About Me: {this.state.profileBlurb} </td></tr>
+                <tr><td> Location: {this.state.profileLocation} </td></tr>
+                <tr><td> Contact Details: {this.state.profileContactInfo} </td></tr>
+                <tr><td> Relationship Status: {this.state.relationshipStatus2} </td></tr>
+                </table>
                 </div>
                 </div>
 
@@ -159,6 +168,13 @@ class Profile extends React.Component {
                 <Picture profilePicture={this.state.profilePicture} getProfilePicture={this.getProfilePicture} deleteProfilePicture={this.deleteProfilePicture} />
                 <ProfileText />
               </div> }
+
+            { this.state.showProfileSettings &&
+            <div class="topParentDiv">
+              <p> Settings </p>
+              <ScoreUrl />
+              <UpdateUserInfo />
+            </div> }
 
         </React.Fragment>
     ); // end return

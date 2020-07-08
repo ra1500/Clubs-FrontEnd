@@ -99,8 +99,8 @@ class AlertsClubDetails extends React.Component {
 
        { this.state.showButtons &&
        <div>
-       <button id="signupButton" onClick={e => this.accept()}> Accept </button>
-       <button class="titleButton" onClick={e => this.decline()}> Decline </button>
+       <button class="acceptButton" onClick={e => this.accept()}> Accept </button>
+       <button class="declineButton" onClick={e => this.decline()}> Decline </button>
        </div> }
 
        { !this.state.showButtons &&

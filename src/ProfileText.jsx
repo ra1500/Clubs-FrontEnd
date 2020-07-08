@@ -142,18 +142,24 @@ class ProfileText extends React.Component {
   render() {
     return (
     <div id="meSettingsDiv">
-          <div class="askDiv"><span class="askText">Title &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
-          <input id="newQuestion" maxlength="80" type="text" value={this.state.title} onChange={this.handleChange2}  autocomplete="off" placeholder="optional: name & occupation"/>
-          </div>
-          <div class="askDiv"><span class="askText">Blurb &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
-          <input id="newQuestion" maxlength="80" type="text" value={this.state.blurb} onChange={this.handleChange3}  autocomplete="off" placeholder="optional: self-description"/>
-          </div>
-          <div class="askDiv"><span class="askText">Location &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
-          <input id="newQuestion" maxlength="80" type="text" value={this.state.location} onChange={this.handleChange6}  autocomplete="off" placeholder="optional: city, state, country"/>
-          </div>
-          <div class="askDiv"><span class="askText">Contact Info. &nbsp;</span>
-          <input id="newQuestion" maxlength="80" type="text" value={this.state.contactInfo} onChange={this.handleChange7}  autocomplete="off" placeholder="optional: email or phone# etc."/>
-          </div>
+          <table>
+          <tr>
+          <td> Title: </td>
+          <td> <input className="clubTextBox" maxlength="80" type="text" value={this.state.title} onChange={this.handleChange2}  autocomplete="off" placeholder="optional: name & occupation"/> </td>
+          </tr>
+          <tr>
+          <td> Blurb:</td>
+          <td> <input className="clubTextBox" maxlength="80" type="text" value={this.state.blurb} onChange={this.handleChange3}  autocomplete="off" placeholder="optional: self-description"/> </td>
+          </tr>
+          <tr>
+          <td> Location: </td>
+          <td> <input className="clubTextBox" maxlength="80" type="text" value={this.state.location} onChange={this.handleChange6}  autocomplete="off" placeholder="optional: city, state, country"/> </td>
+          </tr>
+          <tr>
+          <td> Contact Info.: </td>
+          <td> <input className="clubTextBox" maxlength="80" type="text" value={this.state.contactInfo} onChange={this.handleChange7}  autocomplete="off" placeholder="optional: email or phone# etc."/> </td>
+          </tr>
+          </table>
         <form>
             <p class="paragraphInline"> Relationship Status: {this.state.relationshipStatus2} &nbsp; &nbsp;</p>
             <div class="radioSelections">

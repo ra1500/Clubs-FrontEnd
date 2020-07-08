@@ -10,7 +10,6 @@ import Network from "./Network";
 import Profile from "./Profile";
 import Clubs from "./Clubs.jsx";
 import Guilds from "./Guilds.jsx";
-import Settings from "./Settings.jsx";
 import About from "./About.jsx";
 import Ask from "./Ask";
 import Start from "./Start";
@@ -46,7 +45,6 @@ function App(props) {
                        <PrivateRoute path="/clubs_" component={Clubs} />
                        <PrivateRoute path="/guilds" component={Guilds} />
                        <PrivateRoute path="/guilds_" component={Guilds} />
-                       <PrivateRoute path="/settings" component={Settings} />
                        <PrivateRoute path="/answer" component={Answer} />
                        <PrivateRoute path="/ask" component={Ask} />
                       </div>

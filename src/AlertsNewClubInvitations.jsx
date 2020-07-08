@@ -92,15 +92,21 @@ class AlertsNewClubInvitations extends React.Component {
    renderTableData() {
       return this.state.list2.map((data, index) => {
          return (
+            <div class="alertsNewDiv">
+            <tr>
+                <td>{data.club.clubName} </td>
+            </tr>
             <tr key={data.id}>
-               <td> {data.sender.userName} </td>
-               <td>{data.club.clubName} </td>
-               <td>
-               <button id="signupButton" value={data.id} onClick={e => this.accept(e)}> Accept </button>
-               <button class="titleButton" value={data.id} onClick={e => this.decline(e)}> Decline </button>
-               <button class="titleButton" value={data.id} onClick={e => this.props.goToClubDetails(e)}> See Details </button>
+               <td> From: {data.sender.userName} </td>
+             </tr>
+             <tr>
+               <td class="alertsButtons">
+               <button class="acceptButton" value={data.id} onClick={e => this.accept(e)}> Accept </button>
+               <button class="declineButton" value={data.id} onClick={e => this.decline(e)}> Decline </button>
+               <button class="seeDetailsButton" value={data.id} onClick={e => this.props.goToClubDetails(e)}> See Details </button>
                </td>
             </tr>
+            </div>
          )
       })
    }

@@ -94,9 +94,9 @@ class AlertsNewContactsList extends React.Component {
                <td> {data.friend} </td>
                <td>{data.connectionType} </td>
                <td>
-               <button id="signupButton" value={data.id} onClick={e => this.accept(e)}> Accept </button>
-               <button class="titleButton" value={data.id} onClick={e => this.decline(e)}> Decline </button>
-               <button class="titleButton" value={data.id} onClick={e => this.props.goToContactDetails(e)}> See Details </button>
+               <button class="acceptButton" value={data.id} onClick={e => this.accept(e)}> Accept </button>
+               <button class="declineButton" value={data.id} onClick={e => this.decline(e)}> Decline </button>
+               <button class="seeDetailsButton" value={data.id} onClick={e => this.props.goToContactDetails(e)}> See Details </button>
                </td>
             </tr>
             <tr>
