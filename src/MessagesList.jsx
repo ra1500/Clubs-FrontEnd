@@ -10,7 +10,8 @@ class MessagesList extends React.Component {
     }
 
    renderTableData() {
-      return this.state.list.map((data, index) => {
+    const sortedList = this.state.list.sort((a,b) => (a.created > b.created) ? 1 : ((b.created > a.created) ? -1 : 0));
+      return sortedList.map((data, index) => {
          return (
             <tr class="friendsTR"key={data.message}>
                     <td id="timeStampTD"> <p class="timeStampP">   {new Intl.DateTimeFormat("en-GB", {

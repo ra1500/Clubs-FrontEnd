@@ -5,6 +5,7 @@ import UpdateUserInfo from "./UpdateUserInfo";
 import Picture from "./Picture";
 import ProfileText from "./ProfileText";
 import { Link } from 'react-router-dom';
+import TitleBar2 from "./TitleBar2";
 
 
 class Profile extends React.Component {
@@ -134,6 +135,8 @@ class Profile extends React.Component {
    render() {
     return (
         <React.Fragment>
+
+        <TitleBar2 />
 
               <div class="settings2ButtonsDiv">
                 <button id="myProfileButton" onClick={this.goToPrivateProfile}> My Profile </button>

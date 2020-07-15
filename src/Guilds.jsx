@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import TitleBar2 from "./TitleBar2";
 import { Link } from 'react-router-dom';
 
 
@@ -17,6 +18,8 @@ class Guilds extends React.Component {
    render() {
     return (
         <React.Fragment>
+
+        <TitleBar2 />
 
               <div class="settings2ButtonsDiv">
               </div>

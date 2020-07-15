@@ -9,6 +9,7 @@ import AlertsNewMessagesClubs from "./AlertsNewMessagesClubs";
 import AlertsNewMessagesGuilds from "./AlertsNewMessagesGuilds";
 import AlertsNewContactDetails from "./AlertsNewContactDetails";
 import AlertsClubDetails from "./AlertsClubDetails";
+import TitleBar2 from "./TitleBar2";
 
 class Start extends React.Component {
   constructor(props) {
@@ -48,16 +49,18 @@ class Start extends React.Component {
     return (
     <React.Fragment>
 
+      <TitleBar2 />
+
       { this.state.showNewMessages &&
       <div class="settings2ButtonsDiv">
         <button id="newMessagesButtonRed" onClick={this.goToNewMessages}> New Messages </button>
-        <button id="newInvitationsButtonBlack" onClick={this.goToNewInvitations}> New Invitations </button>
+        <button id="newInvitationsButtonBlack" onClick={this.goToNewInvitations}> Invitations </button>
       </div> }
 
       { !this.state.showNewMessages &&
       <div class="settings2ButtonsDiv">
         <button id="newMessagesButtonBlack" onClick={this.goToNewMessages}> New Messages </button>
-        <button id="newInvitationsButtonRed" onClick={this.goToNewInvitations}> New Invitations </button>
+        <button id="newInvitationsButtonRed" onClick={this.goToNewInvitations}> Invitations </button>
       </div> }
 
 
@@ -66,11 +69,11 @@ class Start extends React.Component {
 
             { this.state.showNewMessages &&
             <div>
-            <p class="noLineSpaceP"> Contact Messages New </p>
+            <p class="noLineSpaceP"> Unread network messages from: </p>
             <AlertsNewMessagesContacts /><br></br>
-            <p class="noLineSpaceP"> Club user's Messages New </p>
+            <p class="noLineSpaceP"> Unread club member messages from: </p>
             <AlertsNewMessagesClubs /><br></br>
-            <p class="noLineSpaceP"> Guild user's Messages New </p>
+            <p class="noLineSpaceP"> Unread guild member messages from: </p>
             <AlertsNewMessagesGuilds /><br></br>
             </div> }
 

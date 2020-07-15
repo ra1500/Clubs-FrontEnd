@@ -35,16 +35,15 @@ class MessageBoardSingle extends React.Component {
     this.postMessage();
   }
 
-//  handleKeyDown = (e) => {
-//    if (e.key === 'Enter') {
-//      this.postMessage();
-//    }
-//  }
-
-//scrollToBottom = () => {
-//  let elmnt = document.getElementById("end");
-//  elmnt.scrollIntoView();
-//}
+  handleKeyDown(e){
+    if (e.key === 'Enter') {
+      this.postMessage();
+    }
+  }
+  scrollToBottom() {
+      let elmnt = document.getElementById("end");
+    elmnt.scrollIntoView();
+  }
 
   postMessage() {
     const name = JSON.parse(sessionStorage.getItem('tokens'));

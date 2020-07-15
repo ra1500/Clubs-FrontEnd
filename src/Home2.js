@@ -1,12 +1,12 @@
 import Introduction from "./Introduction";
 import React from "react";
-import TitleBar from "./TitleBar";
+import TitleBar2 from "./TitleBar2";
 
-function Home(props) {
+function Home2(props) {
   return   <div>
-            <TitleBar />
+            <TitleBar2 />
             <Introduction />
            </div>;
 }
 
-export default Home;
+export default Home2;

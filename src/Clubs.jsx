@@ -9,6 +9,7 @@ import ClubManage from "./ClubManage";
 import { Link } from 'react-router-dom';
 import MessageBoardSingle from "./MessageBoardSingle";
 import ClubsEdit from "./ClubsEdit";
+import TitleBar2 from "./TitleBar2";
 
 class Clubs extends React.Component {
   constructor(props) {
@@ -164,6 +165,9 @@ class Clubs extends React.Component {
    render() {
     return (
         <React.Fragment>
+
+         <TitleBar2 />
+
             { !this.state.showSingleClub &&
               <div class="settings2ButtonsDiv">
                 <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>

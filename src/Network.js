@@ -7,6 +7,7 @@ import ManageMyContactsRemoved from "./ManageMyContactsRemoved";
 import NetworkContactPages from "./NetworkContactPages";
 //import NetworkContactAudit from "./NetworkContactAudit";
 import { Link } from 'react-router-dom';
+import TitleBar2 from "./TitleBar2";
 
 class Network extends React.Component {
   constructor(props) {
@@ -135,6 +136,8 @@ class Network extends React.Component {
   render() {
     return (
     <React.Fragment>
+
+        <TitleBar2 />
 
             {!this.state.showSingleContact &&
           <div class="settings3ButtonsDiv">

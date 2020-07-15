@@ -35,16 +35,15 @@ class MessageBoard extends React.Component {
     this.postClubMessage();
   }
 
-//  handleKeyDown = (e) => {
-//    if (e.key === 'Enter') {
-//      this.postClubMessage();
-//    }
-//  }
-
-//scrollToBottom = () => {
-//  let elmnt = document.getElementById("end");
-//  elmnt.scrollIntoView();
-//}
+  handleKeyDown(e){
+    if (e.key === 'Enter') {
+      this.postClubMessage();
+    }
+  }
+  scrollToBottom() {
+      let elmnt = document.getElementById("end");
+    elmnt.scrollIntoView();
+  }
 
   postClubMessage() {
     const name = JSON.parse(sessionStorage.getItem('tokens'));
