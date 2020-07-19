@@ -15,6 +15,7 @@ class AlertsClubDetails extends React.Component {
           showButtons: true,
           message: null,
           clubId: null,
+          inviter: null,
         };
   }
 
@@ -89,12 +90,15 @@ class AlertsClubDetails extends React.Component {
   render() {
     return (
     <React.Fragment>
-      <div class="topParentDiv">
+      <div>
+
+        <p class="headerP"> Club Invitation Details </p>
 
         <table>
             <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
             <tr><td>Description:</td><td class="clubTD"> {this.state.description} </td></tr>
             <tr><td>Club Alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
+            <tr><td>Inviting Member::</td><td class="clubTD"> {this.props.inviter} </td></tr>
         </table>
 
        { this.state.showButtons &&

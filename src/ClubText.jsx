@@ -72,7 +72,7 @@ class ClubText extends React.Component {
           <div>
           <table>
           <tr>
-          <td> Club Name: </td>
+          <td> Club name: </td>
           <td><input className="clubTextBox" maxlength="40" type="text" value={this.state.clubName} onChange={this.handleChange2}  autocomplete="off" placeholder=""/></td>
           </tr>
           <tr>
@@ -80,11 +80,11 @@ class ClubText extends React.Component {
           <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.description} onChange={this.handleChange3}  autocomplete="off" placeholder=""/></td>
           </tr>
           <tr>
-          <td> Alpha Member: </td>
+          <td> Alpha member: </td>
           <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.alpha} onChange={this.handleChange7}  autocomplete="off" placeholder=""/></td>
           </tr>
           <tr>
-          <td> Max. Membership Size: </td>
+          <td> Max. membership size: </td>
           <td><input id="clubTextBoxSize" maxlength="3" type="text" value={this.state.maxSize} onChange={this.handleChange6}  autocomplete="off" placeholder="#"/></td>
           </tr>
           </table>
@@ -94,7 +94,7 @@ class ClubText extends React.Component {
           <div>
           <table>
           <tr>
-          <td> Club Name: </td>
+          <td> Club name: </td>
           <td> {this.state.clubName} </td>
           </tr>
           <tr>
@@ -102,18 +102,18 @@ class ClubText extends React.Component {
           <td>{ this.state.description} </td>
           </tr>
           <tr>
-          <td> Alpha Member: </td>
+          <td> Alpha member: </td>
           <td> {this.state.alpha} </td>
           </tr>
           <tr>
-          <td> Max. Membership Size: </td>
+          <td> Max. membership size: </td>
           <td> {this.state.maxSize} </td>
           </tr>
           </table>
           </div> }
 
            { this.state.showSubmit &&
-           <button type="submit" onClick={this.handleSubmit1} id="signupButton"> Submit </button> }
+           <button type="submit" onClick={this.handleSubmit1} className="seeDetailsButton"> Submit </button> }
            { !this.state.showSubmit &&
            <span class="updateParagraph">{this.state.updatedMessage}</span> }
     </div>

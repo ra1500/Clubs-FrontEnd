@@ -27,14 +27,15 @@ class Introduction extends React.Component {
     <div>
     <div id="introDiv">
     <div class="topParentDiv">
-         <p id="intro1p">  Simply connected. Friends, family, associates. </p>
+         <p id="intro1p">  Simply connected. Friends, family, colleagues. </p>
          <ul class="introUL">
-         <li>  Join clubs. Create new ones. </li>
+         <li>  Join clubs. Start a new one. </li>
          <li>  Expand your network through your connections. </li>
-         <li>  Use guilds to get answers, solve problems and collaborate. </li>
+         <li>  Use guilds to collaborate. </li>
          <li>  Private and secure.  </li>
          </ul>
     </div>
+
     </div>
     <div id="aboutDiv">
     <p class="aboutP1">© 2020 NeuralJuice </p>

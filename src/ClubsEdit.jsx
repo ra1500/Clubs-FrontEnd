@@ -53,7 +53,7 @@ class ClubsEdit extends React.Component {
       return sortedList.map((data, index) => {
          return (
             <tr key={data.id}>
-                <td> <button class="orangeButtonSmall" value={data.id} onClick={e => this.editSingleClub(e)}> edit </button> </td>
+                <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.editSingleClub(e)}> edit </button> </td>
                 <td> <p class="noLineSpaceP"> {data.clubName} </p></td>
             </tr>
          )
@@ -74,7 +74,7 @@ class ClubsEdit extends React.Component {
 
         { this.state.showClubsSome &&
          <div >
-         <p> Edit and adjust clubs in which you are the alpha leader. </p>
+         <p> Edit and adjust clubs in which you are the alpha member. </p>
             <table>
                <tbody >
                   {this.renderTableData()}

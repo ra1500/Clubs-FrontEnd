@@ -1,6 +1,9 @@
 import React from "react";
 import axios from 'axios';
-import ContactsList from "./ContactsList";
+import ContactsListFriends from "./ContactsListFriends";
+import ContactsListColleagues from "./ContactsListColleagues";
+import ContactsListFamily from "./ContactsListFamily";
+import ContactsListPending from "./ContactsListPending";
 import ContactsListRemoved from "./ContactsListRemoved";
 import InvitationForm from "./InvitationForm";
 import ManageMyContactsRemoved from "./ManageMyContactsRemoved";
@@ -17,7 +20,7 @@ class Network extends React.Component {
     this.renderSingleContactRemoved = this.renderSingleContactRemoved.bind(this);
     this.auditMe = this.auditMe.bind(this);
     this.sendFriend = this.sendFriend.bind(this);
-    this.goToNetwork = this.goToNetwork.bind(this);
+    this.goToNetworkContactsList = this.goToNetworkContactsList.bind(this);
     this.goToInvite = this.goToInvite.bind(this);
         this.state = {
           error: null,
@@ -25,7 +28,10 @@ class Network extends React.Component {
           friend: null,
           inviter: null,
           userName: null,
-          showNetworkList: false,
+          showNetworkListFriends: false,
+          showNetworkListFamily: false,
+          showNetworkListColleagues: false,
+          showNetworkListPending: false,
           showNetworkListDetails: false,
           showRemovedList: false,
           showRemovedListDetails: false,
@@ -37,10 +43,10 @@ class Network extends React.Component {
   }
 
     componentDidMount() {
-        this.getFriendships();
+        this.getFriendships(1);
     }
 
-    getFriendships() {
+    getFriendships(e) {
         const name = JSON.parse(sessionStorage.getItem('tokens'));
         const u = name.userName;
         const p = name.password;
@@ -56,8 +62,13 @@ class Network extends React.Component {
             list: response.data.friendsList,
             showNetworkListDetails: true,
           });
-          } // end if
-          this.setState({showNetworkList: true});
+          if (e == 1) { this.setState({showNetworkListFriends: true}); }
+          else if (e == 2) { this.setState({showNetworkListFamily: true, showNetworkListFriends: false,}); }
+          else if (e == 3) { this.setState({showNetworkListColleagues: true}); }
+          else if (e == 4) { this.setState({showNetworkListPending: true}); }
+          else { this.setState({showNetworkListFriends: true}); };
+          } // end 1st if
+          //this.setState({showNetworkListFriends: true});
                }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
                });
     }
@@ -84,15 +95,6 @@ class Network extends React.Component {
                });
     }
 
-   renderContactsList() {
-    return ( <ContactsList list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact}
-      sendFriend={this.sendFriend}/> )
-   }
-
-   renderContactsListRemoved() {
-    return ( <ContactsListRemoved list={this.state.list} showRemovedListDetails={this.state.showRemovedListDetails} renderSingleContactRemoved={this.renderSingleContactRemoved}/> )
-   }
-
     renderSingleContact(event) {
         const data = {id: event.target.value};
         this.state = {friendId: data.id};
@@ -115,16 +117,16 @@ class Network extends React.Component {
         this.setState({questionSetVersionEntityId: event.target.value});
     }
 
-    goToNetwork() {
+    goToNetworkContactsList(e) {
         this.setState({showSingleContact: false, showRemovedList: false, showRemovedListDetails: false, showSingleContactRemoved: false, showInviteFriends: false});
-        this.setState({showNetworkList: false, showNetworkListDetails: false,}); // set to true after this in getFriendships()
-        this.getFriendships();
+        this.setState({showNetworkListFriends: false, showNetworkListFamily: false, showNetworkListColleagues: false, showNetworkListPending: false, showNetworkListDetails: false,});
+        this.getFriendships(e); // list can only be used once. so must call again...
     }
     goToInvite() {
-        this.setState({showInviteFriends: true, showNetworkList: false, showNetworkListDetails: false, showSingleContact: false, showRemovedList: false, showRemovedListDetails: false, showSingleContactRemoved: false});
+        this.setState({showInviteFriends: true, showNetworkListFriends: false, showNetworkListFamily: false, showNetworkListColleagues: false, showNetworkListPending: false, showNetworkListDetails: false, showSingleContact: false, showRemovedList: false, showRemovedListDetails: false, showSingleContactRemoved: false});
     }
     goToRemovedContacts() {
-        this.setState({showInviteFriends: false, showNetworkList: false, showNetworkListDetails: false, showSingleContact: false, showRemovedList: false, showRemovedListDetails: false, showSingleContactRemoved: false});
+        this.setState({showInviteFriends: false, showNetworkListFriends: false, showNetworkListFamily: false, showNetworkListColleagues: false, showNetworkListPending: false, showNetworkListDetails: false, showSingleContact: false, showRemovedList: false, showRemovedListDetails: false, showSingleContactRemoved: false});
         this.getRemovedFriendships();
     }
 
@@ -141,35 +143,37 @@ class Network extends React.Component {
 
             {!this.state.showSingleContact &&
           <div class="settings3ButtonsDiv">
-            <button id="myContactsButton" onClick={this.goToNetwork}> My Contacts </button>
-            <button id="connectButton" onClick={this.goToInvite}> Connect </button>
-            <button id="removedContactsButton" onClick={this.goToRemovedContacts}> Removed Contacts </button>
+            <button id="myContactsButton" onClick={() => this.goToNetworkContactsList(1)}> Friends </button>
+            <button id="myContactsButton" onClick={() => this.goToNetworkContactsList(2)}> Family </button>
+            <button id="myContactsButton" onClick={() => this.goToNetworkContactsList(3)}> Colleagues </button>
+            <button id="myContactsButton" onClick={() => this.goToNetworkContactsList(4)}> Pending </button>
+            <button id="myContactsButton" onClick={this.goToRemovedContacts}> Removed </button>
+            <button id="connectButton" onClick={this.goToInvite}> Invite </button>
           </div> }
 
-        {this.state.showNetworkList &&
-        <div>
-        {this.renderContactsList()}
-        </div> }
+        {this.state.showNetworkListFriends &&
+        <ContactsListFriends list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} sendFriend={this.sendFriend}/>  }
+
+        {this.state.showNetworkListFamily &&
+        <ContactsListFamily list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} sendFriend={this.sendFriend}/>  }
+
+        {this.state.showNetworkListColleagues &&
+        <ContactsListColleagues list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} sendFriend={this.sendFriend}/>  }
+
+        {this.state.showNetworkListPending &&
+        <ContactsListPending list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} sendFriend={this.sendFriend}/>  }
 
         {this.state.showInviteFriends &&
-        <div>
-        <InvitationForm />
-        </div> }
+        <InvitationForm /> }
 
         {this.state.showRemovedList &&
-        <div>
-        {this.renderContactsListRemoved()}
-        </div> }
+        <ContactsListRemoved list={this.state.list} showRemovedListDetails={this.state.showRemovedListDetails} renderSingleContactRemoved={this.renderSingleContactRemoved}/> }
 
         {this.state.showSingleContact &&
-        <div>
-        <NetworkContactPages friendId={this.state.friendId}/>
-        </div> }
+        <NetworkContactPages friendId={this.state.friendId}/> }
 
         {this.state.showSingleContactRemoved &&
-        <div>
-         <ManageMyContactsRemoved friendId={this.state.friendId}/>
-        </div> }
+        <ManageMyContactsRemoved friendId={this.state.friendId}/> }
 
 
 

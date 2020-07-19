@@ -1,11 +1,12 @@
 import React from 'react';
-import ProfilePicture from "./ProfilePicture";
+import ProfilePictureClubMember from "./ProfilePictureClubMember";
 
 class ClubMembers extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             list: this.props.membersList, //
+            clubId: this.props.clubId,
         };
     }
 
@@ -14,7 +15,7 @@ class ClubMembers extends React.Component {
       return this.state.list.map((data, index) => {
          return (
             <tr class="friendsTR"key={data.id}>
-               <td> <ProfilePicture friendId={data.id} /> </td>
+               <td> <ProfilePictureClubMember memberId={data.id} clubId={this.props.clubId}/> </td>
                <td class="friendsTD2"> {data.userName} </td>
                <td class="friendsTD"> <p class="secondP"> Location: {data.location} </p></td>
                <td class="friendsTD2"> <button class="titleButton" value={data.id} onClick={e => this.props.goToSingleClubMember(e)}> Go To Member </button> </td>

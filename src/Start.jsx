@@ -69,19 +69,17 @@ class Start extends React.Component {
 
             { this.state.showNewMessages &&
             <div>
-            <p class="noLineSpaceP"> Unread network messages from: </p>
+            <p class="headerP"> Network: You have unread messages from </p>
             <AlertsNewMessagesContacts /><br></br>
-            <p class="noLineSpaceP"> Unread club member messages from: </p>
+            <p class="headerP"> Clubs: You have unread messages from </p>
             <AlertsNewMessagesClubs /><br></br>
-            <p class="noLineSpaceP"> Unread guild member messages from: </p>
-            <AlertsNewMessagesGuilds /><br></br>
             </div> }
 
             { this.state.showNewInvitations &&
             <div>
-            <p class="noLineSpaceP"> Contact Invitations </p>
+            <p class="headerP"> Network Invitations </p>
             <AlertsNewContactsList goToContactDetails={this.goToContactDetails}/><br></br>
-            <p class="noLineSpaceP"> Club Invitations </p>
+            <p class="headerP"> Club Invitations </p>
             <AlertsNewClubInvitations goToClubDetails={this.goToClubDetails}/>
             </div> }
 

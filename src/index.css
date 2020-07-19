@@ -12,7 +12,6 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .nowrapTd { white-space:nowrap; }
 .greenButton {border-radius: 14px; height: 23px; margin-right: 5px; width: 150px;border: 1px solid; background-color: white; color: #29a329; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
 .tableTitleCenteredData {  width: 170px; text-align: center; }
-.greenButtonSmall {border-radius: 14px; height: 23px; margin-right: 5px; width: 40px;border: 1px solid; background-color: white; color: #29a329; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
 .orangeButtonSmall {border-radius: 14px; height: 23px; margin-right: 5px; width: 50px;border: 1px solid; background-color: white; color: #ff8000; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
 .msgSendButton {display: inline; margin-left: 10px; border-radius: 14px; height: 23px; margin-right: 5px; width: 60px; border: 1px solid; background-color: white; color: #29a329; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
 
@@ -33,7 +32,7 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 #userName {font-family: "Arial"; color: #ffff00;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; padding-right: 10px; }
 .loginBox {display: inline; margin-right: 10px; height: 25px; width: 150px;}
 .signupBox { display: block; margin-bottom: 2px; height: 25px; width: 150px;}
-#signupDiv { margin-top: 30px; float: right; clear: both; padding-right: 150px; }
+#signupDiv { margin-top: 60px; float: right; clear: both; padding-right: 150px; }
 #signupMessage { float: right; clear: both; font-size: 12px; margin-right: 100px; }
 #signupButton {border-radius: 14px;  margin-right: 5px; margin-top: 5px; width: 150px;border: 1px solid; background-color: white; color: #29a329; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
 #easyP { font-weight: bold; font-size: 18px; }
@@ -44,58 +43,53 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .settings3ButtonsDiv {  margin: auto; width: 960px; padding-top: 55px; padding-bottom: 2px;}
 .settingsButton { border-radius: 0px; margin-right: 10px; width: 150px; display: inline; background-color: white; border-bottom: 2px solid black; border-top: none; border-left: none; border-right: none;  font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
 .settingsButton:hover { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none; padding-bottom: 0px;}
-.settingsButton:active { border-bottom: 3px solid red; border-top: none; border-left: none; border-right: none;}
-#myContactsButton { border-radius: 0px; margin-right: 10px; width: 110px; display: inline; background-color: white; border-bottom: 2px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#myContactsButton:hover { border-bottom: 2px solid red; padding-bottom: 1px;}
-#myContactsButton:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-#connectButton { border-radius: 0px; margin-right: 10px; width: 80px; display: inline; background-color: white; border-bottom: 2px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#connectButton:hover { border-bottom: 2px solid red; padding-bottom: 1px;}
-#connectButton:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-#removedContactsButton { border-radius: 0px; margin-right: 10px; width: 150px; display: inline; background-color: white; border-bottom: 2px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#removedContactsButton:hover { border-bottom: 2px solid red; padding-bottom: 1px;}
-#removedContactsButton:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-#myClubsButton { border-radius: 0px; margin-right: 10px; width: 90px; display: inline; background-color: white; border-bottom: 2px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#myClubsButton:hover { border-bottom: 2px solid red; padding-bottom: 1px;}
-#myClubsButton:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-#myProfileButton { border-radius: 0px; margin-right: 10px; width: 90px; display: inline; background-color: white; border-bottom: 2px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#myProfileButton:hover { border-bottom: 2px solid red; padding-bottom: 1px;}
-#myProfileButton:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-#editButton { border-radius: 0px; margin-right: 10px; width: 50px; display: inline; background-color: white; border-bottom: 2px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#editButton:hover { border-bottom: 2px solid red; padding-bottom: 1px;}
-#editButton:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-#theirProfileButton { border-radius: 0px; margin-right: 10px; width: 120px; display: inline; background-color: white; border-bottom: 2px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#theirProfileButton:hover { border-bottom: 2px solid red; padding-bottom: 1px;}
-#theirProfileButton:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-#newMessagesButtonRed { border-radius: 0px; margin-right: 10px; width: 120px; display: inline; background-color: white; border-bottom: 2px solid red; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#newMessagesButtonRed:hover { border-bottom: 2px solid red; padding-bottom: 1px;}
-#newMessagesButtonRed:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-#newMessagesButtonBlack { border-radius: 0px; margin-right: 10px; width: 120px; display: inline; background-color: white; border-bottom: 2px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#newMessagesButtonBlack:hover { border-bottom: 2px solid #3333ff; padding-bottom: 1px;}
-#newMessagesButtonBlack:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-#newInvitationsButtonRed { border-radius: 0px; margin-right: 10px; width: 130px; display: inline; background-color: white; border-bottom: 2px solid red; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#newInvitationsButtonRed:hover { border-bottom: 2px solid red; padding-bottom: 1px;}
-#newInvitationsButtonRed:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-#newInvitationsButtonBlack { border-radius: 0px; margin-right: 10px; width: 130px; display: inline; background-color: white; border-bottom: 2px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
-#newInvitationsButtonBlack:hover { border-bottom: 2px solid #3333ff; padding-bottom: 1px;}
-#newInvitationsButtonBlack:active { border-bottom: 2px solid red; border-top: none; border-left: none; border-right: none;}
-
-
+.settingsButton:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
+#myContactsButton { border-radius: 0px; margin-right: 10px; width: 110px; display: inline; background-color: white; border-bottom: 3px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#myContactsButton:hover { border-bottom: 3px solid #3333ff; padding-bottom: 1px;}
+#myContactsButton:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
+#connectButton { border-radius: 0px; margin-right: 10px; width: 80px; display: inline; background-color: white; border-bottom: 3px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#connectButton:hover { border-bottom: 3px solid #3333ff; padding-bottom: 1px;}
+#connectButton:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
+#myClubsButton { border-radius: 0px; margin-right: 10px; width: 90px; display: inline; background-color: white; border-bottom: 3px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#myClubsButton:hover { border-bottom: 3px solid #3333ff; padding-bottom: 1px;}
+#myClubsButton:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
+#myProfileButton { border-radius: 0px; margin-right: 10px; width: 90px; display: inline; background-color: white; border-bottom: 3px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#myProfileButton:hover { border-bottom: 3px solid #3333ff; padding-bottom: 1px;}
+#myProfileButton:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
+#editButton { border-radius: 0px; margin-right: 10px; width: 50px; display: inline; background-color: white; border-bottom: 3px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#editButton:hover { border-bottom: 3px solid #3333ff; padding-bottom: 1px;}
+#editButton:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
+#theirProfileButton { border-radius: 0px; margin-right: 10px; width: 120px; display: inline; background-color: white; border-bottom: 3px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#theirProfileButton:hover { border-bottom: 3px solid #3333ff; padding-bottom: 1px;}
+#theirProfileButton:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
+#newMessagesButtonRed { border-radius: 0px; margin-right: 10px; width: 120px; display: inline; background-color: white; border-bottom: 3px solid #3333ff; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#newMessagesButtonRed:hover { border-bottom: 3px solid #3333ff; padding-bottom: 1px;}
+#newMessagesButtonRed:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
+#newMessagesButtonBlack { border-radius: 0px; margin-right: 10px; width: 120px; display: inline; background-color: white; border-bottom: 3px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#newMessagesButtonBlack:hover { border-bottom: 3px solid #3333ff; padding-bottom: 1px;}
+#newMessagesButtonBlack:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
+#newInvitationsButtonRed { border-radius: 0px; margin-right: 10px; width: 130px; display: inline; background-color: white; border-bottom: 3px solid #3333ff; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#newInvitationsButtonRed:hover { border-bottom: 3px solid #3333ff; padding-bottom: 1px;}
+#newInvitationsButtonRed:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
+#newInvitationsButtonBlack { border-radius: 0px; margin-right: 10px; width: 130px; display: inline; background-color: white; border-bottom: 3px solid gray; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#newInvitationsButtonBlack:hover { border-bottom: 3px solid #3333ff; padding-bottom: 1px;}
+#newInvitationsButtonBlack:active { border-bottom: 3px solid #3333ff; border-top: none; border-left: none; border-right: none;}
 
  /** Top-level Parent Div **/
 .topParentDiv { padding-top: 15px; margin: auto; width: 960px; }
 
  /** 2nd-level Parent Div Box **/
-.secondParentDiv { padding-left: 50px;}
+.secondParentDiv { padding-left: 0px;}
 
  /** Home (Introduction) **/
 #introDiv {height: 600px; padding-top: 80px; background-color: #f2f2f2; }
 #intro1p { font-weight: bold; font-size: 18px; }
-#aboutDiv { padding-top: 15px; padding-bottom: 0px; margin: auto; margin-top: 0px; width: 960px; background-color: white }
+#aboutDiv { position: fixed; bottom: 0; padding-top: 15px; padding-bottom: 15px; padding-left: 17%; width: 100%; background-color: white }
 .aboutP1 {  font-size: 11px; display: inline; padding-right: 10px; }
 .aboutP2 {  font-size: 11px; display: inline; padding-right: 10px; color: #0000ff }
 
  /** Me - Settings (Score URL  & UpdateUserInfo) **/
-#meSettingsDiv { border-style: solid; border-width: 0px; margin-top: 5px; margin-bottom: 10px; padding: 10px;}
+#meSettingsDiv { border-style: solid; border-width: 0px; margin-top: 5px; margin-bottom: 10px; padding: 0px;}
 #publicProfileURLhref {font-family: "Geneva"; color: #0000ff}
 .paragraphInline {font-family: "Geneva"; display: inline}
 .updateParagraph { display: inline; color: red; font-weight: bold; }
@@ -121,11 +115,10 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 
  /** InvitationForm **/
 #invitationBox {display: block}
-#inviteRadio1 { padding-top: 10px; display: inline-block; width: 120px}
+#inviteRadio1 { padding-top: 10px; display: inline-block;}
 #inviteRadio2 { display: inline-block}
 
  /** NetworkContactPages & Profile **/
- .menuBoxDiv {border-bottom: 2px solid; border-color: gray; padding-top: 40px; padding-bottom: 10px;}
 .singleNetworkContactButton { border-radius: 14px; margin-right: 10px; display: inline-block; background-color: white; border: 1px solid; text-decoration: none; font-size: 14px; font-family: "Geneva";}
 .singleNetworkContactButton:hover {background-color: #e6e6e6}
 
@@ -200,7 +193,9 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 
 .secondLevelDiv { padding-top: 10px; }
 .noLineSpaceP { margin: 0 }
+.headerP { margin: 0; width: 370px; border: solid 1px #1a1aff; padding-left: 5px; color: #1a1aff; }
 .clubTD { padding-left: 15px; }
+.networkFriendTD { padding-top: 10px; padding-right: 10px; }
 .clubTextBox { width: 400px; }
 #clubTextBoxSize { width: 50px; }
 .userNameMSG {display: inline; font-family: "Arial"; color: #3333ff;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; padding-right: 10px; }
@@ -211,8 +206,12 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .messagesDiv2 { min-height:101%; border-left: solid 2px red;}
 #userNameTD { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px; }
 #msgInputDiv { margin-top: 10px; }
-.acceptButton     {border-radius: 14px; height: 23px; margin-left: 5px; margin-right: 5px; width: 75px;border: 1px solid; background-color: white; color: #29a329; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
-.declineButton    {border-radius: 14px; height: 23px; margin-left: 5px; margin-right: 5px; width: 75px;border: 1px solid; background-color: white; color: #ff0000; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
-.seeDetailsButton {border-radius: 14px; height: 23px; margin-left: 5px; margin-right: 5px; width: 105px;border: 1px solid; background-color: white; color: #ff8000; text-decoration: none; font-size: 14px; font-family: "Geneva"; font-weight: bold;}
-.alertsNewDiv { border-bottom: solid 1px blue; }
+.acceptButton     {border-radius: 14px; height: 20px; margin-left: 0px; width: 65px;border: 1px solid gray; background-color: white; font-size: 12px; font-family: "Geneva";}
+.declineButton    {border-radius: 14px; height: 20px; margin-left: 10px; width: 65px;border: 1px solid gray; background-color: white; font-size: 12px; font-family: "Geneva";}
+.seeDetailsButton {border-radius: 14px; height: 20px; margin-left: 10px; width: 90px;border: 1px solid gray; background-color: white; font-size: 12px; font-family: "Geneva";}
+.browseButton {border-radius: 14px; height: 20px; margin-left: 10px; border: 1px solid gray; background-color: white; font-size: 12px; font-family: "Geneva";}
+.alertsNewDiv { border-bottom: dotted 1px gray; padding-bottom: 5px; }
 #publicPageUserName {display: inline; color: white; font-weight: bold;  }
+.clearAlertsButton {border-radius: 14px; height: 20px; margin-left: 0px; margin-left: 10px; width: 80px;border: 1px solid gray; background-color: white; font-size: 12px; font-family: "Geneva";}
+.alertsUserNameTD { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 140px; }
+.alertsButtonsTD { width: 370px; }

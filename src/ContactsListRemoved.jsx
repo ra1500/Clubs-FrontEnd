@@ -12,10 +12,10 @@ class ContactsListRemoved extends React.Component {
       return this.state.list.map((data, index) => {
          return (
             <tr key={data.friend}>
-               <td> <button class="inviteAuditButton" value={data.id} onClick={e => this.props.renderSingleContactRemoved(e)}> {data.friend} </button> </td>
+               <td> {data.friend} </td>
                <td>{data.connectionStatus} &nbsp; &nbsp;</td>
                <td>{data.connectionType} &nbsp; &nbsp;</td>
-               <td>{data.visibilityPermission}</td>
+               <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.renderSingleContactRemoved(e)}> Unhide </button> </td>
             </tr>
          )
       })
@@ -25,28 +25,21 @@ class ContactsListRemoved extends React.Component {
     render() {
         return (
         <React.Fragment>
-        <div class="topParentDiv">
-        <p> Contacts: Contacts Removed List </p>
-        <p></p>
-        <div class="secondParentDiv">
 
         { !this.props.showRemovedListDetails &&
-         <div>
+         <div class="topParentDiv">
          <p class="alertsSmallP"> &nbsp;(none)</p>
          </div> }
 
         { this.props.showRemovedListDetails &&
-         <div>
+         <div class="topParentDiv">
             <table>
                <tbody>
-                  <tr><th class="thContact">Contact</th><th>Status</th><th>Type</th><th>View Permission</th></tr>
                   {this.renderTableData()}
                </tbody>
             </table>
          </div> }
 
-         </div>
-         </div>
         </React.Fragment>
         )
     }

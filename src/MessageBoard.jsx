@@ -13,6 +13,7 @@ class MessageBoard extends React.Component {
     this.state = {
     userName: u,
     clubMessage: null,
+    clubName: null,
     receiverId: null,
     receiverType: null,
     showMessagesList: false,
@@ -52,7 +53,7 @@ class MessageBoard extends React.Component {
     const token = u + ':' + p;
     const hash = btoa(token);
     const Basic = 'Basic ' + hash;
-    let data = {message : this.state.clubMessage, receiverType: 2, receiverId: this.props.clubId };
+    let data = {message : this.state.clubMessage, receiverType: 2, receiverId: this.props.clubId, clubName: this.props.clubName };
     axios.post("http://localhost:8080/api/m/b", data,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {

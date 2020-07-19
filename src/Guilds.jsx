@@ -15,6 +15,14 @@ class Guilds extends React.Component {
   componentDidMount() {
   }
 
+        //<ul>
+        //    <li> Project and goal management. </li>
+        //    <li> Issue tasks to members and track progress. </li>
+        //    <li> Put out short questionnaires for members to approve and vote on decisions. </li>
+        //    <li> Project manager has direct control over membership and communications. </li>
+        //</ul>
+        //<br></br>
+
    render() {
     return (
         <React.Fragment>
@@ -28,14 +36,8 @@ class Guilds extends React.Component {
 
       <div class="topParentDiv">
 
-        <p className="noLineSpaceP"> Guilds will be very similar to clubs but with additional functionality. </p>
-        <ul>
-            <li> Project and goal management. </li>
-            <li> Issue tasks to members and track progress. </li>
-            <li> Put out short questionnaires for members to approve and vote on decisions. </li>
-            <li> Project manager has direct control over membership and communications. </li>
-        </ul>
-        <br></br>
+        <p className="noLineSpaceP"> Coming soon. Like clubs, but with additional functionality. </p>
+
         <p className="noLineSpaceP">  </p><br></br>
 
 

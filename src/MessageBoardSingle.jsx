@@ -52,7 +52,7 @@ class MessageBoardSingle extends React.Component {
     const token = u + ':' + p;
     const hash = btoa(token);
     const Basic = 'Basic ' + hash;
-    let data = {message : this.state.clubMessage, receiverType: 1, receiverId: this.props.singleClubMemberId };
+    let data = {message : this.state.clubMessage, receiverType: 1, receiverId: this.props.singleClubMemberId, clubName: this.props.clubName };
     axios.post("http://localhost:8080/api/m/b", data,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {

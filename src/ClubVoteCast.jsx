@@ -61,7 +61,7 @@ class ClubVoteCast extends React.Component {
         <p></p>
         { this.state.showInviteButton &&
         <div>
-        <button type="submit" onClick={this.handleSubmit} className="inviteAuditButton"> Invite </button>
+        <button type="submit" onClick={this.handleSubmit} className="seeDetailsButton"> Vote </button>
          </div>}
         <span id="deletedAnswersMessage"> {this.state.invitationSentMessage} </span>
         </div>

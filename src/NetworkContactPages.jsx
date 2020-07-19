@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import ManageMyContacts from "./ManageMyContacts";
+import ManageMyContactsRemove from "./ManageMyContactsRemove";
 import FriendsContactsList from "./FriendsContactsList";
 import MessageBoardFriend from "./MessageBoardFriend";
 
@@ -10,6 +11,7 @@ class NetworkContactPages extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.goToContactSettings = this.goToContactSettings.bind(this);
+        this.goToContactRemove = this.goToContactRemove.bind(this);
         this.goToGoodStuff = this.goToGoodStuff.bind(this);
         this.goToContactsList = this.goToContactsList.bind(this);
         this.goToNetworkListDetails = this.goToNetworkListDetails.bind(this);
@@ -42,6 +44,7 @@ class NetworkContactPages extends React.Component {
           showInvite: false,
           showNetworkListDetails: false,
           showNetworkListNone: true,
+          showRemove: false,
           list: null,
           invitedFriend: null,
         };
@@ -92,15 +95,17 @@ class NetworkContactPages extends React.Component {
   }
 
     goToContactSettings() {
-        this.setState({showQuestionSetAuditing: false, isAfriend: false, hasPendingInvitations: false, showSettings: true, showAuditQuestions: false, showFriendsContactsList: false});
+        this.setState({showQuestionSetAuditing: false, isAfriend: false, hasPendingInvitations: false, showSettings: true, showRemove: false, showAuditQuestions: false, showFriendsContactsList: false});
     }
-
+    goToContactRemove() {
+        this.setState({showQuestionSetAuditing: false, isAfriend: false, hasPendingInvitations: false, showSettings: false, showRemove: true, showAuditQuestions: false, showFriendsContactsList: false});
+    }
     goToContactsList() {
         this.getFriendships();
-        this.setState({showQuestionSetAuditing: false, isAfriend: true, hasPendingInvitations: false, showSettings: false, showContactScores: false, showAuditQuestions: false, showFriendsContactsList: true,});
+        this.setState({showQuestionSetAuditing: false, isAfriend: true, hasPendingInvitations: false, showSettings: false, showRemove: false, showContactScores: false, showAuditQuestions: false, showFriendsContactsList: true,});
     }
     goToGoodStuff() {
-        this.setState({showQuestionSetAuditing: false, isAfriend: false, showSettings: false, showAuditQuestions: false, showFriendsContactsList: false});
+        this.setState({showQuestionSetAuditing: false, isAfriend: false, showSettings: false, showRemove: false, showAuditQuestions: false, showFriendsContactsList: false});
         this.isAFriendOrInvitation();
     }
 
@@ -226,22 +231,29 @@ class NetworkContactPages extends React.Component {
     <React.Fragment>
 
         <div class="topParentDiv">
-        <div class="menuBoxDiv">
-            <button id="theirProfileButton" onClick={this.goToGoodStuff}> Their Profile </button>
-            <button id="theirProfileButton" onClick={this.goToContactsList}> Their Contacts </button>
-            <button id="theirProfileButton" onClick={this.goToContactSettings}> Their Settings </button>
+            <button id="theirProfileButton" onClick={this.goToGoodStuff}> Profile </button>
+            <button id="theirProfileButton" onClick={this.goToContactsList}> Contacts </button>
+            <button id="theirProfileButton" onClick={this.goToContactSettings}> Settings </button>
+            <button id="theirProfileButton" onClick={this.goToContactRemove}> Remove </button>
             <table>
-                <tr><td>Name:</td><td class="clubTD"> {this.state.friend} </td></tr>
+                <tr >
+                    <td class="alertsUserNameTD"> {this.state.friend} </td>
+                    <td> {this.state.connectionType} </td>
+                 </tr>
             </table>
         </div>
-        </div>
+
            { this.state.showSettings &&
            <div class="topParentDiv">
-           <div class="secondParentDiv">
             <ManageMyContacts connectionStatus={this.state.connectionStatus} visibilityPermission={this.state.visibilityPermission} inviter={this.state.inviter}
                 connectionType={this.state.connectionType} friendId={this.state.friendId} friend={this.state.friend} userName={this.state.userName}/>
-            </div>
            </div> }
+           { this.state.showRemove &&
+           <div class="topParentDiv">
+            <ManageMyContactsRemove connectionStatus={this.state.connectionStatus} visibilityPermission={this.state.visibilityPermission} inviter={this.state.inviter}
+                connectionType={this.state.connectionType} friendId={this.state.friendId} friend={this.state.friend} userName={this.state.userName}/>
+           </div> }
+
 
           { this.state.isAfriend &&
           <div class="topParentDiv">
@@ -272,7 +284,7 @@ class NetworkContactPages extends React.Component {
 
               { this.state.isInvitee &&
                     <div class="secondParentDiv">
-                    <p>{this.state.inviter} has invited you to connect.</p>
+                    <p>{this.state.inviter} {this.state.connectionType} has invited you to their network.</p>
 
                     <form id="inviteRadio1">
                         <div>
@@ -285,7 +297,7 @@ class NetworkContactPages extends React.Component {
                     <p></p>
 
                     { this.state.showUpdateButton &&
-                    <button type="submit" onClick={this.handleSubmit} className="inviteAuditButton"> Update </button> }
+                    <button type="submit" onClick={this.handleSubmit} className="seeDetialsButton"> Update </button> }
                     <span id="deletedAnswersMessage"> {this.state.invitationStatusMessage} </span>
                     <p>  </p>
                      </div> }

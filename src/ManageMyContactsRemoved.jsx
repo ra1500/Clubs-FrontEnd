@@ -72,7 +72,7 @@ class ManageMyContactsRemoved extends React.Component {
 
     updatedMessage() {
     return (
-        <p class="updateParagraph"> {this.state.friendBeingManaged} has been returned to your Network.</p>
+        <p class="updateParagraph"> {this.state.friendBeingManaged} has been added back to your network.</p>
     )
     }
 
@@ -80,18 +80,15 @@ class ManageMyContactsRemoved extends React.Component {
     return (
     <React.Fragment>
     <div class="topParentDiv">
-    <p> Unhide Contact </p>
-    <div class="secondParentDiv">
             <p> {this.state.friendBeingManaged} </p>
             <form onSubmit={this.handleSubmit5}>
-            <p> Unhide will return contact to Network -> Contacts.</p>
+            <p> Confirm unhide:</p>
              {this.state.showUnhideButton &&
-             <button class="greenButton" type="submit"> Unhide </button> }
+             <button class="seeDetailsButton" type="submit"> Unhide </button> }
             </form>
 
       { this.state.showUpdatedMessage &&
          <div> {this.updatedMessage()} </div>}
-      </div>
     </div>
     </React.Fragment>
     );

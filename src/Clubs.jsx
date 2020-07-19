@@ -5,22 +5,29 @@ import ClubsList from "./ClubsList";
 import ClubMembers from "./ClubMembers";
 import MessageBoard from "./MessageBoard";
 import ClubVoting from "./ClubVoting";
-import ClubManage from "./ClubManage";
+import ClubInvite from "./ClubInvite";
+import ClubQuit from "./ClubQuit";
 import { Link } from 'react-router-dom';
 import MessageBoardSingle from "./MessageBoardSingle";
 import ClubsEdit from "./ClubsEdit";
 import TitleBar2 from "./TitleBar2";
+import ProfilePictureClubMember from "./ProfilePictureClubMember";
+import ClubInvitations from "./ClubInvitations";
+import AlertsClubDetails from "./AlertsClubDetails";
 
 class Clubs extends React.Component {
   constructor(props) {
     super(props);
     this.goToClubsList = this.goToClubsList.bind(this);
+    this.goToClubInvitations = this.goToClubInvitations.bind(this);
+    this.goToClubDetails = this.goToClubDetails.bind(this);
     this.goToCreateClub = this.goToCreateClub.bind(this);
     this.renderSingleClub = this.renderSingleClub.bind(this);
     this.showMembers = this.showMembers.bind(this);
     this.showClubMessageBoard = this.showClubMessageBoard.bind(this);
     this.showClubVoting = this.showClubVoting.bind(this);
-    this.showClubManage = this.showClubManage.bind(this);
+    this.showClubInvite = this.showClubInvite.bind(this);
+    this.showClubQuit = this.showClubQuit.bind(this);
     this.goToSingleClubMember = this.goToSingleClubMember.bind(this);
     this.goToEditClubs = this.goToEditClubs.bind(this);
     this.state = {
@@ -29,17 +36,22 @@ class Clubs extends React.Component {
         membersList: null,
         showClubsList: false,
         showClubsList2: false, // used in 'ClubsList' component if user indeed has clubs (via props)
+        showClubInvitations: false,
+        clubInvitationId: null,
         showCreateClubs: false,
         showSingleClub: false,
+        showClubQuit: false,
+        showClubInvite: false,
         clubId: null,
         clubName: 'none',
         clubDescription: 'none',
         clubAlpha: 'none',
+        clubInvitationId: null,
         showMembersList: false,
         showMembersList2: true,
         showClubMessageBoard: true,
         showClubVoting: false,
-        showClubManage: false,
+        showClubDetails: false,
         showSingleClubMember: false,
         memberUserName: null,
         singleClubMemberId: null,
@@ -102,16 +114,13 @@ class Clubs extends React.Component {
     }
 
   goToSingleClubMember(e) {
-
-    const dude = e.target.value;
-
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
     const p = name.password;
     const token = u +':' + p;
     const hash = btoa(token);
     const Basic = 'Basic ' + hash;
-    axios.get("http://localhost:8080/api/user/pu?mid=" + dude + "&cid=" + this.state.clubId,
+    axios.get("http://localhost:8080/api/user/pu?mid=" + e.target.value + "&cid=" + this.state.clubId,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {
       this.setState({
@@ -124,7 +133,7 @@ class Clubs extends React.Component {
         relationshipStatus: response.data.relationshipStatus,
         location: response.data.location,
         contactInfo: response.data.contactInfo,
-        singleClubMemberId: dude,
+        singleClubMemberId: response.data.id,
       });
       if (response.data.education === 1) {this.setState({education2: "High School"})};
       if (response.data.education === 2) {this.setState({education2: "College"})};
@@ -140,27 +149,38 @@ class Clubs extends React.Component {
     }
 
   goToClubsList() {
-          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false});
+          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
           this.getClubsList();
     }
+  goToClubInvitations() {
+          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: true, showClubsList: false, showClubDetails: false, showClubQuit: false});
+    }
+  goToClubDetails(e) {
+          this.setState({ clubInvitationId: e.target.value });
+          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubsList: false, showClubDetails: true, showClubQuit: false});
+    }
   goToCreateClub() {
-          this.setState({showCreateClubs: true, showClubsList: false, showSingleClub: false, showMembersList: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false});
+          this.setState({showCreateClubs: true, showClubsList: false, showSingleClub: false, showMembersList: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
     }
   goToEditClubs() {
-          this.setState({showCreateClubs: false, showClubsList: false, showSingleClub: false, showMembersList: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: true});
+          this.setState({showCreateClubs: false, showClubsList: false, showSingleClub: false, showMembersList: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: true, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
     }
     showMembers() {
-           this.setState({showMembersList: !this.state.showMembersList, showClubMessageBoard: false, showClubManage: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false});
+           this.setState({showMembersList: !this.state.showMembersList, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
     }
     showClubMessageBoard() {
-           this.setState({showMembersList: false, showClubMessageBoard: !this.state.showClubMessageBoard, showClubManage: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false});
+           this.setState({showMembersList: false, showClubMessageBoard: !this.state.showClubMessageBoard, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
     }
     showClubVoting() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubManage: false, showClubVoting: !this.state.showClubVoting, showSingleClubMember: false, showEditClubs: false});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: !this.state.showClubVoting, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
     }
-    showClubManage() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubManage: !this.state.showClubManage, showClubVoting: false, showSingleClubMember: false, showEditClubs: false});
+    showClubInvite() {
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: !this.state.showClubInvite, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
     }
+    showClubQuit() {
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: !this.state.showClubQuit});
+    }
+
 
    render() {
     return (
@@ -171,20 +191,31 @@ class Clubs extends React.Component {
             { !this.state.showSingleClub &&
               <div class="settings2ButtonsDiv">
                 <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
-                <button id="removedContactsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
-                <button id="removedContactsButton" onClick={this.goToCreateClub}> Start a Club </button>
+                <button id="myContactsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
+                <button id="myContactsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
+                <button id="myContactsButton" onClick={this.goToCreateClub}> Start a Club </button>
               </div> }
 
         <div class="topParentDiv">
 
-        { this.state.showEditClubs &&
-        <div>
-        <ClubsEdit />
-        </div> }
-
         { this.state.showClubsList &&
         <div>
         <ClubsList list={this.state.list} showClubsList2={this.state.showClubsList2} renderSingleClub={this.renderSingleClub} />
+        </div> }
+
+        { this.state.showClubInvitations &&
+        <div>
+        <ClubInvitations goToClubDetails={this.goToClubDetails} />
+        </div> }
+
+        { this.state.showClubDetails &&
+        <div>
+        <AlertsClubDetails clubInvitationId={this.state.clubInvitationId}/>
+        </div> }
+
+        { this.state.showEditClubs &&
+        <div>
+        <ClubsEdit />
         </div> }
 
         { this.state.showCreateClubs &&
@@ -195,7 +226,9 @@ class Clubs extends React.Component {
 
         { this.state.showSingleClub &&
         <div>
-        <div class="menuBoxDiv">
+        <div class="topParentDiv">
+        <div class="settings2ButtonsDiv">
+        </div>
         <table>
             <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
             <tr><td>Description:</td><td class="clubTD"> {this.state.clubDescription} </td></tr>
@@ -203,19 +236,20 @@ class Clubs extends React.Component {
         </table>
         </div>
                       <div class="secondLevelDiv">
-                        <button id="removedContactsButton" onClick={this.showClubMessageBoard}> Message Board </button>
+                        <button id="myClubsButton" onClick={this.showClubMessageBoard}> Message Board </button>
                         <button id="myClubsButton" onClick={this.showMembers}> Members </button>
-                        <button id="removedContactsButton" onClick={this.showClubVoting}> Voting </button>
-                        <button id="removedContactsButton" onClick={this.showClubManage}> Settings </button>
+                        <button id="myClubsButton" onClick={this.showClubVoting}> Voting </button>
+                        <button id="myClubsButton" onClick={this.showClubInvite}> Invite </button>
+                        <button id="myClubsButton" onClick={this.showClubQuit}> Quit </button>
                       </div>
             { this.state.showMembersList &&
             <div>
-             <ClubMembers membersList={this.state.membersList} showMembersList2={this.state.showMembersList2} goToSingleClubMember={this.goToSingleClubMember} />
+             <ClubMembers membersList={this.state.membersList} showMembersList2={this.state.showMembersList2} goToSingleClubMember={this.goToSingleClubMember} clubId={this.state.clubId} />
             </div> }
 
             { this.state.showClubMessageBoard &&
             <div>
-             <MessageBoard clubId={this.state.clubId} />
+             <MessageBoard clubId={this.state.clubId} clubName={this.state.clubName} />
             </div> }
 
             { this.state.showClubVoting &&
@@ -223,14 +257,19 @@ class Clubs extends React.Component {
              <ClubVoting clubId={this.state.clubId} clubAlpha={this.state.clubAlpha} clubName={this.state.clubName} />
             </div> }
 
-            { this.state.showClubManage &&
+            { this.state.showClubInvite &&
             <div>
-             <ClubManage clubId={this.state.clubId} />
+                <ClubInvite clubId={this.state.clubId}/>
+            </div> }
+
+            { this.state.showClubQuit &&
+            <div>
+                <ClubQuit clubId={this.state.clubId}/>
             </div> }
 
           { this.state.showSingleClubMember &&
           <div class="topParentDiv">
-                <img id="profilePic" src={this.state.profilePicture}></img>
+                <ProfilePictureClubMember memberId={this.state.singleClubMemberId} clubId={this.state.clubId}/>
                 <div class="scoresListTD">
                 <p class="secondP"> Club Member: {this.state.memberUserName}</p><br></br>
                 <p class="secondP"> Title: {this.state.title}</p><br></br>
@@ -239,7 +278,7 @@ class Clubs extends React.Component {
                 <p class="secondP"> Contact Info: {this.state.contactInfo}</p><br></br>
                 <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p>
                 </div>
-                <MessageBoardSingle singleClubMemberId={this.state.singleClubMemberId}/>
+                <MessageBoardSingle singleClubMemberId={this.state.singleClubMemberId} clubName={this.state.clubName}/>
                 </div> }
 
 

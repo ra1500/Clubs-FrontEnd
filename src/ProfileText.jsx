@@ -172,7 +172,7 @@ class ProfileText extends React.Component {
               <label><input value="3" onChange={this.handleChange5} type="radio" name="optradio" /> Irrelevant </label>
             </div>
         </form>
-            <button type="submit" onClick={this.handleSubmit1} className="inviteAuditButton"> Update </button>
+            <button type="submit" onClick={this.handleSubmit1} className="seeDetailsButton"> Update </button>
             <span class="updateParagraph">{this.state.updatedMessage}</span>
     </div>
 

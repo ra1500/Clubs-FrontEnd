@@ -141,7 +141,7 @@ class Profile extends React.Component {
               <div class="settings2ButtonsDiv">
                 <button id="myProfileButton" onClick={this.goToPrivateProfile}> My Profile </button>
                 <button id="editButton" onClick={this.goToUserSettings}> Edit </button>
-                <button id="removedContactsButton" onClick={this.goToProfileSettings}> Profile Settings </button>
+                <button id="theirProfileButton" onClick={this.goToProfileSettings}> Settings </button>
               </div>
 
               { this.state.showProfile &&
@@ -174,7 +174,6 @@ class Profile extends React.Component {
 
             { this.state.showProfileSettings &&
             <div class="topParentDiv">
-              <p> Settings </p>
               <ScoreUrl />
               <UpdateUserInfo />
             </div> }

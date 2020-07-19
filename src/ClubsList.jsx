@@ -15,7 +15,7 @@ class ClubsList extends React.Component {
       return sortedList.map((data, index) => {
          return (
             <tr key={data.id}>
-                <td> <button class="greenButtonSmall" value={data.id} onClick={e => this.props.renderSingleClub(e)}> &#9658; </button> </td>
+                <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.renderSingleClub(e)}> Go To &#9658; </button> </td>
                 <td> <p class="noLineSpaceP"> {data.clubName} </p></td>
             </tr>
          )

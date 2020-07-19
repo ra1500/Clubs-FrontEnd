@@ -4,8 +4,8 @@ import axios from 'axios';
 class AlertsNewContactDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.accept = this.accept.bind(this);
+    this.decline = this.decline.bind(this);
         this.state = {
           error: null,
           isLoaded: false,
@@ -79,6 +79,7 @@ class AlertsNewContactDetails extends React.Component {
           this.setState({
             isLoaded: true,
             inviter: response.data.inviter,
+            title: response.data.title,
             connectionStatus: response.data.connectionStatus,
             connectionType: response.data.connectionType,
             visibilityPermission: response.data.visibilityPermission,
@@ -124,15 +125,15 @@ class AlertsNewContactDetails extends React.Component {
            });
     }
 
-    // accept/decline friendship
-    patchFriendship() {
+    // accept friendship invitation
+    accept() {
         const name = JSON.parse(sessionStorage.getItem('tokens'));
         const u = name.userName;
         const p = name.password;
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        let data = { id: this.state.friendId, connectionStatus: this.state.connectionStatus,
+        let data = { id: this.state.friendId, connectionStatus: "Connected",
           visibilityPermission: this.state.visibilityPermission };
         axios.post("http://localhost:8080/api/f/a", data,
         {headers : { 'Authorization' : Basic }})
@@ -140,18 +141,31 @@ class AlertsNewContactDetails extends React.Component {
         this.setState({isLoaded: true, showUpdateButton: false,
                   });
          if (response.data.connectionStatus == "Connected") { this.setState({invitationStatusMessage: "You are now connected to " + this.state.friend}) }
-         if (response.data.connectionStatus == "Removed") { this.setState({invitationStatusMessage: "You have removed " + this.state.friend}) }
+         if (response.data.connectionStatus == "Removed") { this.setState({invitationStatusMessage: "You have declined " + this.state.friend}) }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
     }
 
-   handleChange(event) {
-     this.setState({connectionStatus: event.target.value});
-   }
-  handleSubmit(event) {
-    this.patchFriendship();
-    event.preventDefault();
-  }
+    // decline friendship invitation
+    decline() {
+        const name = JSON.parse(sessionStorage.getItem('tokens'));
+        const u = name.userName;
+        const p = name.password;
+        const token = u + ':' + p;
+        const hash = btoa(token);
+        const Basic = 'Basic ' + hash;
+        let data = { id: this.state.friendId, connectionStatus: "Removed",
+          visibilityPermission: this.state.visibilityPermission };
+        axios.post("http://localhost:8080/api/f/a", data,
+        {headers : { 'Authorization' : Basic }})
+        .then((response) => {
+        this.setState({isLoaded: true, showUpdateButton: false,
+                  });
+         if (response.data.connectionStatus == "Connected") { this.setState({invitationStatusMessage: "You are now connected to " + this.state.friend}) }
+         if (response.data.connectionStatus == "Removed") { this.setState({invitationStatusMessage: "You have declined " + this.state.friend}) }
+               }).catch(error => {this.setState({ isLoaded: true, error});
+               });
+    }
 
 
   render() {
@@ -159,24 +173,22 @@ class AlertsNewContactDetails extends React.Component {
     <React.Fragment>
       <div class="topParentDiv">
 
-                    <div class="secondParentDiv">
-                    <p>{this.state.inviter} has invited you to connect.</p>
+                    <p class="headerP"> Network Invitation Details </p>
+                    <p class="noLineSpaceP"> {this.state.inviter} </p>
+                    <p class="noLineSpaceP"> {this.state.connectionType} </p>
+                    <p class="noLineSpaceP"> {this.state.title} </p>
 
-                    <form id="inviteRadio1">
-                        <div>
-                          <label><input value="Connected" onChange={this.handleChange} type="radio" name="optradio" /> Accept </label>
-                        </div>
-                        <div>
-                          <label><input value="removed" onChange={this.handleChange} type="radio" name="optradio" /> Remove </label>
-                        </div>
-                    </form>
-                    <p></p>
 
                     { this.state.showUpdateButton &&
-                    <button type="submit" onClick={this.handleSubmit} className="inviteAuditButton"> Update </button> }
+                    <div>
+                    <button class="acceptButton" onClick={() => this.accept()}> Accept </button>
+                    <button class="declineButton" onClick={() => this.decline()}> Decline </button>
+                    </div> }
+
+                    { !this.state.showUpdateButton &&
+                    <div>
                     <span id="deletedAnswersMessage"> {this.state.invitationStatusMessage} </span>
-                    <p>  </p>
-                     </div>
+                    </div> }
 
       </div>
     </React.Fragment>

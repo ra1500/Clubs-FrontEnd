@@ -37,13 +37,15 @@ class AlertsNewMessagesGuilds extends React.Component {
     }
 
     clearContactMsgsAlert(e) {
+        const array = e.target.value.split(",");
+
         const name = JSON.parse(sessionStorage.getItem('tokens'));
         const u = name.userName;
         const p = name.password;
         const token = u +':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        axios.get("http://localhost:8080/api/m/j?uId=" + e.target.value + "&type=" + "5",
+        axios.get("http://localhost:8080/api/m/k?uId=" + array[1] + "&type=" + "5" + "&cN=" + array[0],
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
         if (response.status === 200) {
@@ -57,8 +59,9 @@ class AlertsNewMessagesGuilds extends React.Component {
       return this.state.list2.map((data, index) => {
          return (
             <tr key={data.index}>
-               <td> {data} </td>
-               <td> <button class="seeDetailsButton" value={data} onClick={e => this.clearContactMsgsAlert(e)}> Clear Alert </button> </td>
+               <td class="alertsUserNameTD"> {data[1]} </td>
+               <td class="alertsUserNameTD"> {data[0]} </td>
+               <td> <button class="clearAlertsButton" value={data} onClick={e => this.clearContactMsgsAlert(e)}> Clear Alert </button> </td>
             </tr>
          )
       })
@@ -73,7 +76,7 @@ class AlertsNewMessagesGuilds extends React.Component {
 
         { !this.state.showNewMessages &&
          <div>
-         <p class="alertsSmallP"> &nbsp;(nothing new here)</p>
+         <p class="alertsSmallP"> &nbsp;(none)</p>
          </div> }
 
 

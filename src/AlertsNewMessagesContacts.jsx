@@ -44,7 +44,7 @@ class AlertsNewMessagesContacts extends React.Component {
         const token = u +':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        axios.get("http://localhost:8080/api/m/j?uId=" + e.target.value + "&type=" + "4",
+        axios.get("http://localhost:8080/api/m/j?uId=" + e.target.value,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
         if (response.status === 200) {
@@ -58,8 +58,9 @@ class AlertsNewMessagesContacts extends React.Component {
       return this.state.list2.map((data, index) => {
          return (
             <tr key={data.index}>
-               <td> {data} </td>
-               <td> <button class="seeDetailsButton" value={data} onClick={e => this.clearContactMsgsAlert(e)}> Clear Alert </button> </td>
+               <td class="alertsUserNameTD"> {data} </td>
+               <td class="alertsUserNameTD">  </td>
+               <td> <button class="clearAlertsButton" value={data} onClick={e => this.clearContactMsgsAlert(e)}> Clear Alert </button> </td>
             </tr>
          )
       })
@@ -74,7 +75,7 @@ class AlertsNewMessagesContacts extends React.Component {
 
         { !this.state.showNewMessages &&
          <div>
-         <p class="alertsSmallP"> &nbsp;(nothing new here)</p>
+         <p class="alertsSmallP"> &nbsp;(none)</p>
          </div> }
 
 

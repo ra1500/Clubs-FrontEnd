@@ -1,11 +1,10 @@
 import React from "react";
 import axios from 'axios';
 
-class ManageMyContacts extends React.Component {
+class ManageMyContactsRemove extends React.Component {
   constructor(props) {
     super(props);
-    this.handleSubmit1 = this.handleSubmit1.bind(this);
-    this.handleChange3 = this.handleChange3.bind(this);
+    this.handleSubmit2 = this.handleSubmit2.bind(this);
         this.state = {
           error: null,
           isLoaded: false,
@@ -17,10 +16,9 @@ class ManageMyContacts extends React.Component {
           hasPendingInvitations: false,
           isAfriend: true,
           friendBeingManaged: null,
-          showUpdatedMessage: false,
-          showUpdateButton: true,
+          showDeletedMessage: false,
+          showRemoveButton: true,
           deletedMessage: "(contact has been removed)",
-          updatedMessage: "(contact has been updated)",
           currentType: this.props.connectionType,
           currentVisibility: this.props.visibilityPermission,
         };
@@ -30,31 +28,27 @@ class ManageMyContacts extends React.Component {
         this.manageUpdate();
     }
 
-    patchFriendship() {
+    removeFriendship() {
         const name = JSON.parse(sessionStorage.getItem('tokens'));
         const u = name.userName;
         const p = name.password;
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        let data = { id: this.props.friendId, connectionStatus: this.props.connectionStatus, inviter: this.props.inviter,
-         connectionType: this.state.connectionType, visibilityPermission: this.state.visibilityPermission };
+        let data = { id: this.props.friendId, connectionStatus: "removed", inviter: this.props.inviter,
+         connectionType: this.state.connectionType, visibilityPermission: "No" };
         axios.post("http://localhost:8080/api/f/a", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
-        this.setState({isLoaded: true, showUpdatedMessage: true, showUpdateButton: false,
+        this.setState({isLoaded: true, showRemoveButton : false, showDeletedMessage : true,
                   });
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
     }
 
-  handleSubmit1(event) {
+  handleSubmit2(event) {
     event.preventDefault();
-    this.patchFriendship();
-  }
-
-  handleChange3(event) {
-    this.setState({connectionType: event.target.value});
+    this.removeFriendship();
   }
 
   manageUpdate() {
@@ -73,38 +67,20 @@ class ManageMyContacts extends React.Component {
 
       { this.state.hasPendingInvitations &&
       <div>
-            <div>
                 <p> You can remove your pending contact here. You can undo this in your removed members list.</p>
                 { this.state.showDeletedMessage &&
                 <p id="deletedAnswersMessage"> {this.state.deletedMessage} </p> }
                 { this.state.showRemoveButton &&
-                <button type="submit" onClick={this.handleSubmit2} className="deleteScoreButton"> Remove </button> }
-
-            </div>
+                <button type="submit" onClick={this.handleSubmit2} className="seeDetailsButton"> Remove </button> }
       </div> }
 
       { this.state.isAfriend &&
-      <div>
-            <div class="invitationForm">
-            <p class="alertsSmallP"> Currently set to: {this.state.currentType}  </p>
-            <form id="inviteRadio1">
-                <div>
-                  <label><input value="Friend" onChange={this.handleChange3} type="radio" name="optradio" /> Friend </label>
-                </div>
-                <div>
-                  <label><input value="Other" onChange={this.handleChange3} type="radio" name="optradio" /> Family </label>
-                </div>
-                <div>
-                  <label><input value="Colleague" onChange={this.handleChange3} type="radio" name="optradio" /> Colleague </label>
-                </div>
-            </form>
-            <p></p>
-
-                { this.state.showUpdatedMessage &&
-                <p id="deletedAnswersMessage"> {this.state.updatedMessage} </p> }
-                { this.state.showUpdateButton &&
-                <button type="submit" onClick={this.handleSubmit1} className="inviteAuditButton"> Update </button> }
-            </div>
+       <div class="invitationForm">
+                 <p> You can remove your contact here. You can undo this in your removed members list.</p>
+                { this.state.showDeletedMessage &&
+                <p id="deletedAnswersMessage"> {this.state.deletedMessage} </p> }
+                { this.state.showRemoveButton &&
+                <button type="submit" onClick={this.handleSubmit2} className="seeDetailsButton"> Remove </button> }
       </div> }
 
     </div>
@@ -113,4 +89,4 @@ class ManageMyContacts extends React.Component {
   }
 }
 
-export default ManageMyContacts;
+export default ManageMyContactsRemove;

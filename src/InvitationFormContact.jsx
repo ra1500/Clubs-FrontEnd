@@ -70,7 +70,7 @@ class InvitationFormContact extends React.Component {
       <div class="topParentDiv">
         <div class="secondParentDiv">
         <p> {this.props.invitedFriend}</p>
-        <p> Invite to join your network? </p>
+        <p> Invite to join your network </p>
         <form id="inviteRadio1">
             <div>
               <label><input value="Friend" onChange={this.handleChange2} type="radio" name="optradio" /> Friend (default) </label>
@@ -82,19 +82,10 @@ class InvitationFormContact extends React.Component {
               <label><input value="Other" onChange={this.handleChange2} type="radio" name="optradio" /> Other </label>
             </div>
         </form>
-        <form id="inviteRadio2">
-            <div>
-              <label><input value="Yes" onChange={this.handleChange3} type="radio" name="optradio" /> Yes (contact can view my posts)(default) </label>
-            </div>
-            <div>
-              <label><input value="No" onChange={this.handleChange3} type="radio" name="optradio" /> No (contact cannot view my posts) </label>
-            </div>
-        </form>
         <p></p>
         { this.state.showInviteButton &&
         <div>
-        <p class="alertsSmallP"> &nbsp;(note: if your profile is set to 'Private' in Me -> Settings it will override the above contact setting of 'Yes'.)</p>
-        <button type="submit" onClick={this.handleSubmit} className="inviteAuditButton"> Invite </button>
+        <button type="submit" onClick={this.handleSubmit} className="seeDetailsButton"> Invite </button>
          </div>}
         <span id="deletedAnswersMessage"> {this.state.invitationSentMessage} </span>
         </div>

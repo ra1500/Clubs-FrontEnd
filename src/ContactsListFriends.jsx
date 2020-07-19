@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfilePicture from "./ProfilePicture";
 
-class ContactsList extends React.Component {
+class ContactsListFriends extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,6 +12,7 @@ class ContactsList extends React.Component {
    renderTableData() {
       const sortedList = this.state.list.sort((a,b) => (a.created > b.created) ? 1 : ((b.created > a.created) ? -1 : 0));
       return sortedList.map((data, index) => {
+        if ( data.connectionType == "Friend" & data.connectionStatus == "Connected" ) {
          return (
             <tr class="friendsTR"key={data.friend}>
                <td onClick={e => this.props.renderSingleContact(e)}> <ProfilePicture friendId={data.id} /> </td>
@@ -21,6 +22,7 @@ class ContactsList extends React.Component {
                <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.renderSingleContact(e)}> Go To &#9658; </button> </td>
             </tr>
          )
+         } // end if
       })
    }
 
@@ -54,4 +56,4 @@ class ContactsList extends React.Component {
 
 }
 
-export default ContactsList;
+export default ContactsListFriends;

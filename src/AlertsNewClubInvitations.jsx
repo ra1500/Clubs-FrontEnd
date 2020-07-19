@@ -97,10 +97,10 @@ class AlertsNewClubInvitations extends React.Component {
                 <td>{data.club.clubName} </td>
             </tr>
             <tr key={data.id}>
-               <td> From: {data.sender.userName} </td>
+               <td> By member: {data.sender.userName} </td>
              </tr>
              <tr>
-               <td class="alertsButtons">
+               <td class="alertsButtonsTD">
                <button class="acceptButton" value={data.id} onClick={e => this.accept(e)}> Accept </button>
                <button class="declineButton" value={data.id} onClick={e => this.decline(e)}> Decline </button>
                <button class="seeDetailsButton" value={data.id} onClick={e => this.props.goToClubDetails(e)}> See Details </button>
@@ -112,7 +112,6 @@ class AlertsNewClubInvitations extends React.Component {
    }
 
 
-
     render() {
         return (
         <React.Fragment>
@@ -120,7 +119,7 @@ class AlertsNewClubInvitations extends React.Component {
 
         { !this.state.showNewClubInvitations &&
          <div>
-         <p class="alertsSmallP"> &nbsp;(nothing new here)</p>
+         <p class="alertsSmallP"> &nbsp;(none)</p>
          </div> }
 
 

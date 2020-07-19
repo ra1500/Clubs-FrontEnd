@@ -75,7 +75,7 @@ class ScoreUrl extends React.Component {
   render() {
     return (
     <div id="meSettingsDiv">
-        <p>Profile View Status<br></br>
+        <p>Profile privacy settings. Who can see your profile. <br></br>
          Curent Status: {this.state.publicProfile} </p>
 
         <form onSubmit={this.handleSubmit1}>
@@ -88,7 +88,7 @@ class ScoreUrl extends React.Component {
             <div>
               <label><input value="Private" onChange={this.handleChange1} type="radio" name="optradio" /> Private </label>
             </div>
-            <button type="submit" className="inviteAuditButton"> Update </button>
+            <button type="submit" className="seeDetailsButton"> Update </button>
             <span class="updateParagraph">{this.state.privacyUpdatedMessage}</span>
         </form>
 
