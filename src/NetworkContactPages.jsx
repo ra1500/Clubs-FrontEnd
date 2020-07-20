@@ -253,11 +253,14 @@ class NetworkContactPages extends React.Component {
             <ManageMyContactsRemove connectionStatus={this.state.connectionStatus} visibilityPermission={this.state.visibilityPermission} inviter={this.state.inviter}
                 connectionType={this.state.connectionType} friendId={this.state.friendId} friend={this.state.friend} userName={this.state.userName}/>
            </div> }
+           { this.state.showFriendsContactsList &&
+           <div>
+            <FriendsContactsList connectionStatus={this.state.connectionStatus} showInvite={this.state.showInvite} inviteToJoinMyNetwork={this.inviteToJoinMyNetwork} showNetworkListDetails={this.state.showNetworkListDetails} goToNetworkListDetails={this.goToNetworkListDetails}showNetworkListNone={this.state.showNetworkListNone} list={this.state.list} invitedFriend={this.state.invitedFriend}/>
+           </div> }
 
 
           { this.state.isAfriend &&
           <div class="topParentDiv">
-
                 { this.state.showContactScores &&
                 <div>
                 <img id="profilePic" src={this.state.profilePicture}></img>
@@ -270,12 +273,6 @@ class NetworkContactPages extends React.Component {
                 </div>
                 <MessageBoardFriend friendshipsEntityId={this.state.friendId}/>
                 </div> }
-
-               { this.state.showFriendsContactsList &&
-               <div>
-                <FriendsContactsList showInvite={this.state.showInvite} inviteToJoinMyNetwork={this.inviteToJoinMyNetwork} showNetworkListDetails={this.state.showNetworkListDetails} goToNetworkListDetails={this.goToNetworkListDetails}showNetworkListNone={this.state.showNetworkListNone} list={this.state.list} invitedFriend={this.state.invitedFriend}/>
-               </div> }
-
           </div> }
 
 
@@ -291,13 +288,13 @@ class NetworkContactPages extends React.Component {
                           <label><input value="Connected" onChange={this.handleChange} type="radio" name="optradio" /> Accept </label>
                         </div>
                         <div>
-                          <label><input value="removed" onChange={this.handleChange} type="radio" name="optradio" /> Remove </label>
+                          <label><input value="removed" onChange={this.handleChange} type="radio" name="optradio" /> Decline </label>
                         </div>
                     </form>
                     <p></p>
 
                     { this.state.showUpdateButton &&
-                    <button type="submit" onClick={this.handleSubmit} className="seeDetialsButton"> Update </button> }
+                    <button type="submit" onClick={this.handleSubmit} className="seeDetailsButton"> Update </button> }
                     <span id="deletedAnswersMessage"> {this.state.invitationStatusMessage} </span>
                     <p>  </p>
                      </div> }

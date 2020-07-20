@@ -40,7 +40,8 @@ function UpdateUserInfo(props) {
   return (
     <React.Fragment>
       <div id="meSettingsDiv">
-      <p> Password </p>
+      <p></p>
+      <p> Password change. </p>
       <Form>
         <input class="loginInput" type="password" value={oldPassword} onChange={e => {setoldPassword(e.target.value);}} placeholder=" current password" /><br></br>
         <input class="loginInput" type="password" value={password} onChange={e => {setPassword(e.target.value);}} placeholder=" new password" /><br></br>

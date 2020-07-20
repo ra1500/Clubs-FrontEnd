@@ -6,6 +6,7 @@ class ContactsListFriends extends React.Component {
         super(props);
         this.state = {
             list: this.props.list, //
+            showNoneMessage: true,
         };
     }
 
@@ -13,6 +14,7 @@ class ContactsListFriends extends React.Component {
       const sortedList = this.state.list.sort((a,b) => (a.created > b.created) ? 1 : ((b.created > a.created) ? -1 : 0));
       return sortedList.map((data, index) => {
         if ( data.connectionType == "Friend" & data.connectionStatus == "Connected" ) {
+        this.state = { showNoneMessage: false };
          return (
             <tr class="friendsTR"key={data.friend}>
                <td onClick={e => this.props.renderSingleContact(e)}> <ProfilePicture friendId={data.id} /> </td>
@@ -50,6 +52,12 @@ class ContactsListFriends extends React.Component {
          </div> }
          </div>
          </div>
+
+        { this.state.showNoneMessage &&
+         <div class="topParentDiv">
+         <p class="alertsSmallP"> &nbsp;(none)</p>
+         </div> }
+
         </React.Fragment>
         )
     }

@@ -80,10 +80,10 @@ class ScoreUrl extends React.Component {
 
         <form onSubmit={this.handleSubmit1}>
             <div>
-              <label><input value="Public" onChange={this.handleChange1} type="radio" name="optradio" /> Public (Internet & Network) </label>
+              <label><input value="Public" onChange={this.handleChange1} type="radio" name="optradio" /> Public (including internet) </label>
             </div>
             <div>
-              <label><input value="Network" onChange={this.handleChange1} type="radio" name="optradio" /> Network </label>
+              <label><input value="Network" onChange={this.handleChange1} type="radio" name="optradio" /> Network only </label>
             </div>
             <div>
               <label><input value="Private" onChange={this.handleChange1} type="radio" name="optradio" /> Private </label>
@@ -92,6 +92,7 @@ class ScoreUrl extends React.Component {
             <span class="updateParagraph">{this.state.privacyUpdatedMessage}</span>
         </form>
 
+       <p> </p>
        <a id="publicProfileURLhref" href={'/flavor?id=' + this.state.userName}> www.neuraljuice.com/flavor?id={this.state.userName} </a>
        <p class="paragraphInline"> (Your public profile page URL) </p>
     </div>

@@ -5,7 +5,8 @@ class ContactsListPending extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: this.props.list, //
+            list: this.props.list,
+            showNoneMessage: true,
         };
     }
 
@@ -13,6 +14,7 @@ class ContactsListPending extends React.Component {
       const sortedList = this.state.list.sort((a,b) => (a.created > b.created) ? 1 : ((b.created > a.created) ? -1 : 0));
       return sortedList.map((data, index) => {
         if ( data.connectionStatus == "pending" ) {
+        this.state = { showNoneMessage: false };
          return (
             <tr class="friendsTR"key={data.friend}>
                <td onClick={e => this.props.renderSingleContact(e)}> <ProfilePicture friendId={data.id} /> </td>
@@ -50,6 +52,12 @@ class ContactsListPending extends React.Component {
          </div> }
          </div>
          </div>
+
+        { this.state.showNoneMessage &&
+         <div class="topParentDiv">
+         <p class="alertsSmallP"> &nbsp;(none)</p>
+         </div> }
+
         </React.Fragment>
         )
     }

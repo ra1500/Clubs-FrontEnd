@@ -71,18 +71,6 @@ class ManageMyContacts extends React.Component {
     <React.Fragment>
     <div >
 
-      { this.state.hasPendingInvitations &&
-      <div>
-            <div>
-                <p> You can remove your pending contact here. You can undo this in your removed members list.</p>
-                { this.state.showDeletedMessage &&
-                <p id="deletedAnswersMessage"> {this.state.deletedMessage} </p> }
-                { this.state.showRemoveButton &&
-                <button type="submit" onClick={this.handleSubmit2} className="deleteScoreButton"> Remove </button> }
-
-            </div>
-      </div> }
-
       { this.state.isAfriend &&
       <div>
             <div class="invitationForm">
@@ -104,6 +92,13 @@ class ManageMyContacts extends React.Component {
                 <p id="deletedAnswersMessage"> {this.state.updatedMessage} </p> }
                 { this.state.showUpdateButton &&
                 <button type="submit" onClick={this.handleSubmit1} className="inviteAuditButton"> Update </button> }
+            </div>
+      </div> }
+
+      { this.state.hasPendingInvitations &&
+      <div>
+            <div>
+                <p> (contact pending)</p>
             </div>
       </div> }
 

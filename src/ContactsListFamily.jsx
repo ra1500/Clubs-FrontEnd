@@ -5,7 +5,8 @@ class ContactsListFamily extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: this.props.list, //
+            list: this.props.list,
+            showNoneMessage: true,
         };
     }
 
@@ -13,6 +14,7 @@ class ContactsListFamily extends React.Component {
       const sortedList = this.state.list.sort((a,b) => (a.created > b.created) ? 1 : ((b.created > a.created) ? -1 : 0));
       return sortedList.map((data, index) => {
         if ( data.connectionType == "Other" & data.connectionStatus == "Connected" ) {
+         this.state = { showNoneMessage: false };
          return (
             <tr class="friendsTR"key={data.friend}>
                <td onClick={e => this.props.renderSingleContact(e)}> <ProfilePicture friendId={data.id} /> </td>
@@ -29,6 +31,7 @@ class ContactsListFamily extends React.Component {
 // <tr><th class=""></th><th class="thContact">Contact</th><th class="">Status</th><th>Type</th><th>View Permission</th></tr>
 
     render() {
+
         return (
         <React.Fragment>
 
@@ -50,6 +53,12 @@ class ContactsListFamily extends React.Component {
          </div> }
          </div>
          </div>
+
+        { this.state.showNoneMessage &&
+         <div class="topParentDiv">
+         <p class="alertsSmallP"> &nbsp;(none)</p>
+         </div> }
+
         </React.Fragment>
         )
     }

@@ -40,6 +40,7 @@ class AlertsClubDetails extends React.Component {
             clubDescription: response.data.club.description,
             clubAlpha: response.data.club.alpha,
             clubId: response.data.club.id,
+            inviter : response.data.sender.userName,
           });
           } // end if
           else { this.setState({}); }
@@ -56,7 +57,7 @@ class AlertsClubDetails extends React.Component {
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        let data = { id: this.state.clubId, status: "2"};
+        let data = { id: this.props.clubInvitationId, status: "2"};
         axios.post("http://localhost:8080/api/i/c", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
@@ -76,7 +77,7 @@ class AlertsClubDetails extends React.Component {
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        let data = { id: this.state.clubId, status: "3"};
+        let data = { id: this.props.clubInvitationId, status: "3"};
         axios.post("http://localhost:8080/api/i/c", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
@@ -98,7 +99,7 @@ class AlertsClubDetails extends React.Component {
             <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
             <tr><td>Description:</td><td class="clubTD"> {this.state.description} </td></tr>
             <tr><td>Club Alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
-            <tr><td>Inviting Member::</td><td class="clubTD"> {this.props.inviter} </td></tr>
+            <tr><td>Inviting Member::</td><td class="clubTD"> {this.state.inviter} </td></tr>
         </table>
 
        { this.state.showButtons &&

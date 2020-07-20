@@ -1,11 +1,13 @@
 import React from "react";
 import Login from './pages/Login';
 import SampleQuestions from './SampleQuestions';
+import { Redirect } from "react-router-dom";
 
 
 class Introduction extends React.Component {
   constructor(props) {
     super(props);
+    this.goToAbout = this.goToAbout.bind(this);
         this.state = {
           error: null,
           isLoaded: false,
@@ -13,15 +15,14 @@ class Introduction extends React.Component {
         };
   }
 
-    componentDidMount() {
+    goToAbout() {
+        this.setState({showIntro: false, showAbout: true,});
     }
-
 
   render() {
 
     return (
     <React.Fragment>
-
 
     {this.state.showIntro &&
     <div>
@@ -39,9 +40,12 @@ class Introduction extends React.Component {
     </div>
     <div id="aboutDiv">
     <p class="aboutP1">© 2020 NeuralJuice </p>
-    <p class="aboutP2"> About </p>
+    <button id="aboutButton" onClick={this.goToAbout} > About </button>
     </div>
     </div>}
+
+    {this.state.showAbout &&
+    <Redirect to="/about" />}
 
     </React.Fragment>
     );

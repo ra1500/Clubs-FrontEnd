@@ -87,6 +87,7 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 #aboutDiv { position: fixed; bottom: 0; padding-top: 15px; padding-bottom: 15px; padding-left: 17%; width: 100%; background-color: white }
 .aboutP1 {  font-size: 11px; display: inline; padding-right: 10px; }
 .aboutP2 {  font-size: 11px; display: inline; padding-right: 10px; color: #0000ff }
+#aboutButton { border: none; color: blue; background-color: white; font-size: 12px; font-family: "Arial";  }
 
  /** Me - Settings (Score URL  & UpdateUserInfo) **/
 #meSettingsDiv { border-style: solid; border-width: 0px; margin-top: 5px; margin-bottom: 10px; padding: 0px;}
@@ -193,7 +194,7 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 
 .secondLevelDiv { padding-top: 10px; }
 .noLineSpaceP { margin: 0 }
-.headerP { margin: 0; width: 370px; border: solid 1px #1a1aff; padding-left: 5px; color: #1a1aff; }
+.headerP { margin: 0; width: 370px; border: solid 1px black; padding-left: 5px; color: black;  }
 .clubTD { padding-left: 15px; }
 .networkFriendTD { padding-top: 10px; padding-right: 10px; }
 .clubTextBox { width: 400px; }

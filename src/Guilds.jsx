@@ -36,7 +36,7 @@ class Guilds extends React.Component {
 
       <div class="topParentDiv">
 
-        <p className="noLineSpaceP"> Coming soon. Like clubs, but with additional functionality. </p>
+        <p className="noLineSpaceP"> Coming soon... </p>
 
         <p className="noLineSpaceP">  </p><br></br>
 

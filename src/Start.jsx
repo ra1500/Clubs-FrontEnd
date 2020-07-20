@@ -69,9 +69,9 @@ class Start extends React.Component {
 
             { this.state.showNewMessages &&
             <div>
-            <p class="headerP"> Network: You have unread messages from </p>
+            <p class="headerP"> Network - You have unread messages from </p>
             <AlertsNewMessagesContacts /><br></br>
-            <p class="headerP"> Clubs: You have unread messages from </p>
+            <p class="headerP"> Clubs - You have unread messages from </p>
             <AlertsNewMessagesClubs /><br></br>
             </div> }
 
