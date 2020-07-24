@@ -61,7 +61,9 @@ class AlertsClubDetails extends React.Component {
         axios.post("http://localhost:8080/api/i/c", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
-        this.setState({isLoaded: true, message: "club added", showButtons: false });
+        this.setState({isLoaded: true, showButtons: false });
+        if (response.data.receiver == "OVER LIMIT") { this.setState({ message: "Sorry, you have already reached your limit of 30 clubs joined" }) }
+        else { this.setState({ message: "You have joined the club!" }) }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
          }

@@ -58,8 +58,10 @@ class ClubText extends React.Component {
     axios.post("http://localhost:8080/api/c/b", data,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {
-    this.setState({isLoaded: true, updatedMessage: " Club has been added.", showSubmit: false, maxSize: response.data.maxSize,
+    this.setState({isLoaded: true, showSubmit: false, maxSize: response.data.maxSize,
               });
+    if (response.data.founder == "OVER LIMIT") { this.setState({ updatedMessage: " Sorry, you have already reached your limit of 30 clubs joined" }) }
+    else { this.setState({ updatedMessage: " Club has been added" }) };
            }).catch(error => {this.setState({ isLoaded: true, error});
            });
   }

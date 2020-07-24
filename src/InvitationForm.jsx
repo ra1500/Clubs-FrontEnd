@@ -75,13 +75,13 @@ class InvitationForm extends React.Component {
         <input id="invitationBox" type="text" value={this.state.friend} onChange={this.handleChange} placeholder=" username of contact" />
         <form id="inviteRadio1">
             <div>
-              <label><input value="Friend" onChange={this.handleChange2} type="radio" name="optradio" /> Friend (default) </label>
+              <label><input value="Friend" onChange={this.handleChange2} type="radio" name="optradio" /> Friend </label>
+            </div>
+            <div>
+              <label><input value="Other" onChange={this.handleChange2} type="radio" name="optradio" /> Family </label>
             </div>
             <div>
               <label><input value="Colleague" onChange={this.handleChange2} type="radio" name="optradio" /> Colleague </label>
-            </div>
-            <div>
-              <label><input value="Other" onChange={this.handleChange2} type="radio" name="optradio" /> Other </label>
             </div>
         </form>
         <p></p>

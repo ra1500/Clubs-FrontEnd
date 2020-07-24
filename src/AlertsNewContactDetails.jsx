@@ -141,6 +141,7 @@ class AlertsNewContactDetails extends React.Component {
         this.setState({isLoaded: true, showUpdateButton: false,
                   });
          if (response.data.connectionStatus == "Connected") { this.setState({invitationStatusMessage: "You are now connected to " + this.state.friend}) }
+         if (response.data.connectionStatus == "OVER LIMIT") { this.setState({invitationStatusMessage: "Sorry, you have reached the maximum number of connections."}) }
          if (response.data.connectionStatus == "Removed") { this.setState({invitationStatusMessage: "You have declined " + this.state.friend}) }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
