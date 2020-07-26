@@ -45,6 +45,10 @@ class Clubs extends React.Component {
         clubId: null,
         clubName: 'none',
         clubDescription: 'none',
+        maxSize: null,
+        currentSize: null,
+        clubBeta: null,
+        betaCount: null,
         clubAlpha: 'none',
         clubInvitationId: null,
         showMembersList: false,
@@ -101,13 +105,15 @@ class Clubs extends React.Component {
             clubId: response.data.id,
             clubName: response.data.clubName,
             clubDescription: response.data.description,
+            currentSize: response.data.currentSize,
             clubAlpha: response.data.alpha,
+            maxSize: response.data.maxSize,
             membersList: response.data.members,
             showClubsList: false,
             showSingleClub: true,
           });
+          this.getBeta();
           } // end if
-          //this.renderTableData();
           else { this.setState({showClubsList: false}); }
                }).catch(error => {this.setState({ isLoaded: true, error,});
                });
@@ -146,6 +152,27 @@ class Clubs extends React.Component {
       this.setState({showMembersList: false, showSingleClubMember: true});
            }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
            });
+    }
+
+    getBeta() {
+        const name = JSON.parse(sessionStorage.getItem('tokens'));
+        const u = name.userName;
+        const p = name.password;
+        const token = u +':' + p;
+        const hash = btoa(token);
+        const Basic = 'Basic ' + hash;
+        axios.get("http://localhost:8080/api/v/c?cId=" + this.state.clubId,
+        {headers : { 'Authorization' : Basic }})
+        .then((response) => {
+         if (response.status === 200) {
+          this.setState({
+            isLoaded: true,
+            clubBeta: response.data.voteCast,
+            betaCount: response.data.countVotesCast,
+          });
+          } // end if
+               }).catch(error => {this.setState({ isLoaded: true, error,});
+               });
     }
 
   goToClubsList() {
@@ -232,7 +259,11 @@ class Clubs extends React.Component {
         <table>
             <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
             <tr><td>Description:</td><td class="clubTD"> {this.state.clubDescription} </td></tr>
-            <tr><td>Club Alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
+            <tr><td>Club alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
+            <tr><td>Max. size:</td><td class="clubTD"> {this.state.maxSize} </td></tr>
+            <tr><td>Current size:</td><td class="clubTD"> {this.state.currentSize} </td></tr>
+            <tr><td>Club beta:</td><td class="clubTD"> {this.state.clubBeta} </td></tr>
+            <tr><td>Beta vote count:</td><td class="clubTD"> {this.state.betaCount} </td></tr>
         </table>
         </div>
                       <div class="secondLevelDiv">

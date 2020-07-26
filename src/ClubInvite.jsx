@@ -42,9 +42,8 @@ class ClubInvite extends React.Component {
         .then((response) => {
         if (response.status === 204) {
         this.setState({invitationSentMessage: " user not found" });}
-        else {
-        this.setState({isLoaded: true, invitationSentMessage: this.state.receiver + " has been invited to join the club.",
-                  }); }
+        else if ( response.data.status == 5 ) { this.setState({isLoaded: true, invitationSentMessage: " Sorry, club is full",}); }
+        else {this.setState({isLoaded: true, invitationSentMessage: this.state.receiver + " has been invited to join the club.",}); }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
     }
