@@ -109,6 +109,7 @@ class PublicUserPages extends React.Component {
             <div class="topParentDiv">
             <div class="settings2ButtonsDiv">
                 <div>
+                <p class="secondP"> {this.state.userName} </p><br></br>
                 <ProfilePicturePublic url={this.state.url} />
                 <p class="secondP"> {this.state.profileTitle} </p><br></br>
                 <p class="secondP"> {this.state.profileLocation} </p><br></br><br></br><br></br>
@@ -118,7 +119,6 @@ class PublicUserPages extends React.Component {
 
         { !this.state.showList &&
          <div class="topParentDiv">
-         <p> Posted Stats </p>
          <div class="secondParentDiv">
          <p class="alertsSmallP"> &nbsp;(nothing to see here)</p>
          </div>
@@ -127,6 +127,7 @@ class PublicUserPages extends React.Component {
         { this.state.showList &&
          <div class="topParentDiv">
          <div class="secondParentDiv">
+            <p> My clubs: </p>
             <table>
                <tbody>
                 {this.renderTableData()}

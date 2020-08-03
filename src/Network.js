@@ -10,7 +10,6 @@ import ManageMyContactsRemoved from "./ManageMyContactsRemoved";
 import NetworkContactPages from "./NetworkContactPages";
 //import NetworkContactAudit from "./NetworkContactAudit";
 import { Link } from 'react-router-dom';
-import TitleBar2 from "./TitleBar2";
 
 class Network extends React.Component {
   constructor(props) {
@@ -32,7 +31,6 @@ class Network extends React.Component {
           showNetworkListFamily: false,
           showNetworkListColleagues: false,
           showNetworkListPending: false,
-          showNetworkListDetails: false,
           showRemovedList: false,
           showRemovedListDetails: false,
           showSingleContact: false,
@@ -99,7 +97,7 @@ class Network extends React.Component {
         const data = {id: event.target.value};
         this.state = {friendId: data.id};
         this.setState({friendId: this.state.friendId}); // sillyness.
-        this.setState({showNetworkList: false, showNetworkListDetails: false,});
+        this.setState({showNetworkListFriends: false, showNetworkListFamily: false, showNetworkListColleagues: false, showNetworkListPending: false,});
         this.setState({showRemovedList: false, showRemovedListDetails: false,});
         this.setState({showSingleContact: true});
         event.preventDefault();
@@ -139,16 +137,64 @@ class Network extends React.Component {
     return (
     <React.Fragment>
 
-        <TitleBar2 />
-
-            {!this.state.showSingleContact &&
+          {this.state.showNetworkListFriends &&
           <div class="settings3ButtonsDiv">
-            <button id="myContactsButton" onClick={() => this.goToNetworkContactsList(1)}> Friends </button>
-            <button id="myContactsButton" onClick={() => this.goToNetworkContactsList(2)}> Family </button>
-            <button id="myContactsButton" onClick={() => this.goToNetworkContactsList(3)}> Colleagues </button>
-            <button id="myContactsButton" onClick={() => this.goToNetworkContactsList(4)}> Pending </button>
-            <button id="myContactsButton" onClick={this.goToRemovedContacts}> Removed </button>
-            <button id="connectButton" onClick={this.goToInvite}> Invite </button>
+            <button id="myNetworkButtonOn" onClick={() => this.goToNetworkContactsList(1)}> Friends </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(2)}> Family </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(3)}> Colleagues </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(4)}> Pending </button>
+            <button id="myNetworkButton" onClick={this.goToRemovedContacts}> Removed </button>
+            <button id="myNetworkButton" onClick={this.goToInvite}> Invite </button>
+          </div> }
+
+          {this.state.showNetworkListFamily &&
+          <div class="settings3ButtonsDiv">
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(1)}> Friends </button>
+            <button id="myNetworkButtonOn" onClick={() => this.goToNetworkContactsList(2)}> Family </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(3)}> Colleagues </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(4)}> Pending </button>
+            <button id="myNetworkButton" onClick={this.goToRemovedContacts}> Removed </button>
+            <button id="myNetworkButton" onClick={this.goToInvite}> Invite </button>
+          </div> }
+
+          {this.state.showNetworkListColleagues &&
+          <div class="settings3ButtonsDiv">
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(1)}> Friends </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(2)}> Family </button>
+            <button id="myNetworkButtonOn" onClick={() => this.goToNetworkContactsList(3)}> Colleagues </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(4)}> Pending </button>
+            <button id="myNetworkButton" onClick={this.goToRemovedContacts}> Removed </button>
+            <button id="myNetworkButton" onClick={this.goToInvite}> Invite </button>
+          </div> }
+
+          {this.state.showNetworkListPending &&
+          <div class="settings3ButtonsDiv">
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(1)}> Friends </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(2)}> Family </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(3)}> Colleagues </button>
+            <button id="myNetworkButtonOn" onClick={() => this.goToNetworkContactsList(4)}> Pending </button>
+            <button id="myNetworkButton" onClick={this.goToRemovedContacts}> Removed </button>
+            <button id="myNetworkButton" onClick={this.goToInvite}> Invite </button>
+          </div> }
+
+          {this.state.showRemovedList &&
+          <div class="settings3ButtonsDiv">
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(1)}> Friends </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(2)}> Family </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(3)}> Colleagues </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(4)}> Pending </button>
+            <button id="myNetworkButtonOn" onClick={this.goToRemovedContacts}> Removed </button>
+            <button id="myNetworkButton" onClick={this.goToInvite}> Invite </button>
+          </div> }
+
+          {this.state.showInviteFriends &&
+          <div class="settings3ButtonsDiv">
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(1)}> Friends </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(2)}> Family </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(3)}> Colleagues </button>
+            <button id="myNetworkButton" onClick={() => this.goToNetworkContactsList(4)}> Pending </button>
+            <button id="myNetworkButton" onClick={this.goToRemovedContacts}> Removed </button>
+            <button id="myNetworkButtonOn" onClick={this.goToInvite}> Invite </button>
           </div> }
 
         {this.state.showNetworkListFriends &&

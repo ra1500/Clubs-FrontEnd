@@ -5,7 +5,6 @@ import UpdateUserInfo from "./UpdateUserInfo";
 import Picture from "./Picture";
 import ProfileText from "./ProfileText";
 import { Link } from 'react-router-dom';
-import TitleBar2 from "./TitleBar2";
 
 
 class Profile extends React.Component {
@@ -34,6 +33,9 @@ class Profile extends React.Component {
         education2: null,
         relationshipStatus2: null,
         showProfileSettings: false,
+        onProfile: true,
+        onEdit: false,
+        onSettings: false,
         };
     };
 
@@ -122,13 +124,16 @@ class Profile extends React.Component {
 
     goToUserSettings() {
         this.setState({showSettingsSection: true, showProfile: false, showProfileSettings: false});
+        this.setState({onProfile: false, onEdit: true, onSettings: false});
     }
     goToPrivateProfile() {
         this.getProfileText();
         this.setState({showSettingsSection: false, showProfile: true, showProfileSettings: false});
+        this.setState({onProfile: true, onEdit: false, onSettings: false});
     }
     goToProfileSettings() {
         this.setState({showSettingsSection: false, showProfile: false, showProfileSettings: true});
+        this.setState({onProfile: false, onEdit: false, onSettings: true});
     }
 
 
@@ -137,13 +142,26 @@ class Profile extends React.Component {
     return (
         <React.Fragment>
 
-        <TitleBar2 />
+              { this.state.onProfile &&
+              <div class="settings2ButtonsDiv">
+                <button id="myProfileButtonOn" onClick={this.goToPrivateProfile}> My Profile </button>
+                <button id="myProfileButton" onClick={this.goToUserSettings}> Edit </button>
+                <button id="myProfileButton" onClick={this.goToProfileSettings}> Settings </button>
+              </div> }
 
+              { this.state.onEdit &&
               <div class="settings2ButtonsDiv">
                 <button id="myProfileButton" onClick={this.goToPrivateProfile}> My Profile </button>
-                <button id="editButton" onClick={this.goToUserSettings}> Edit </button>
-                <button id="theirProfileButton" onClick={this.goToProfileSettings}> Settings </button>
-              </div>
+                <button id="myProfileButtonOn" onClick={this.goToUserSettings}> Edit </button>
+                <button id="myProfileButton" onClick={this.goToProfileSettings}> Settings </button>
+              </div> }
+
+              { this.state.onSettings &&
+              <div class="settings2ButtonsDiv">
+                <button id="myProfileButton" onClick={this.goToPrivateProfile}> My Profile </button>
+                <button id="myProfileButton" onClick={this.goToUserSettings}> Edit </button>
+                <button id="myProfileButtonOn" onClick={this.goToProfileSettings}> Settings </button>
+              </div> }
 
               { this.state.showProfile &&
               <div>

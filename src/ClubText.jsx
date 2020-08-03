@@ -7,13 +7,12 @@ class ClubText extends React.Component {
     this.handleChange2 = this.handleChange2.bind(this);
     this.handleChange3 = this.handleChange3.bind(this);
     this.handleChange6 = this.handleChange6.bind(this);
-    this.handleChange7 = this.handleChange7.bind(this);
     this.handleSubmit1 = this.handleSubmit1.bind(this);
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
     this.state = {
     userName: u,
-    alpha: u,
+    alpha: null,
     updatedMessage: null,
     showSubmit: true,
     maxSize: 20, // default size.
@@ -36,10 +35,7 @@ class ClubText extends React.Component {
         this.setState({maxSize: this.state.maxSize2});
 
      }
-     handleChange7(event) {
-       this.state = {alpha2: event.target.value};
-       this.setState({alpha: this.state.alpha2});
-     }
+
 
   handleSubmit1(event) {
     event.preventDefault();
@@ -53,12 +49,11 @@ class ClubText extends React.Component {
     const token = u + ':' + p;
     const hash = btoa(token);
     const Basic = 'Basic ' + hash;
-    let data = {clubName : this.state.clubName, description: this.state.description, maxSize: this.state.maxSize,
-     alpha: this.state.alpha,};
+    let data = {clubName : this.state.clubName, description: this.state.description, maxSize: this.state.maxSize};
     axios.post("http://localhost:8080/api/c/b", data,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {
-    this.setState({isLoaded: true, showSubmit: false, maxSize: response.data.maxSize,
+    this.setState({isLoaded: true, showSubmit: false, maxSize: response.data.maxSize, alpha: u,
               });
     if (response.data.founder == "OVER LIMIT") { this.setState({ updatedMessage: " Sorry, you have already reached your limit of 30 clubs joined" }) }
     else { this.setState({ updatedMessage: " Club has been added" }) };
@@ -80,10 +75,6 @@ class ClubText extends React.Component {
           <tr>
           <td> Description: </td>
           <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.description} onChange={this.handleChange3}  autocomplete="off" placeholder=""/></td>
-          </tr>
-          <tr>
-          <td> Alpha member: </td>
-          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.alpha} onChange={this.handleChange7}  autocomplete="off" placeholder=""/></td>
           </tr>
           <tr>
           <td> Max. membership size: </td>

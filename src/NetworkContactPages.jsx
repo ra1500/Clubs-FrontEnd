@@ -47,6 +47,7 @@ class NetworkContactPages extends React.Component {
           showRemove: false,
           list: null,
           invitedFriend: null,
+          onProfile: true,
         };
   }
 
@@ -96,16 +97,20 @@ class NetworkContactPages extends React.Component {
 
     goToContactSettings() {
         this.setState({showQuestionSetAuditing: false, isAfriend: false, hasPendingInvitations: false, showSettings: true, showRemove: false, showAuditQuestions: false, showFriendsContactsList: false});
+        this.setState({onProfile: false});
     }
     goToContactRemove() {
         this.setState({showQuestionSetAuditing: false, isAfriend: false, hasPendingInvitations: false, showSettings: false, showRemove: true, showAuditQuestions: false, showFriendsContactsList: false});
+        this.setState({onProfile: false});
     }
     goToContactsList() {
         this.getFriendships();
         this.setState({showQuestionSetAuditing: false, isAfriend: true, hasPendingInvitations: false, showSettings: false, showRemove: false, showContactScores: false, showAuditQuestions: false, showFriendsContactsList: true,});
+        this.setState({onProfile: false});
     }
     goToGoodStuff() {
         this.setState({showQuestionSetAuditing: false, isAfriend: false, showSettings: false, showRemove: false, showAuditQuestions: false, showFriendsContactsList: false});
+        this.setState({onProfile: true});
         this.isAFriendOrInvitation();
     }
 
@@ -232,10 +237,39 @@ class NetworkContactPages extends React.Component {
     <React.Fragment>
 
         <div class="topParentDiv">
-            <button id="theirProfileButton" onClick={this.goToGoodStuff}> Profile </button>
-            <button id="theirProfileButton" onClick={this.goToContactsList}> Contacts </button>
-            <button id="theirProfileButton" onClick={this.goToContactSettings}> Settings </button>
-            <button id="theirProfileButton" onClick={this.goToContactRemove}> Remove </button>
+
+            { this.state.onProfile &&
+            <div>
+            <button id="myNetworkButtonOn" onClick={this.goToGoodStuff}> Profile </button>
+            <button id="myNetworkButton" onClick={this.goToContactsList}> Contacts </button>
+            <button id="myNetworkButton" onClick={this.goToContactSettings}> Settings </button>
+            <button id="myNetworkButton" onClick={this.goToContactRemove}> Remove </button>
+            </div> }
+
+            { this.state.showFriendsContactsList &&
+            <div>
+            <button id="myNetworkButton" onClick={this.goToGoodStuff}> Profile </button>
+            <button id="myNetworkButtonOn" onClick={this.goToContactsList}> Contacts </button>
+            <button id="myNetworkButton" onClick={this.goToContactSettings}> Settings </button>
+            <button id="myNetworkButton" onClick={this.goToContactRemove}> Remove </button>
+            </div> }
+
+            { this.state.showSettings &&
+            <div>
+            <button id="myNetworkButton" onClick={this.goToGoodStuff}> Profile </button>
+            <button id="myNetworkButton" onClick={this.goToContactsList}> Contacts </button>
+            <button id="myNetworkButtonOn" onClick={this.goToContactSettings}> Settings </button>
+            <button id="myNetworkButton" onClick={this.goToContactRemove}> Remove </button>
+            </div> }
+
+            { this.state.showRemove &&
+            <div>
+            <button id="myNetworkButton" onClick={this.goToGoodStuff}> Profile </button>
+            <button id="myNetworkButton" onClick={this.goToContactsList}> Contacts </button>
+            <button id="myNetworkButton" onClick={this.goToContactSettings}> Settings </button>
+            <button id="myNetworkButtonOn" onClick={this.goToContactRemove}> Remove </button>
+            </div> }
+
             <table>
                 <tr >
                     <td class="alertsUserNameTD"> {this.state.friend} </td>

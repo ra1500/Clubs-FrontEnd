@@ -5,7 +5,7 @@ import { useAuth } from "../context/auth";
 
 
 function Login(props) {
-  const referer = "/welcome";
+  const referer = "/app";
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isError, setIsError] = useState(false);
   const [userName, setUserName] = useState("");

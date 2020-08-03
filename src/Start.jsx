@@ -9,7 +9,6 @@ import AlertsNewMessagesClubs from "./AlertsNewMessagesClubs";
 import AlertsNewMessagesGuilds from "./AlertsNewMessagesGuilds";
 import AlertsNewContactDetails from "./AlertsNewContactDetails";
 import AlertsClubDetails from "./AlertsClubDetails";
-import TitleBar2 from "./TitleBar2";
 
 class Start extends React.Component {
   constructor(props) {
@@ -49,18 +48,16 @@ class Start extends React.Component {
     return (
     <React.Fragment>
 
-      <TitleBar2 />
-
       { this.state.showNewMessages &&
       <div class="settings2ButtonsDiv">
-        <button id="newMessagesButtonRed" onClick={this.goToNewMessages}> New Messages </button>
-        <button id="newInvitationsButtonBlack" onClick={this.goToNewInvitations}> Invitations </button>
+        <button id="alertsButtonOn" onClick={this.goToNewMessages}> New Messages </button>
+        <button id="alertsButton" onClick={this.goToNewInvitations}> Invitations </button>
       </div> }
 
       { !this.state.showNewMessages &&
       <div class="settings2ButtonsDiv">
-        <button id="newMessagesButtonBlack" onClick={this.goToNewMessages}> New Messages </button>
-        <button id="newInvitationsButtonRed" onClick={this.goToNewInvitations}> Invitations </button>
+        <button id="alertsButton" onClick={this.goToNewMessages}> New Messages </button>
+        <button id="alertsButtonOn" onClick={this.goToNewInvitations}> Invitations </button>
       </div> }
 
 

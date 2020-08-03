@@ -10,7 +10,6 @@ import ClubQuit from "./ClubQuit";
 import { Link } from 'react-router-dom';
 import MessageBoardSingle from "./MessageBoardSingle";
 import ClubsEdit from "./ClubsEdit";
-import TitleBar2 from "./TitleBar2";
 import ProfilePictureClubMember from "./ProfilePictureClubMember";
 import ClubInvitations from "./ClubInvitations";
 import AlertsClubDetails from "./AlertsClubDetails";
@@ -60,6 +59,12 @@ class Clubs extends React.Component {
         memberUserName: null,
         singleClubMemberId: null,
         showEditClubs: false,
+        showEditClubs2: false,
+        onClubs: true,
+        onEdit: false,
+        onInvitations: false,
+        onStart: false,
+        onMessageBoard: false,
         };
     };
 
@@ -111,6 +116,7 @@ class Clubs extends React.Component {
             membersList: response.data.members,
             showClubsList: false,
             showSingleClub: true,
+            onMessageBoard: true,
           });
           this.getBeta();
           } // end if
@@ -176,36 +182,45 @@ class Clubs extends React.Component {
     }
 
   goToClubsList() {
-          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+          this.setState({ onClubs: true, onInvitations: false, onEdit: false, onStart: false });
           this.getClubsList();
     }
   goToClubInvitations() {
-          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: true, showClubsList: false, showClubDetails: false, showClubQuit: false});
+          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: true, showClubsList: false, showClubDetails: false, showClubQuit: false});
+          this.setState({ onClubs: false, onInvitations: true, onEdit: false, onStart: false });
     }
   goToClubDetails(e) {
           this.setState({ clubInvitationId: e.target.value });
-          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubsList: false, showClubDetails: true, showClubQuit: false});
+          this.setState({showCreateClubs: false, showSingleClub: false, showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubsList: false, showClubDetails: true, showClubQuit: false});
     }
   goToCreateClub() {
-          this.setState({showCreateClubs: true, showClubsList: false, showSingleClub: false, showMembersList: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+          this.setState({showCreateClubs: true, showClubsList: false, showSingleClub: false, showMembersList: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+          this.setState({ onClubs: false, onInvitations: false, onEdit: false, onStart: true });
     }
   goToEditClubs() {
-          this.setState({showCreateClubs: false, showClubsList: false, showSingleClub: false, showMembersList: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: true, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+          this.setState({showCreateClubs: false, showClubsList: false, showSingleClub: false, showMembersList: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: !this.state.showEditClubs, showEditClubs2: this.state.showEditClubs, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+          this.setState({ onClubs: false, onInvitations: false, onEdit: true, onStart: false });
     }
     showMembers() {
-           this.setState({showMembersList: !this.state.showMembersList, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({showMembersList: !this.state.showMembersList, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({ onMessageBoard: false });
     }
     showClubMessageBoard() {
-           this.setState({showMembersList: false, showClubMessageBoard: !this.state.showClubMessageBoard, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({showMembersList: false, showClubMessageBoard: !this.state.showClubMessageBoard, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({ onMessageBoard: true });
     }
     showClubVoting() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: !this.state.showClubVoting, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: !this.state.showClubVoting, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({ onMessageBoard: false });
     }
     showClubInvite() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: !this.state.showClubInvite, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: !this.state.showClubInvite, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({ onMessageBoard: false });
     }
     showClubQuit() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showClubInvitations: false, showClubDetails: false, showClubQuit: !this.state.showClubQuit});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: !this.state.showClubQuit});
+           this.setState({ onMessageBoard: false });
     }
 
 
@@ -213,14 +228,36 @@ class Clubs extends React.Component {
     return (
         <React.Fragment>
 
-         <TitleBar2 />
+            { this.state.onClubs &&
+              <div class="settings2ButtonsDiv">
+                <button id="myClubsButtonOn" onClick={this.goToClubsList}> My Clubs </button>
+                <button id="myClubsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
+                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
+                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Club </button>
+              </div> }
 
-            { !this.state.showSingleClub &&
+            { this.state.onInvitations &&
               <div class="settings2ButtonsDiv">
                 <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
-                <button id="myContactsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
-                <button id="myContactsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
-                <button id="myContactsButton" onClick={this.goToCreateClub}> Start a Club </button>
+                <button id="myClubsButtonOn" onClick={this.goToClubInvitations}> Club Invitations </button>
+                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
+                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Club </button>
+              </div> }
+
+            { this.state.onEdit &&
+              <div class="settings2ButtonsDiv">
+                <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
+                <button id="myClubsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
+                <button id="myClubsButtonOn" onClick={this.goToEditClubs}> Edit Clubs </button>
+                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Club </button>
+              </div> }
+
+            { this.state.onStart &&
+              <div class="settings2ButtonsDiv">
+                <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
+                <button id="myClubsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
+                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
+                <button id="myClubsButtonOn" onClick={this.goToCreateClub}> Start a Club </button>
               </div> }
 
         <div class="topParentDiv">
@@ -241,6 +278,11 @@ class Clubs extends React.Component {
         </div> }
 
         { this.state.showEditClubs &&
+        <div>
+        <ClubsEdit />
+        </div> }
+
+        { this.state.showEditClubs2 &&
         <div>
         <ClubsEdit />
         </div> }
@@ -266,13 +308,51 @@ class Clubs extends React.Component {
             <tr><td>Beta vote count:</td><td class="clubTD"> {this.state.betaCount} </td></tr>
         </table>
         </div>
+                      { this.state.onMessageBoard &&
+                      <div class="secondLevelDiv">
+                        <button id="myClubsButtonOn" onClick={this.showClubMessageBoard}> Message Board </button>
+                        <button id="myClubsButton" onClick={this.showMembers}> Members </button>
+                        <button id="myClubsButton" onClick={this.showClubVoting}> Voting </button>
+                        <button id="myClubsButton" onClick={this.showClubInvite}> Invite </button>
+                        <button id="myClubsButton" onClick={this.showClubQuit}> Quit </button>
+                      </div> }
+
+                      { this.state.showMembersList &&
+                      <div class="secondLevelDiv">
+                        <button id="myClubsButton" onClick={this.showClubMessageBoard}> Message Board </button>
+                        <button id="myClubsButtonOn" onClick={this.showMembers}> Members </button>
+                        <button id="myClubsButton" onClick={this.showClubVoting}> Voting </button>
+                        <button id="myClubsButton" onClick={this.showClubInvite}> Invite </button>
+                        <button id="myClubsButton" onClick={this.showClubQuit}> Quit </button>
+                      </div> }
+
+                      { this.state.showClubVoting &&
+                      <div class="secondLevelDiv">
+                        <button id="myClubsButton" onClick={this.showClubMessageBoard}> Message Board </button>
+                        <button id="myClubsButton" onClick={this.showMembers}> Members </button>
+                        <button id="myClubsButtonOn" onClick={this.showClubVoting}> Voting </button>
+                        <button id="myClubsButton" onClick={this.showClubInvite}> Invite </button>
+                        <button id="myClubsButton" onClick={this.showClubQuit}> Quit </button>
+                      </div> }
+
+                      { this.state.showClubInvite &&
+                      <div class="secondLevelDiv">
+                        <button id="myClubsButton" onClick={this.showClubMessageBoard}> Message Board </button>
+                        <button id="myClubsButton" onClick={this.showMembers}> Members </button>
+                        <button id="myClubsButton" onClick={this.showClubVoting}> Voting </button>
+                        <button id="myClubsButtonOn" onClick={this.showClubInvite}> Invite </button>
+                        <button id="myClubsButton" onClick={this.showClubQuit}> Quit </button>
+                      </div> }
+
+                      { this.state.showClubQuit &&
                       <div class="secondLevelDiv">
                         <button id="myClubsButton" onClick={this.showClubMessageBoard}> Message Board </button>
                         <button id="myClubsButton" onClick={this.showMembers}> Members </button>
                         <button id="myClubsButton" onClick={this.showClubVoting}> Voting </button>
                         <button id="myClubsButton" onClick={this.showClubInvite}> Invite </button>
-                        <button id="myClubsButton" onClick={this.showClubQuit}> Quit </button>
-                      </div>
+                        <button id="myClubsButtonOn" onClick={this.showClubQuit}> Quit </button>
+                      </div> }
+
             { this.state.showMembersList &&
             <div>
              <ClubMembers membersList={this.state.membersList} showMembersList2={this.state.showMembersList2} goToSingleClubMember={this.goToSingleClubMember} clubId={this.state.clubId} />
