@@ -22,6 +22,7 @@ class MessagesList extends React.Component {
       return sortedList.map((data, index) => {
          return (
             <tr class="friendsTR"key={data.message}>
+                    <td> <div id="start"> </div> </td>
                     <td id="timeStampTD"> <p class="timeStampP">   {new Intl.DateTimeFormat("en-GB", {
                                                 month: "short",
                                                 day: "numeric",
@@ -31,6 +32,7 @@ class MessagesList extends React.Component {
                                               }).format(    Date.parse(   data.created )    )} </p></td>
                 <td id="userNameTD"> <p class="userNameMSG">{data.sender.userName} </p></td>
                 <td> <div class="messagesDiv2"><p class="messagesP"> {data.message} </p></div></td>
+
             </tr>
          )
       })
@@ -49,7 +51,7 @@ class MessagesList extends React.Component {
          </div> }
 
         { this.props.showMessagesList2 &&
-         <div class="messagesDiv" onScroll={this.handleScroll}>
+         <div class="messagesDiv" onScroll={this.handleScroll} >
          <div>
             <table>
                <tbody>
