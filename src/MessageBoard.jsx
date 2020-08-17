@@ -53,7 +53,6 @@ class MessageBoard extends React.Component {
     elmnt.scrollIntoView();
   }
 
-
   addToList() {
     let newPageNo = ++this.state.scrollPageNumber;
     this.setState({scrollPageNumber: newPageNo});
