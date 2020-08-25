@@ -15,7 +15,11 @@ function UpdateUserInfo(props) {
   const { setAuthTokens } = useAuth();
 
     function updateSignup() {
-        if (window.confirm('Please confirm login credentials update')) {
+
+        if ( password.length < 8 ) { setUpdateMessage("Passwords must be at least 8 characters. Please modify."); }
+        else if ( password != confirmPassword ) { setUpdateMessage("Confirmed password does not match."); }
+        else {
+
         const name = JSON.parse(sessionStorage.getItem('tokens'));
         const u = name.userName;
         const p = name.password;
@@ -34,7 +38,7 @@ function UpdateUserInfo(props) {
             };
                }).catch(error => {
                });
-        } // end if window confirm
+         };
     }
 
   return (

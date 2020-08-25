@@ -154,7 +154,7 @@ class Clubs extends React.Component {
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
       if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
       if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "Irrelevant"})};
+      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
       this.setState({showMembersList: false, showSingleClubMember: true});
            }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
            });
@@ -203,7 +203,7 @@ class Clubs extends React.Component {
           this.setState({ onClubs: false, onInvitations: false, onEdit: true, onStart: false });
     }
     showMembers() {
-           this.setState({showMembersList: !this.state.showMembersList, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({showMembersList: true, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
            this.setState({ onMessageBoard: false });
     }
     showClubMessageBoard() {
@@ -211,15 +211,15 @@ class Clubs extends React.Component {
            this.setState({ onMessageBoard: true });
     }
     showClubVoting() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: !this.state.showClubVoting, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: true, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
            this.setState({ onMessageBoard: false });
     }
     showClubInvite() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: !this.state.showClubInvite, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: true, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
            this.setState({ onMessageBoard: false });
     }
     showClubQuit() {
-           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: !this.state.showClubQuit});
+           this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: true});
            this.setState({ onMessageBoard: false });
     }
 

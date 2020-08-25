@@ -36,6 +36,10 @@ class ClubInvite extends React.Component {
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
+
+        if ( this.state.receiver == u ) { this.setState({ invitationSentMessage: "but you're already in the club!" }); }
+        else {
+
         let data = { receiver: this.state.receiver };
         axios.post("http://localhost:8080/api/i/b?cId=" + this.props.clubId, data,
         {headers : { 'Authorization' : Basic }})
@@ -43,9 +47,11 @@ class ClubInvite extends React.Component {
         if (response.status === 204) {
         this.setState({invitationSentMessage: " user not found" });}
         else if ( response.data.status == 5 ) { this.setState({isLoaded: true, invitationSentMessage: " Sorry, club is full",}); }
-        else {this.setState({isLoaded: true, invitationSentMessage: this.state.receiver + " has been invited to join the club.",}); }
+        else if ( response.data.receiver == this.state.receiver ) { this.setState({ invitationSentMessage: response.data.receiver + " has been invited to join the club." }); }
+        else {this.setState({isLoaded: true, invitationSentMessage: response.data.receiver,}); }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
+        }; // end of first if/else
     }
 
   render() {

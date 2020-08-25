@@ -36,6 +36,11 @@ class Profile extends React.Component {
         onProfile: true,
         onEdit: false,
         onSettings: false,
+        showTitle: false,
+        showBlurb: false,
+        showLocation: false,
+        showContactDetails: false,
+        showRelationshipStatus: false,
         };
     };
 
@@ -115,9 +120,14 @@ class Profile extends React.Component {
       if (response.data.education === 3) {this.setState({education2: "Masters"})};
       if (response.data.education === 4) {this.setState({education2: "Phd or MD"})};
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
-      if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
-      if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "Irrelevant"})};
+      if (response.data.relationshipStatus === 1) {this.setState({showRelationshipStatus: true, relationshipStatus2: "Available"})};
+      if (response.data.relationshipStatus === 2) {this.setState({showRelationshipStatus: true, relationshipStatus2: "Not Available"})};
+      if (response.data.relationshipStatus === 3) {this.setState({showRelationshipStatus: true, relationshipStatus2: "whatever"})};
+      if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
+      if (response.data.title != null && response.data.title != "" ) {this.setState({showTitle: true,})};
+      if (response.data.blurb != null && response.data.blurb != "" ) {this.setState({showBlurb: true,})};
+      if (response.data.location != null && response.data.location != "" ) {this.setState({showLocation: true,})};
+      if (response.data.contactInfo != null && response.data.contactInfo != "" ) {this.setState({showContactDetails: true,})};
            }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
            });
     }
@@ -173,11 +183,16 @@ class Profile extends React.Component {
                 <img id="profilePic" src={this.state.profilePicture}></img>
                 <div class="scoresListTD">
                 <table>
-                <tr><td> Title: {this.state.profileTitle} </td></tr>
-                <tr><td> About Me: {this.state.profileBlurb} </td></tr>
-                <tr><td> Location: {this.state.profileLocation} </td></tr>
-                <tr><td> Contact Details: {this.state.profileContactInfo} </td></tr>
-                <tr><td> Relationship Status: {this.state.relationshipStatus2} </td></tr>
+                { this.state.showTitle &&
+                <tr><td> Title: {this.state.profileTitle} </td></tr> }
+                { this.state.showBlurb &&
+                <tr><td> About Me: {this.state.profileBlurb} </td></tr> }
+                { this.state.showLocation &&
+                <tr><td> Location: {this.state.profileLocation} </td></tr> }
+                { this.state.showContactDetails &&
+                <tr><td> Contact Details: {this.state.profileContactInfo} </td></tr> }
+                { this.state.showRelationshipStatus &&
+                <tr><td> Relationship Status: {this.state.relationshipStatus2} </td></tr> }
                 </table>
                 </div>
                 </div>

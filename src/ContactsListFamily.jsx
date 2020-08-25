@@ -7,13 +7,16 @@ class ContactsListFamily extends React.Component {
         this.state = {
             list: this.props.list,
             showNoneMessage: true,
+            showList: true,
         };
     }
 
    renderTableData() {
+      if ( this.props.list == null ) {  this.setState({showList: false}); }; // this b.s. needed so that during logout no null list error
+
       const sortedList = this.state.list.sort((a,b) => (a.created > b.created) ? 1 : ((b.created > a.created) ? -1 : 0));
       return sortedList.map((data, index) => {
-        if ( data.connectionType == "Other" & data.connectionStatus == "Connected" ) {
+        if ( data.connectionType == "Family" && data.connectionStatus == "Connected" ) {
          this.state = { showNoneMessage: false };
          return (
             <tr class="friendsTR"key={data.friend}>
@@ -38,11 +41,8 @@ class ContactsListFamily extends React.Component {
          <div class="topParentDiv">
         <div class="secondParentDiv">
 
-        { !this.props.showNetworkListDetails &&
-         <div>
-         <p class="alertsSmallP"> &nbsp;(none)</p>
-         </div> }
-
+        { this.state.showList &&
+        <div>
         { this.props.showNetworkListDetails &&
          <div>
             <table>
@@ -50,6 +50,7 @@ class ContactsListFamily extends React.Component {
                   {this.renderTableData()}
                </tbody>
             </table>
+         </div> }
          </div> }
          </div>
          </div>

@@ -50,18 +50,25 @@ class InvitationFormContact extends React.Component {
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
+
+        if ( this.props.invitedFriend == u ) { this.setState({invitationSentMessage: " ummm, aren't you already connected to yourself?" }); }
+        else {
+
         let data = { friend: this.props.invitedFriend, connectionType: this.state.connectionType, connectionStatus: this.state.connectionStatus,
          visibilityPermission: this.state.visibilityPermission, inviter: u };
         axios.post("http://localhost:8080/api/f", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
+
         if (response.status === 204) {
         this.setState({invitationSentMessage: " user not found" });}
+
         else {
         this.setState({isLoaded: true, invitationSentMessage: this.props.invitedFriend + " has been invited to join your network.",
                   }); }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
+        } // end first else
     }
 
   render() {
@@ -76,7 +83,7 @@ class InvitationFormContact extends React.Component {
               <label><input value="Friend" onChange={this.handleChange2} type="radio" name="optradio" /> Friend </label>
             </div>
             <div>
-              <label><input value="Other" onChange={this.handleChange2} type="radio" name="optradio" /> Family </label>
+              <label><input value="Family" onChange={this.handleChange2} type="radio" name="optradio" /> Family </label>
             </div>
             <div>
               <label><input value="Colleague" onChange={this.handleChange2} type="radio" name="optradio" /> Colleague </label>

@@ -66,7 +66,9 @@ class Network extends React.Component {
           else if (e == 4) { this.setState({showNetworkListPending: true}); }
           else { this.setState({showNetworkListFriends: true}); };
           } // end 1st if
-          //this.setState({showNetworkListFriends: true});
+          else {
+            this.setState({showNetworkListFriends: true});
+          }; // end 2nd if
                }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
                });
     }

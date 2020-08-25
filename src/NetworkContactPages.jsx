@@ -48,6 +48,11 @@ class NetworkContactPages extends React.Component {
           list: null,
           invitedFriend: null,
           onProfile: true,
+          showTitle: false,
+          showBlurb: false,
+          showLocation: false,
+          showContactDetails: false,
+          showRelationshipStatus: false,
         };
   }
 
@@ -206,7 +211,12 @@ class NetworkContactPages extends React.Component {
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
       if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
       if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "Irrelevant"})};
+      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
+      if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
+      if (response.data.title != null && response.data.title != "" ) {this.setState({showTitle: true,})};
+      if (response.data.blurb != null && response.data.blurb != "" ) {this.setState({showBlurb: true,})};
+      if (response.data.location != null && response.data.location != "" ) {this.setState({showLocation: true,})};
+      if (response.data.contactInfo != null && response.data.contactInfo != "" ) {this.setState({showContactDetails: true,})};
            }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
            });
     }
@@ -297,17 +307,31 @@ class NetworkContactPages extends React.Component {
           { this.state.isAfriend &&
           <div class="topParentDiv">
                 { this.state.showContactScores &&
-                <div>
-                <img id="profilePic" src={this.state.profilePicture}></img>
+                <img id="profilePic" src={this.state.profilePicture}></img> }
                 <div class="scoresListTD">
-                <p class="secondP"> Title: {this.state.title}</p><br></br>
-                <p class="secondP"> About me: {this.state.blurb}</p><br></br>
-                <p class="secondP"> Location: {this.state.location}</p><br></br>
-                <p class="secondP"> Contact Info: {this.state.contactInfo}</p><br></br>
-                <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p>
+                <div>
+                { this.state.showTitle &&
+                <p class="secondP"> Title: {this.state.title}</p> }
+                </div>
+                <div>
+                { this.state.showContactScores &&
+                <p class="secondP"> About me: {this.state.blurb}</p> }
+                </div>
+                <div>
+                { this.state.showContactScores &&
+                <p class="secondP"> Location: {this.state.location}</p> }
+                </div>
+                <div>
+                { this.state.showContactScores &&
+                <p class="secondP"> Contact Info: {this.state.contactInfo}</p> }
+                </div>
+                <div>
+                { this.state.showContactScores &&
+                <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p> }
+                </div>
                 </div>
                 <MessageBoardFriend friendshipsEntityId={this.state.friendId}/>
-                </div> }
+
           </div> }
 
 

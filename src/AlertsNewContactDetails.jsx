@@ -120,7 +120,7 @@ class AlertsNewContactDetails extends React.Component {
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
       if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
       if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "Irrelevant"})};
+      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
            }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
            });
     }

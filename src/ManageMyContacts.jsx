@@ -5,6 +5,7 @@ class ManageMyContacts extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit1 = this.handleSubmit1.bind(this);
+    this.handleSubmit2 = this.handleSubmit2.bind(this);
     this.handleChange3 = this.handleChange3.bind(this);
         this.state = {
           error: null,
@@ -48,11 +49,32 @@ class ManageMyContacts extends React.Component {
                });
     }
 
+    updateFriendshipConnectionType() {
+        const name = JSON.parse(sessionStorage.getItem('tokens'));
+        const u = name.userName;
+        const p = name.password;
+        const token = u + ':' + p;
+        const hash = btoa(token);
+        const Basic = 'Basic ' + hash;
+        let data = { id: this.props.friendId,
+         connectionType: this.state.connectionType, visibilityPermission: this.state.visibilityPermission };
+        axios.post("http://localhost:8080/api/f/b", data,
+        {headers : { 'Authorization' : Basic }})
+        .then((response) => {
+        this.setState({isLoaded: true, showUpdatedMessage: true, showUpdateButton: false,
+                  });
+               }).catch(error => {this.setState({ isLoaded: true, error});
+               });
+    }
+
   handleSubmit1(event) {
     event.preventDefault();
     this.patchFriendship();
   }
-
+  handleSubmit2(event) {
+    event.preventDefault();
+    this.updateFriendshipConnectionType();
+  }
   handleChange3(event) {
     this.setState({connectionType: event.target.value});
   }
@@ -80,7 +102,7 @@ class ManageMyContacts extends React.Component {
                   <label><input value="Friend" onChange={this.handleChange3} type="radio" name="optradio" /> Friend </label>
                 </div>
                 <div>
-                  <label><input value="Other" onChange={this.handleChange3} type="radio" name="optradio" /> Family </label>
+                  <label><input value="Family" onChange={this.handleChange3} type="radio" name="optradio" /> Family </label>
                 </div>
                 <div>
                   <label><input value="Colleague" onChange={this.handleChange3} type="radio" name="optradio" /> Colleague </label>
@@ -91,7 +113,7 @@ class ManageMyContacts extends React.Component {
                 { this.state.showUpdatedMessage &&
                 <p id="deletedAnswersMessage"> {this.state.updatedMessage} </p> }
                 { this.state.showUpdateButton &&
-                <button type="submit" onClick={this.handleSubmit1} className="seeDetailsButton"> Update </button> }
+                <button type="submit" onClick={this.handleSubmit2} className="seeDetailsButton"> Update </button> }
             </div>
       </div> }
 

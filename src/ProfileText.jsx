@@ -61,7 +61,7 @@ class ProfileText extends React.Component {
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
       if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
       if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "Irrelevant"})};
+      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
            }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
            });
     }
@@ -87,7 +87,7 @@ class ProfileText extends React.Component {
        this.setState({relationshipStatus: event.target.value});
       if (event.target.value === "1") {this.setState({relationshipStatus2: "Available"})};
       if (event.target.value === "2") {this.setState({relationshipStatus2: "Not Available"})};
-      if (event.target.value === "3") {this.setState({relationshipStatus2: "Irrelevant"})};
+      if (event.target.value === "3") {this.setState({relationshipStatus2: "whatever"})};
      }
      handleChange6(event) {
        this.setState({location: event.target.value});
@@ -169,7 +169,10 @@ class ProfileText extends React.Component {
               <label><input value="2" onChange={this.handleChange5} type="radio" name="optradio" /> Not Available </label>
             </div>
             <div class="radioSelections">
-              <label><input value="3" onChange={this.handleChange5} type="radio" name="optradio" /> Irrelevant </label>
+              <label><input value="3" onChange={this.handleChange5} type="radio" name="optradio" /> whatever </label>
+            </div>
+            <div class="radioSelections">
+              <label><input value="4" onChange={this.handleChange5} type="radio" name="optradio" /> (none)</label>
             </div>
         </form>
             <button type="submit" onClick={this.handleSubmit1} className="seeDetailsButton"> Update </button>

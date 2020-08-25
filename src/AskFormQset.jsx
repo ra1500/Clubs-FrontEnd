@@ -271,7 +271,7 @@ class AskFormQset extends React.Component {
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
     }
-    inviteToScoreOther() {
+    inviteToScoreFamily() {
         const name = JSON.parse(sessionStorage.getItem('tokens'));
         const u = name.userName;
         const p = name.password;
@@ -282,7 +282,7 @@ class AskFormQset extends React.Component {
         axios.post("http://localhost:8080/api/prm/sc/n?qsId=" + this.state.questionSetVersion, data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
-        this.setState({isLoaded: true, inviteSelectionMessage: "Your Other group" + " " + response.data.invitationMessage,
+        this.setState({isLoaded: true, inviteSelectionMessage: "Your Family group" + " " + response.data.invitationMessage,
                   });
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
@@ -460,14 +460,14 @@ class AskFormQset extends React.Component {
         this.setState({invitationSelection: this.state.invitationSelection});
         if ( this.state.invitationSelection == "Friends") { this.setState({inviteSelectionMessage: "Invite all your friends? ",}) }
         else if ( this.state.invitationSelection == "Colleagues") { this.setState({inviteSelectionMessage: "Invite all your colleagues? ",}) }
-        else if ( this.state.invitationSelection == "Other") { this.setState({inviteSelectionMessage: "Invite all 'Other'? ",}) }
+        else if ( this.state.invitationSelection == "Family") { this.setState({inviteSelectionMessage: "Invite all 'Family'? ",}) }
         else if ( this.state.invitationSelection == "Everyone") { this.setState({inviteSelectionMessage: "Invite all your contacts? ",}) }
-        else if ( this.state.invitationSelection != "" || "Friends" || "Colleagues" || "Other" || "Everyone") { this.setState({inviteSelectionMessage: "Invite " + event.target.value + "? "}) };
+        else if ( this.state.invitationSelection != "" || "Friends" || "Colleagues" || "Family" || "Everyone") { this.setState({inviteSelectionMessage: "Invite " + event.target.value + "? "}) };
      }
     inviteToScoreSubmit() {
         if ( this.state.invitationSelection == "Friends") { this.inviteToScoreFriends() }
         else if ( this.state.invitationSelection == "Colleagues") { this.inviteToScoreColleagues() }
-        else if ( this.state.invitationSelection == "Other") { this.inviteToScoreOther() }
+        else if ( this.state.invitationSelection == "Family") { this.inviteToScoreFamily() }
         else if ( this.state.invitationSelection == "Everyone") { this.inviteToScoreEveryone() }
         else if ( this.state.invitationSelection != "") { this.inviteToScoreIndividual() }
     }
@@ -595,7 +595,7 @@ class AskFormQset extends React.Component {
             <div class="secondParentDiv">
                 <button class="inviteAuditButton" value="Friends" onClick={e => this.inviteToScoreSelector(e)} > All Friends </button>
                 <button class="inviteAuditButton" value="Colleagues" onClick={e => this.inviteToScoreSelector(e)} > All Colleagues </button>
-                <button class="inviteAuditButton" value="Other" onClick={e => this.inviteToScoreSelector(e)} > All Other </button>
+                <button class="inviteAuditButton" value="Family" onClick={e => this.inviteToScoreSelector(e)} > All Family </button>
                 <button class="inviteAuditButton" value="Everyone"  onClick={e => this.inviteToScoreSelector(e)} > All Contacts </button>
                 <div id="submitQsetInviteDiv">
                 <input id="askForm1" placeholder=" (contact username)" autocomplete="off" type="text" maxlength="40" value={this.state.invitee} onChange={this.handleChange4} />
