@@ -49,7 +49,16 @@ function enterPressed(event) {
         <button id="logoutButton" onClick={postLogin}> Log In </button>
 
         { isError &&
-        <p id="deletedScorePostP">username or password not found</p> }
+        <div>
+        <p></p>
+        <p id="deletedScorePostP">username or password not found</p>
+        </div>}
+
+        { !isError &&
+        <div>
+        <p></p>
+        <p id="deletedScorePostP"></p>
+        </div>}
 
     </div>
     </React.Fragment>

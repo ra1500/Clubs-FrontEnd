@@ -29,6 +29,7 @@ class Clubs extends React.Component {
     this.showClubQuit = this.showClubQuit.bind(this);
     this.goToSingleClubMember = this.goToSingleClubMember.bind(this);
     this.goToEditClubs = this.goToEditClubs.bind(this);
+    this.hideClubButtons = this.hideClubButtons.bind(this);
     this.state = {
         isLoaded: null,
         list: null,
@@ -65,6 +66,12 @@ class Clubs extends React.Component {
         onInvitations: false,
         onStart: false,
         onMessageBoard: false,
+        showClubQuitButtons: true,
+        showTitle: false,
+        showBlurb: false,
+        showLocation: false,
+        showContactDetails: false,
+        showRelationshipStatus: false,
         };
     };
 
@@ -86,9 +93,11 @@ class Clubs extends React.Component {
           this.setState({
             isLoaded: true,
             list: response.data.clubsList,
-            showClubsList2: true,
+            //showClubsList2: true,
             showClubsList: true,
           });
+          if ( response.data.clubsList.length > 0 ) { this.setState({ showClubsList2: true}) };
+          if ( response.data.clubsList.length == 0 ) { this.setState({ showClubsList2: false}) };
           } // end if
                }).catch(error => {this.setState({ isLoaded: true, error,});
                });
@@ -117,6 +126,8 @@ class Clubs extends React.Component {
             showClubsList: false,
             showSingleClub: true,
             onMessageBoard: true,
+            showClubMessageBoard: true,
+            showClubQuitButtons: true,
           });
           this.getBeta();
           } // end if
@@ -155,6 +166,11 @@ class Clubs extends React.Component {
       if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
       if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
       if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
+      if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
+      if (response.data.title != null && response.data.title != "" ) {this.setState({showTitle: true,})};
+      if (response.data.blurb != null && response.data.blurb != "" ) {this.setState({showBlurb: true,})};
+      if (response.data.location != null && response.data.location != "" ) {this.setState({showLocation: true,})};
+      if (response.data.contactInfo != null && response.data.contactInfo != "" ) {this.setState({showContactDetails: true,})};
       this.setState({showMembersList: false, showSingleClubMember: true});
            }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
            });
@@ -222,7 +238,9 @@ class Clubs extends React.Component {
            this.setState({showMembersList: false, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: true});
            this.setState({ onMessageBoard: false });
     }
-
+    hideClubButtons() {
+        this.setState({ showClubQuitButtons: false });
+    }
 
    render() {
     return (
@@ -346,11 +364,14 @@ class Clubs extends React.Component {
 
                       { this.state.showClubQuit &&
                       <div class="secondLevelDiv">
+                        { this.state.showClubQuitButtons &&
+                        <div>
                         <button id="myClubsButton" onClick={this.showClubMessageBoard}> Message Board </button>
                         <button id="myClubsButton" onClick={this.showMembers}> Members </button>
                         <button id="myClubsButton" onClick={this.showClubVoting}> Voting </button>
                         <button id="myClubsButton" onClick={this.showClubInvite}> Invite </button>
                         <button id="myClubsButtonOn" onClick={this.showClubQuit}> Quit </button>
+                        </div> }
                       </div> }
 
             { this.state.showMembersList &&
@@ -375,19 +396,43 @@ class Clubs extends React.Component {
 
             { this.state.showClubQuit &&
             <div>
-                <ClubQuit clubId={this.state.clubId}/>
+                <ClubQuit clubId={this.state.clubId} hideClubButtons={this.hideClubButtons}/>
             </div> }
 
           { this.state.showSingleClubMember &&
           <div class="topParentDiv">
                 <ProfilePictureClubMember memberId={this.state.singleClubMemberId} clubId={this.state.clubId}/>
                 <div class="scoresListTD">
-                <p class="secondP"> Club Member: {this.state.memberUserName}</p><br></br>
-                <p class="secondP"> Title: {this.state.title}</p><br></br>
-                <p class="secondP"> About me: {this.state.blurb}</p><br></br>
-                <p class="secondP"> Location: {this.state.location}</p><br></br>
-                <p class="secondP"> Contact Info: {this.state.contactInfo}</p><br></br>
-                <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p>
+                <div>
+                { this.state.showTitle &&
+                <p class="secondP"> Title: {this.state.title}</p> }
+                { !this.state.showTitle &&
+                <p class="secondP"> </p> }
+                </div>
+                <div>
+                { this.state.showBlurb &&
+                <p class="secondP"> About me: {this.state.blurb}</p> }
+                { !this.state.showBlurb &&
+                <p class="secondP"> </p> }
+                </div>
+                <div>
+                { this.state.showLocation &&
+                <p class="secondP"> Location: {this.state.location}</p> }
+                { !this.state.showLocation &&
+                <p class="secondP"> </p> }
+                </div>
+                <div>
+                { this.state.showContactDetails &&
+                <p class="secondP"> Contact Info: {this.state.contactInfo}</p> }
+                { !this.state.showContactDetails &&
+                <p class="secondP"> </p> }
+                </div>
+                <div>
+                { this.state.showRelationshipStatus &&
+                <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p> }
+                { !this.state.showRelationshipStatus &&
+                <p class="secondP"> </p> }
+                </div>
                 </div>
                 <MessageBoardSingle singleClubMemberId={this.state.singleClubMemberId} clubName={this.state.clubName}/>
                 </div> }

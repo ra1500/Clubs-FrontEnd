@@ -110,7 +110,7 @@ class NetworkContactPages extends React.Component {
     }
     goToContactsList() {
         this.getFriendships();
-        this.setState({showQuestionSetAuditing: false, isAfriend: true, hasPendingInvitations: false, showSettings: false, showRemove: false, showContactScores: false, showAuditQuestions: false, showFriendsContactsList: true,});
+        this.setState({showQuestionSetAuditing: false, isAfriend: false, hasPendingInvitations: false, showSettings: false, showRemove: false, showContactScores: false, showAuditQuestions: false, showFriendsContactsList: true,});
         this.setState({onProfile: false});
     }
     goToGoodStuff() {
@@ -312,24 +312,35 @@ class NetworkContactPages extends React.Component {
                 <div>
                 { this.state.showTitle &&
                 <p class="secondP"> Title: {this.state.title}</p> }
+                { !this.state.showTitle &&
+                <p class="secondP"> </p> }
                 </div>
                 <div>
-                { this.state.showContactScores &&
+                { this.state.showBlurb &&
                 <p class="secondP"> About me: {this.state.blurb}</p> }
+                { !this.state.showBlurb &&
+                <p class="secondP"> </p> }
                 </div>
                 <div>
-                { this.state.showContactScores &&
+                { this.state.showLocation &&
                 <p class="secondP"> Location: {this.state.location}</p> }
+                { !this.state.showLocation &&
+                <p class="secondP"> </p> }
                 </div>
                 <div>
-                { this.state.showContactScores &&
+                { this.state.showContactDetails &&
                 <p class="secondP"> Contact Info: {this.state.contactInfo}</p> }
+                { !this.state.showContactDetails &&
+                <p class="secondP"> </p> }
                 </div>
                 <div>
-                { this.state.showContactScores &&
+                { this.state.showRelationshipStatus &&
                 <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p> }
+                { !this.state.showRelationshipStatus &&
+                <p class="secondP"> </p> }
                 </div>
                 </div>
+
                 <MessageBoardFriend friendshipsEntityId={this.state.friendId}/>
 
           </div> }

@@ -36,8 +36,9 @@ class ClubQuit extends React.Component {
         if (response.status === 204) {
         this.setState({quitMessage: " error. user and club combination not found." });}
         else {
-        this.setState({isLoaded: true, quitMessage: " Club removed.",
-                  }); }
+        this.setState({isLoaded: true, quitMessage: response.data, showQuitButton: false,});
+        this.props.hideClubButtons();
+                   }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
     }

@@ -6,7 +6,8 @@ class ClubsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: this.props.list, //
+            list: this.props.list,
+             showNone: false,
         };
     }
 
