@@ -222,6 +222,7 @@ class Clubs extends React.Component {
     showMembers() {
            this.setState({showMembersList: true, showMembersListMenuSelection: true, showClubMessageBoard: false, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
            this.setState({ onMessageBoard: false });
+           this.setState({ showTitle: false, showBlurb: false, showLocation: false, showContactDetails: false, showRelationshipStatus: false,  });
     }
     showClubMessageBoard() {
            this.setState({showMembersList: false, showMembersListMenuSelection: false, showClubMessageBoard: !this.state.showClubMessageBoard, showClubInvite: false, showClubVoting: false, showSingleClubMember: false, showEditClubs: false, showEditClubs2: false, showClubInvitations: false, showClubDetails: false, showClubQuit: false});
