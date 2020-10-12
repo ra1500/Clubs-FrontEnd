@@ -4,7 +4,6 @@ import axios from 'axios';
 class ManageMyContacts extends React.Component {
   constructor(props) {
     super(props);
-    this.handleSubmit1 = this.handleSubmit1.bind(this);
     this.handleSubmit2 = this.handleSubmit2.bind(this);
     this.handleChange3 = this.handleChange3.bind(this);
         this.state = {
@@ -31,24 +30,6 @@ class ManageMyContacts extends React.Component {
         this.manageUpdate();
     }
 
-    patchFriendship() {
-        const name = JSON.parse(sessionStorage.getItem('tokens'));
-        const u = name.userName;
-        const p = name.password;
-        const token = u + ':' + p;
-        const hash = btoa(token);
-        const Basic = 'Basic ' + hash;
-        let data = { id: this.props.friendId, connectionStatus: this.props.connectionStatus, inviter: this.props.inviter,
-         connectionType: this.state.connectionType, visibilityPermission: this.state.visibilityPermission };
-        axios.post("http://localhost:8080/api/f/a", data,
-        {headers : { 'Authorization' : Basic }})
-        .then((response) => {
-        this.setState({isLoaded: true, showUpdatedMessage: true, showUpdateButton: false,
-                  });
-               }).catch(error => {this.setState({ isLoaded: true, error});
-               });
-    }
-
     updateFriendshipConnectionType() {
         const name = JSON.parse(sessionStorage.getItem('tokens'));
         const u = name.userName;
@@ -67,10 +48,6 @@ class ManageMyContacts extends React.Component {
                });
     }
 
-  handleSubmit1(event) {
-    event.preventDefault();
-    this.patchFriendship();
-  }
   handleSubmit2(event) {
     event.preventDefault();
     this.updateFriendshipConnectionType();

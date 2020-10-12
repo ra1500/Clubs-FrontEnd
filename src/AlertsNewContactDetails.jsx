@@ -21,27 +21,6 @@ class AlertsNewContactDetails extends React.Component {
         this.getSingleFriendship();
     }
 
-    // accept/decline friendship
-    patchFriendship() {
-        const name = JSON.parse(sessionStorage.getItem('tokens'));
-        const u = name.userName;
-        const p = name.password;
-        const token = u + ':' + p;
-        const hash = btoa(token);
-        const Basic = 'Basic ' + hash;
-        let data = { id: this.state.friendId, connectionStatus: this.state.connectionStatus, inviter: this.state.inviter,
-         connectionType: this.state.connectionType, visibilityPermission: this.state.visibilityPermission };
-        axios.post("http://localhost:8080/api/f/a", data,
-        {headers : { 'Authorization' : Basic }})
-        .then((response) => {
-        this.setState({isLoaded: true, showUpdateButton: false,
-                  });
-         if (response.data.connectionStatus == "Connected") { this.setState({invitationStatusMessage: "You are now connected to " + this.state.friend}) }
-         if (response.data.connectionStatus == "Removed") { this.setState({invitationStatusMessage: "You have removed " + this.state.friend}) }
-               }).catch(error => {this.setState({ isLoaded: true, error});
-               });
-    }
-
   getProfilePicture() {
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
@@ -133,16 +112,14 @@ class AlertsNewContactDetails extends React.Component {
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        let data = { id: this.state.friendId, connectionStatus: "Connected",
-          visibilityPermission: this.state.visibilityPermission };
-        axios.post("http://localhost:8080/api/f/a", data,
+        let data = { id: this.state.friendId, };
+        axios.post("http://localhost:8080/api/f/c", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
         this.setState({isLoaded: true, showUpdateButton: false,
                   });
          if (response.data.connectionStatus == "Connected") { this.setState({invitationStatusMessage: "You are now connected to " + this.state.friend}) }
          if (response.data.connectionStatus == "OVER LIMIT") { this.setState({invitationStatusMessage: "Sorry, you have reached the maximum number of connections."}) }
-         if (response.data.connectionStatus == "Removed") { this.setState({invitationStatusMessage: "You have declined " + this.state.friend}) }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
     }
@@ -155,9 +132,8 @@ class AlertsNewContactDetails extends React.Component {
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        let data = { id: this.state.friendId, connectionStatus: "Removed",
-          visibilityPermission: this.state.visibilityPermission };
-        axios.post("http://localhost:8080/api/f/a", data,
+        let data = { id: this.state.friendId, };
+        axios.post("http://localhost:8080/api/f/d", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
         this.setState({isLoaded: true, showUpdateButton: false,

@@ -35,9 +35,8 @@ class ManageMyContactsRemove extends React.Component {
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        let data = { id: this.props.friendId, connectionStatus: "removed", inviter: this.props.inviter,
-         connectionType: this.state.connectionType, visibilityPermission: "No" };
-        axios.post("http://localhost:8080/api/f/a", data,
+        let data = { id: this.props.friendId, };
+        axios.post("http://localhost:8080/api/f/e", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
         this.setState({isLoaded: true, showRemoveButton : false, showDeletedMessage : true,
