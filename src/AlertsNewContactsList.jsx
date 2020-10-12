@@ -29,8 +29,8 @@ class AlertsNewContactsList extends React.Component {
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        let data = { id: friendshipId, connectionStatus: "Connected", visibilityPermission: "Yes" };
-        axios.post("http://localhost:8080/api/f/a", data,
+        let data = { id: friendshipId, };
+        axios.post("http://localhost:8080/api/f/c", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
         this.getFriendships();
@@ -53,8 +53,8 @@ class AlertsNewContactsList extends React.Component {
         const token = u + ':' + p;
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
-        let data = { id: friendshipId, connectionStatus: "removed", visibilityPermission: "Yes" };
-        axios.post("http://localhost:8080/api/f/a", data,
+        let data = { id: friendshipId, };
+        axios.post("http://localhost:8080/api/f/d", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
         this.getFriendships();

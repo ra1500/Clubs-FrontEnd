@@ -316,8 +316,6 @@ class Clubs extends React.Component {
         { this.state.showSingleClub &&
         <div>
         <div class="topParentDiv">
-        <div class="settings2ButtonsDiv">
-        </div>
         <table>
             <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
             <tr><td>Description:</td><td class="clubTD"> {this.state.clubDescription} </td></tr>

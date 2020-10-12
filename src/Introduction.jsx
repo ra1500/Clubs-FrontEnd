@@ -41,8 +41,8 @@ class Introduction extends React.Component {
          <p id="intro1p">  Simply connected. Friends, family, colleagues. </p>
          <ul class="introUL">
          <li>  Join clubs. Start a new one. </li>
-         <li>  Expand your network through your connections. </li>
-         <li>  Use guilds to collaborate. </li>
+         <li>  Expand your network. </li>
+         <li>  Collaborate through guilds. </li>
          <li>  Private and secure.  </li>
          </ul>
     </div>
