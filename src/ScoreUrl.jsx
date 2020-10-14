@@ -80,13 +80,13 @@ class ScoreUrl extends React.Component {
 
         <form onSubmit={this.handleSubmit1}>
             <div>
-              <label><input value="Public" onChange={this.handleChange1} type="radio" name="optradio" /> Public (including internet) </label>
+              <label><input value="Public" onChange={this.handleChange1} type="radio" name="optradio" /> Public. You have a public internet page which also shows your memberships. </label>
             </div>
             <div>
-              <label><input value="Network" onChange={this.handleChange1} type="radio" name="optradio" /> Network only </label>
+              <label><input value="Network" onChange={this.handleChange1} type="radio" name="optradio" /> Network. No public internet page. Your network can see who you are connected to. </label>
             </div>
             <div>
-              <label><input value="Private" onChange={this.handleChange1} type="radio" name="optradio" /> Private </label>
+              <label><input value="Private" onChange={this.handleChange1} type="radio" name="optradio" /> Private. No public internet page. Your network cannot see who you are connected to. </label>
             </div>
             <button type="submit" className="seeDetailsButton"> Update </button>
             <span class="updateParagraph">{this.state.privacyUpdatedMessage}</span>
