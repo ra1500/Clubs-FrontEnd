@@ -4,7 +4,7 @@ import ScoreUrl from "./ScoreUrl";
 import UpdateUserInfo from "./UpdateUserInfo";
 import Picture from "./Picture";
 import ProfileText from "./ProfileText";
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 
 class Profile extends React.Component {

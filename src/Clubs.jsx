@@ -7,7 +7,7 @@ import MessageBoard from "./MessageBoard";
 import ClubVoting from "./ClubVoting";
 import ClubInvite from "./ClubInvite";
 import ClubQuit from "./ClubQuit";
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import MessageBoardSingle from "./MessageBoardSingle";
 import ClubsEdit from "./ClubsEdit";
 import ProfilePictureClubMember from "./ProfilePictureClubMember";
@@ -50,7 +50,6 @@ class Clubs extends React.Component {
         clubBeta: null,
         betaCount: null,
         clubAlpha: 'none',
-        clubInvitationId: null,
         showMembersList: false,
         showMembersList2: true,
         showMembersListMenuSelection: false,

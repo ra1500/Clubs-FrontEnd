@@ -151,7 +151,7 @@ class AlertsNewContactDetails extends React.Component {
       <div class="topParentDiv">
 
                     <p class="headerP"> Network Invitation Details </p>
-                    <img id="profilePic2" src={this.state.profilePicture}></img>
+                    <img alt="" id="profilePic2" src={this.state.profilePicture}></img>
                     <p class="noLineSpaceP"> {this.state.inviter} </p>
                     <p class="noLineSpaceP"> {this.state.connectionType} </p>
                     <p class="noLineSpaceP"> {this.state.title} </p>

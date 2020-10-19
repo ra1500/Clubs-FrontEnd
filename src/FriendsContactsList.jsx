@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import InvitationFormContact from "./InvitationFormContact";
 import ProfilePicture from "./ProfilePicture";
 

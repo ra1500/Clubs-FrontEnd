@@ -4,17 +4,24 @@ class MessagesList extends React.Component {
     constructor(props) {
         super(props);
         //this.addToList = this.handleScroll.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
         this.state = {
             list: this.props.list, //
             messagesEnd: true,
         };
     }
 
-    handleScroll = (e) => {
+    //handleScroll = (e) => {
+    //    const top = e.target.scrollTop == 0;
+    //    if (top) {
+    //        this.props.addToList();  };
+    // }
+
+    handleScroll(e) {
         const top = e.target.scrollTop == 0;
         if (top) {
             this.props.addToList();  };
-     }
+    };
 
 
    renderTableData() {
