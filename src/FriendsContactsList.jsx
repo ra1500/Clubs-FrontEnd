@@ -34,7 +34,7 @@ componentDidMount() {
                <td class="friendsTD2"> {data.friend} </td>
                <td class="friendsTD"> <p class="secondP">Title: {data.userEntity.title} </p> </td>
                <td class="friendsTD3"> <p class="secondP">Location: {data.userEntity.location} </p> </td>
-               <td class="friendsTD2"> <button class="seeDetailsButton" value={data.friend} onClick={e => this.props.inviteToJoinMyNetwork(e)}> Connect </button> </td>
+               <td class="friendsTD2"> <button class="updateButton" value={data.friend} onClick={e => this.props.inviteToJoinMyNetwork(e)}> Connect </button> </td>
             </tr>
          )
       })

@@ -29,6 +29,8 @@ class Introduction extends React.Component {
         this.setState({year: year2 });
     }
 
+// <li>  Collaborate through guilds. </li>
+
   render() {
 
     return (
@@ -40,9 +42,8 @@ class Introduction extends React.Component {
     <div class="topParentDiv">
          <p id="intro1p">  Simply connected. Friends, family, colleagues. </p>
          <ul class="introUL">
-         <li>  Join clubs. Start a new one. </li>
          <li>  Expand your network. </li>
-         <li>  Collaborate through guilds. </li>
+         <li>  Join clubs. Start a new one. </li>
          <li>  Private and secure.  </li>
          </ul>
     </div>

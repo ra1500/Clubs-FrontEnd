@@ -70,7 +70,7 @@ class ManageMyContactsRemove extends React.Component {
                 { this.state.showDeletedMessage &&
                 <p id="deletedAnswersMessage"> {this.state.deletedMessage} </p> }
                 { this.state.showRemoveButton &&
-                <button type="submit" onClick={this.handleSubmit2} className="seeDetailsButton"> Remove </button> }
+                <button type="submit" onClick={this.handleSubmit2} className="updateButton"> Remove </button> }
       </div> }
 
       { this.state.isAfriend &&
@@ -79,7 +79,7 @@ class ManageMyContactsRemove extends React.Component {
                 { this.state.showDeletedMessage &&
                 <p id="deletedAnswersMessage"> {this.state.deletedMessage} </p> }
                 { this.state.showRemoveButton &&
-                <button type="submit" onClick={this.handleSubmit2} className="seeDetailsButton"> Remove </button> }
+                <button type="submit" onClick={this.handleSubmit2} className="updateButton"> Remove </button> }
       </div> }
 
     </div>

@@ -92,7 +92,7 @@ class InvitationForm extends React.Component {
         <p></p>
         { this.state.showInviteButton &&
         <div>
-        <button type="submit" onClick={this.handleSubmit} className="seeDetailsButton"> Invite </button>
+        <button type="submit" onClick={this.handleSubmit} className="updateButton"> Invite </button>
          </div>}
         <span id="deletedAnswersMessage"> {this.state.invitationSentMessage} </span>
         </div>

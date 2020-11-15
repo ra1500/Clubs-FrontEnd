@@ -53,7 +53,7 @@ class ClubQuit extends React.Component {
 
         { this.state.showQuitButton &&
         <div>
-        <button type="submit" onClick={this.handleSubmit} className="seeDetailsButton"> Quit </button>
+        <button type="submit" onClick={this.handleSubmit} className="updateButton"> Quit </button>
          </div>}
 
         <span id="deletedAnswersMessage"> {this.state.quitMessage} </span>

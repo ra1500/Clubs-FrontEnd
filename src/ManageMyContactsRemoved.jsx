@@ -84,7 +84,7 @@ class ManageMyContactsRemoved extends React.Component {
             <form onSubmit={this.handleSubmit5}>
             <p> Confirm unhide:</p>
              {this.state.showUnhideButton &&
-             <button class="seeDetailsButton" type="submit"> Unhide </button> }
+             <button class="updateButton" type="submit"> Unhide </button> }
             </form>
 
       { this.state.showUpdatedMessage &&

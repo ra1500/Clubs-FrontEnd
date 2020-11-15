@@ -88,7 +88,7 @@ class ScoreUrl extends React.Component {
             <div>
               <label><input value="Private" onChange={this.handleChange1} type="radio" name="optradio" /> Private. No public internet page. Your network cannot see who you are connected to. </label>
             </div>
-            <button type="submit" className="seeDetailsButton"> Update </button>
+            <button type="submit" className="updateButton"> Update </button>
             <span class="updateParagraph">{this.state.privacyUpdatedMessage}</span>
         </form>
 

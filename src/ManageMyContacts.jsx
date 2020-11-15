@@ -90,7 +90,7 @@ class ManageMyContacts extends React.Component {
                 { this.state.showUpdatedMessage &&
                 <p id="deletedAnswersMessage"> {this.state.updatedMessage} </p> }
                 { this.state.showUpdateButton &&
-                <button type="submit" onClick={this.handleSubmit2} className="seeDetailsButton"> Update </button> }
+                <button type="submit" onClick={this.handleSubmit2} className="updateButton"> Update </button> }
             </div>
       </div> }
 

@@ -103,7 +103,7 @@ class ClubInvitations extends React.Component {
                <td class="alertsButtonsTD">
                <button class="acceptButton" value={data.id} onClick={e => this.accept(e)}> Accept </button>
                <button class="declineButton" value={data.id} onClick={e => this.decline(e)}> Decline </button>
-               <button class="seeDetailsButton" value={data.id} onClick={e => this.props.goToClubDetails(e)}> See Details </button>
+               <button class="updateButton" value={data.id} onClick={e => this.props.goToClubDetails(e)}> Details </button>
                </td>
             </tr>
             </div>

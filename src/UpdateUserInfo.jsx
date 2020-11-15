@@ -50,7 +50,7 @@ function UpdateUserInfo(props) {
         <input class="loginInput" type="password" value={oldPassword} onChange={e => {setoldPassword(e.target.value);}} placeholder=" current password" /><br></br>
         <input class="loginInput" type="password" value={password} onChange={e => {setPassword(e.target.value);}} placeholder=" new password" /><br></br>
         <input class="loginInput" type="password" value={confirmPassword} onChange={e => {setConfirmPassword(e.target.value);}} placeholder=" new password again" /><br></br>
-        <button class="seeDetailsButton" onClick={updateSignup}>Update</button>
+        <button class="updateButton" onClick={updateSignup}>Update</button>
         <p class="updateParagraph"> {UpdateMessage} </p>
       </Form>
       </div>

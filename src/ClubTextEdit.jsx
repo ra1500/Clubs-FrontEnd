@@ -144,7 +144,7 @@ class ClubTextEdit extends React.Component {
           </div> }
 
            { this.state.showSubmit &&
-           <button type="submit" onClick={this.handleSubmit1} className="seeDetailsButton"> Update </button> }
+           <button type="submit" onClick={this.handleSubmit1} className="updateButton"> Update </button> }
            { !this.state.showSubmit &&
            <span class="updateParagraph">{this.state.updatedMessage}</span> }
     </div>

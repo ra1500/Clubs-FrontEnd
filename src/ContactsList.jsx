@@ -18,7 +18,7 @@ class ContactsList extends React.Component {
                <td class="friendsTD2"> <p class="secondP"> {data.friend} </p></td>
                <td class="friendsTD3"> <p class="secondP"> {data.connectionType} </p></td>
                <td class="friendsTD"> <p class="secondP">  {data.connectionStatus} </p></td>
-               <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.renderSingleContact(e)}> Go To &#9658; </button> </td>
+               <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.renderSingleContact(e)}>  &#9658; </button> </td>
             </tr>
          )
       })

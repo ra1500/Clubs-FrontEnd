@@ -15,7 +15,7 @@ class ContactsListRemoved extends React.Component {
                <td> {data.friend} </td>
                <td>{data.connectionStatus} &nbsp; &nbsp;</td>
                <td>{data.connectionType} &nbsp; &nbsp;</td>
-               <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.renderSingleContactRemoved(e)}> Unhide </button> </td>
+               <td> <button class="updateButton" value={data.id} onClick={e => this.props.renderSingleContactRemoved(e)}> Unhide </button> </td>
             </tr>
          )
       })

@@ -384,7 +384,7 @@ class NetworkContactPages extends React.Component {
                     <p></p>
 
                     { this.state.showUpdateButton &&
-                    <button type="submit" onClick={this.handleSubmit} className="seeDetailsButton"> Update </button> }
+                    <button type="submit" onClick={this.handleSubmit} className="updateButton"> Update </button> }
                     <span id="deletedAnswersMessage"> {this.state.invitationStatusMessage} </span>
                     <p>  </p>
                      </div> }

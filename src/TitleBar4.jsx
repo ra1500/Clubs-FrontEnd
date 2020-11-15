@@ -101,14 +101,13 @@ class TitleBar4 extends React.Component {
     return (
     <div id="titleBarDiv">
         <div id="titleBarDiv2">
-        <button id="buttonNJ" onClick={this.redirectHome2}> &nbsp; NeuralJuice &nbsp; </button>
+        <button id="buttonNJ" onClick={this.redirectHome2}>&nbsp; NeuralJuice &nbsp; </button>
 
         {this.state.onAlerts &&
         <div id="titleBarDiv3">
         <button class="menuLinksOnButton" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
         <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
-        <button class="menuLinks" onClick={this.redirectGuilds}> Guilds </button>
         <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
         </div> }
 
@@ -117,7 +116,6 @@ class TitleBar4 extends React.Component {
         <button class="menuLinks" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinksOnButton" onClick={this.redirectNetwork}> Network </button>
         <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
-        <button class="menuLinks" onClick={this.redirectGuilds}> Guilds </button>
         <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
         </div> }
 
@@ -126,7 +124,6 @@ class TitleBar4 extends React.Component {
         <button class="menuLinks" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
         <button class="menuLinksOnButton" onClick={this.redirectClubs}> Clubs </button>
-        <button class="menuLinks" onClick={this.redirectGuilds}> Guilds </button>
         <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
         </div> }
 
@@ -135,7 +132,6 @@ class TitleBar4 extends React.Component {
         <button class="menuLinks" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
         <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
-        <button class="menuLinksOnButton" onClick={this.redirectGuilds}> Guilds </button>
         <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
         </div> }
 
@@ -144,7 +140,6 @@ class TitleBar4 extends React.Component {
         <button class="menuLinks" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
         <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
-        <button class="menuLinks" onClick={this.redirectGuilds}> Guilds </button>
         <button class="menuLinksOnButton" onClick={this.redirectMe}> Profile </button>
         </div> }
 
@@ -153,7 +148,6 @@ class TitleBar4 extends React.Component {
         <button class="menuLinks" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
         <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
-        <button class="menuLinks" onClick={this.redirectGuilds}> Guilds </button>
         <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
         </div> }
 
