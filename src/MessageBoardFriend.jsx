@@ -9,6 +9,7 @@ class MessageBoardFriend extends React.Component {
     this.handleSubmit1 = this.handleSubmit1.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.addToList = this.addToList.bind(this);
+    //this.getMessagesList = this.getMessagesList.bind(this);
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
     this.state = {
@@ -22,12 +23,20 @@ class MessageBoardFriend extends React.Component {
     list: null,
     list2: null,
     scrollPageNumber: 0,
+    //date: new Date(), // Timer use
     };
   }
 
   componentDidMount() {
     this.getMessagesList();
+    //this.timerID = setInterval( () => this.tick(), 3000 ); // 1 second equals 1000
   }
+  //componentWillUnmount() {
+  //  clearInterval(this.timerID);
+  //}
+  //tick() { this.setState({ date: new Date()});
+  //  this.getMessagesList();
+  //  }
 
      handleChange(event) {
        this.setState({clubMessage: event.target.value});
@@ -121,7 +130,9 @@ class MessageBoardFriend extends React.Component {
 
         { this.state.showMessagesList &&
         <div>
+
         <p class="noLineSpaceP"> Message Board </p>
+
         <MessagesList list={this.state.list} showMessagesList2={this.state.showMessagesList2} addToList={this.addToList} />
         </div> }
         { this.state.showMessagesList3 &&

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import Login from './pages/Login';
 import SampleQuestions from './SampleQuestions';
 import { Redirect } from "react-router-dom";
@@ -18,6 +19,7 @@ class Introduction extends React.Component {
 
   componentDidMount() {
     this.getCurrentYear();
+    this.loadSampleGame();
   }
 
     goToAbout() {
@@ -27,6 +29,20 @@ class Introduction extends React.Component {
     getCurrentYear() {
         let year2 = new Date().getFullYear();
         this.setState({year: year2 });
+    }
+
+    loadSampleGame() {
+        axios.get("http://localhost:8080/api/g/a?g=" + "10", {headers : { 'Authorization' : "" }})
+        .then((response) => {
+         if (response.status === 200) {
+          this.setState({
+            isLoaded: true,
+            game: response.data,
+          });
+          //      if ( response.data.clubsList.length > 0 ) { this.setState({ showClubsList2: true}) };
+          } // end if
+               }).catch(error => {this.setState({ isLoaded: true, error,});
+               });
     }
 
 // <li>  Collaborate through guilds. </li>
