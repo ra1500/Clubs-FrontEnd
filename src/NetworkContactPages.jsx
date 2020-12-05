@@ -327,7 +327,7 @@ class NetworkContactPages extends React.Component {
           { this.state.isAfriend &&
           <div class="topParentDiv">
                 { this.state.showContactScores &&
-                <img id="profilePic" src={this.state.profilePicture}></img> }
+                <img id="profilePic3" src={this.state.profilePicture}></img> }
                 <div class="scoresListTD">
                 <div>
                 { this.state.showTitle &&

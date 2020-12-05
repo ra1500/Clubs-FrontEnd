@@ -180,7 +180,7 @@ class Profile extends React.Component {
               <div class="topParentDiv">
 
                 <div>
-                <img id="profilePic" src={this.state.profilePicture}></img>
+                <img id="profilePic3" src={this.state.profilePicture}></img>
                 <div class="scoresListTD">
                 <table>
                 { this.state.showTitle &&

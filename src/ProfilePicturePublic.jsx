@@ -43,12 +43,12 @@ componentDidMount() {
 
         { !this.state.showProfilePicture &&
          <div>
-         <img id="profilePic" src={this.state.defaultPicture}></img>
+         <img id="profilePic3" src={this.state.defaultPicture}></img>
          </div> }
 
       { this.state.showProfilePicture &&
           <div>
-            <img id="profilePic" src={this.state.profilePicture}></img>
+            <img id="profilePic3" src={this.state.profilePicture}></img>
           </div> }
 
       </React.Fragment>

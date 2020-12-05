@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 
-class ProfilePicture extends React.Component {
+class ProfilePictureClubMemberIndividual extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            friendId: this.props.friendId,
+            memberId: this.props.memberId,
+            clubId: this.props.clubId,
             defaultPicture: "./profiledefault.jpg",
             showProfilePicture: false,
         };
@@ -24,7 +25,7 @@ componentDidMount() {
     const Basic = 'Basic ' + hash;
     axios({
       method: 'get',
-      url: "http://localhost:8080/api/files/j?fid=" + this.props.friendId,
+      url: "http://localhost:8080/api/files/k?mId=" + this.props.memberId + "&cId=" + this.props.clubId,
       responseType: 'blob',
       headers : { 'Authorization' : Basic },
     })
@@ -46,12 +47,12 @@ componentDidMount() {
 
         { !this.state.showProfilePicture &&
          <div>
-         <img id="profilePic3" src={this.state.defaultPicture}></img>
+         <img id="profilePic3" src={this.state.defaultPicture}  ></img>
          </div> }
 
       { this.state.showProfilePicture &&
           <div>
-            <img id="profilePic3" src={this.state.profilePicture}></img>
+            <img id="profilePic3" src={this.state.profilePicture} ></img>
           </div> }
 
       </React.Fragment>
@@ -62,4 +63,4 @@ componentDidMount() {
 
 
 
-export default ProfilePicture;
+export default ProfilePictureClubMemberIndividual;

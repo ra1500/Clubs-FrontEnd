@@ -11,6 +11,7 @@ import ClubQuit from "./ClubQuit";
 import MessageBoardSingle from "./MessageBoardSingle";
 import ClubsEdit from "./ClubsEdit";
 import ProfilePictureClubMember from "./ProfilePictureClubMember";
+import ProfilePictureClubMemberIndividual from "./ProfilePictureClubMemberIndividual";
 import ClubInvitations from "./ClubInvitations";
 import AlertsClubDetails from "./AlertsClubDetails";
 
@@ -441,7 +442,7 @@ class Clubs extends React.Component {
 
           { this.state.showSingleClubMember &&
           <div class="topParentDiv">
-                <ProfilePictureClubMember memberId={this.state.singleClubMemberId} clubId={this.state.clubId}/>
+                <ProfilePictureClubMemberIndividual memberId={this.state.singleClubMemberId} clubId={this.state.clubId}/>
                 <div class="scoresListTD">
                 <div>
                 <p class="secondP"> {this.state.memberUserName} </p><br></br>

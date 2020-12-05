@@ -163,6 +163,7 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 #profilePic {float: left; border: none; height: 80px; width: 80px; margin-right: 15px; }
 #profilePic:hover { cursor: pointer }
 #profilePic2 { border: none; height: 80px; width: 80px; margin-right: 15px; }
+#profilePic3 {float: left; border: none; height: 80px; width: 80px; margin-right: 15px; }
 
 /** AuditQuestions **/
 #AuditQuestionsComponent {height: 570px; border-style: solid; border-color: red; border-width: 2px; padding: 15px; margin: auto; width: 800px;}
