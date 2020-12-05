@@ -1,12 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 
-class ProfilePictureClubMember extends React.Component {
+class ProfilePictureInList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            memberId: this.props.memberId,
-            clubId: this.props.clubId,
+            friendId: this.props.friendId,
             defaultPicture: "./profiledefault.jpg",
             showProfilePicture: false,
         };
@@ -25,7 +24,7 @@ componentDidMount() {
     const Basic = 'Basic ' + hash;
     axios({
       method: 'get',
-      url: "http://localhost:8080/api/files/k?mId=" + this.props.memberId + "&cId=" + this.props.clubId,
+      url: "http://localhost:8080/api/files/j?fid=" + this.props.friendId,
       responseType: 'blob',
       headers : { 'Authorization' : Basic },
     })
@@ -42,7 +41,7 @@ componentDidMount() {
     }
 
  chaseSingleProfile() {
-    this.props.goToSingleClubMember2(this.props.memberId, this.props.clubId);
+    this.props.renderSingleContactFromPicture(this.props.friendId);
  }
 
     render() {
@@ -51,12 +50,12 @@ componentDidMount() {
 
         { !this.state.showProfilePicture &&
          <div>
-         <img id="profilePic" src={this.state.defaultPicture} onClick={e => this.chaseSingleProfile()} ></img>
+         <img id="profilePic" src={this.state.defaultPicture}  onClick={e => this.chaseSingleProfile()}   ></img>
          </div> }
 
       { this.state.showProfilePicture &&
           <div>
-            <img id="profilePic" src={this.state.profilePicture} onClick={e => this.chaseSingleProfile()} ></img>
+            <img id="profilePic" src={this.state.profilePicture}  onClick={e => this.chaseSingleProfile()} ></img>
           </div> }
 
       </React.Fragment>
@@ -67,4 +66,4 @@ componentDidMount() {
 
 
 
-export default ProfilePictureClubMember;
+export default ProfilePictureInList;

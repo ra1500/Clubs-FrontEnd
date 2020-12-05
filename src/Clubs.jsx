@@ -28,6 +28,7 @@ class Clubs extends React.Component {
     this.showClubInvite = this.showClubInvite.bind(this);
     this.showClubQuit = this.showClubQuit.bind(this);
     this.goToSingleClubMember = this.goToSingleClubMember.bind(this);
+    this.goToSingleClubMember2 = this.goToSingleClubMember2.bind(this);
     this.goToEditClubs = this.goToEditClubs.bind(this);
     this.hideClubButtons = this.hideClubButtons.bind(this);
     this.state = {
@@ -144,6 +145,46 @@ class Clubs extends React.Component {
     const hash = btoa(token);
     const Basic = 'Basic ' + hash;
     axios.get("http://localhost:8080/api/user/pu?mid=" + e.target.value + "&cid=" + this.state.clubId,
+    {headers : { 'Authorization' : Basic }})
+    .then((response) => {
+      this.setState({
+        isLoaded: true,
+        memberUserName: response.data.userName,
+        title: response.data.title,
+        blurb: response.data.blurb,
+        education: response.data.education,
+        occupation: response.data.occupation,
+        relationshipStatus: response.data.relationshipStatus,
+        location: response.data.location,
+        contactInfo: response.data.contactInfo,
+        singleClubMemberId: response.data.id,
+      });
+      if (response.data.education === 1) {this.setState({education2: "High School"})};
+      if (response.data.education === 2) {this.setState({education2: "College"})};
+      if (response.data.education === 3) {this.setState({education2: "Masters"})};
+      if (response.data.education === 4) {this.setState({education2: "Phd or MD"})};
+      if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
+      if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
+      if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
+      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
+      if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
+      if (response.data.title != null && response.data.title != "" ) {this.setState({showTitle: true,})};
+      if (response.data.blurb != null && response.data.blurb != "" ) {this.setState({showBlurb: true,})};
+      if (response.data.location != null && response.data.location != "" ) {this.setState({showLocation: true,})};
+      if (response.data.contactInfo != null && response.data.contactInfo != "" ) {this.setState({showContactDetails: true,})};
+      this.setState({showMembersList: false, showSingleClubMember: true});
+           }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
+           });
+    }
+
+  goToSingleClubMember2(memberIdvalue, clubIdvalue) {
+    const name = JSON.parse(sessionStorage.getItem('tokens'));
+    const u = name.userName;
+    const p = name.password;
+    const token = u +':' + p;
+    const hash = btoa(token);
+    const Basic = 'Basic ' + hash;
+    axios.get("http://localhost:8080/api/user/pu?mid=" + memberIdvalue + "&cid=" + clubIdvalue,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {
       this.setState({
@@ -375,7 +416,7 @@ class Clubs extends React.Component {
 
             { this.state.showMembersList &&
             <div>
-             <ClubMembers membersList={this.state.membersList} showMembersList2={this.state.showMembersList2} goToSingleClubMember={this.goToSingleClubMember} clubId={this.state.clubId} />
+             <ClubMembers membersList={this.state.membersList} showMembersList2={this.state.showMembersList2} goToSingleClubMember={this.goToSingleClubMember} goToSingleClubMember2={this.goToSingleClubMember2} clubId={this.state.clubId} />
             </div> }
 
             { this.state.showClubMessageBoard &&
@@ -403,6 +444,7 @@ class Clubs extends React.Component {
                 <ProfilePictureClubMember memberId={this.state.singleClubMemberId} clubId={this.state.clubId}/>
                 <div class="scoresListTD">
                 <div>
+                <p class="secondP"> {this.state.memberUserName} </p><br></br>
                 { this.state.showTitle &&
                 <p class="secondP"> Title: {this.state.title}</p> }
                 { !this.state.showTitle &&

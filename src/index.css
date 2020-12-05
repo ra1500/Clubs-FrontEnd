@@ -161,6 +161,7 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
  /** Picture **/
 #profilePicBrowseButton {}
 #profilePic {float: left; border: none; height: 80px; width: 80px; margin-right: 15px; }
+#profilePic:hover { cursor: pointer }
 #profilePic2 { border: none; height: 80px; width: 80px; margin-right: 15px; }
 
 /** AuditQuestions **/
@@ -209,3 +210,4 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .clearAlertsButton {border-radius: 14px; height: 20px; margin-left: 0px; margin-left: 10px; width: 80px;border: 1px solid gray; background-color: white; font-size: 12px; font-family: "Geneva";}
 .alertsUserNameTD { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 140px; }
 .alertsButtonsTD { width: 370px; }
+.pureTextButton {text-align: left; height: 12px; width: 150px; border: none; background-color: white; font-size: 16px; font-family: "Geneva"; font-color: black }

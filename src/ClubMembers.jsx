@@ -15,9 +15,9 @@ class ClubMembers extends React.Component {
       return this.state.list.map((data, index) => {
          return (
             <tr class="friendsTR"key={data.id}>
-               <td> <ProfilePictureClubMember memberId={data.id} clubId={this.props.clubId}/> </td>
-               <td class="friendsTD2"> {data.userName} </td>
-               <td class="friendsTD"> <p class="secondP"> {data.title} </p></td>
+               <td> <ProfilePictureClubMember goToSingleClubMember2={this.props.goToSingleClubMember2} memberId={data.id} clubId={this.props.clubId}/> </td>
+               <td class="friendsTD2"> <button class="pureTextButton" value={data.id} onClick={e => this.props.goToSingleClubMember(e)}>  {data.userName} </button> </td>
+               <td class="friendsTD2"> <button class="pureTextButton" value={data.id} onClick={e => this.props.goToSingleClubMember(e)}>  {data.title} </button> </td>
                <td class="friendsTD2"> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.goToSingleClubMember(e)}>  &#9658; </button> </td>
             </tr>
          )

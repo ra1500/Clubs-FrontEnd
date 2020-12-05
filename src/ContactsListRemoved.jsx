@@ -12,9 +12,9 @@ class ContactsListRemoved extends React.Component {
       return this.state.list.map((data, index) => {
          return (
             <tr key={data.friend}>
-               <td> {data.friend} </td>
-               <td>{data.connectionStatus} &nbsp; &nbsp;</td>
-               <td>{data.connectionType} &nbsp; &nbsp;</td>
+               <td class="friendsTD2"> {data.friend} </td>
+               <td class="friendsTD2">{data.connectionStatus} &nbsp; &nbsp;</td>
+               <td class="friendsTD2">{data.connectionType} &nbsp; &nbsp;</td>
                <td> <button class="updateButton" value={data.id} onClick={e => this.props.renderSingleContactRemoved(e)}> Unhide </button> </td>
             </tr>
          )

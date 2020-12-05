@@ -32,7 +32,7 @@ class Introduction extends React.Component {
     }
 
     loadSampleGame() {
-        axios.get("http://localhost:8080/api/g/a?g=" + "10", {headers : { 'Authorization' : "" }})
+        axios.get("http://localhost:8080/api/g/a?g=" + "18", {headers : { 'Authorization' : "" }})
         .then((response) => {
          if (response.status === 200) {
           this.setState({
@@ -45,7 +45,6 @@ class Introduction extends React.Component {
                });
     }
 
-// <li>  Collaborate through guilds. </li>
 
   render() {
 

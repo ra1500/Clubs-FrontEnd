@@ -16,6 +16,7 @@ class Network extends React.Component {
     super(props);
     this.goToRemovedContacts = this.goToRemovedContacts.bind(this);
     this.renderSingleContact = this.renderSingleContact.bind(this);
+    this.renderSingleContactFromPicture = this.renderSingleContactFromPicture.bind(this);
     this.renderSingleContactRemoved = this.renderSingleContactRemoved.bind(this);
     this.auditMe = this.auditMe.bind(this);
     this.sendFriend = this.sendFriend.bind(this);
@@ -103,6 +104,14 @@ class Network extends React.Component {
         this.setState({showRemovedList: false, showRemovedListDetails: false,});
         this.setState({showSingleContact: true});
         event.preventDefault();
+    }
+
+    renderSingleContactFromPicture(friendId2) {
+        this.state = {friendId: friendId2};
+        this.setState({friendId: this.state.friendId}); // sillyness.
+        this.setState({showNetworkListFriends: false, showNetworkListFamily: false, showNetworkListColleagues: false, showNetworkListPending: false,});
+        this.setState({showRemovedList: false, showRemovedListDetails: false,});
+        this.setState({showSingleContact: true});
     }
 
     renderSingleContactRemoved(event) {
@@ -200,16 +209,16 @@ class Network extends React.Component {
           </div> }
 
         {this.state.showNetworkListFriends &&
-        <ContactsListFriends list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} sendFriend={this.sendFriend}/>  }
+        <ContactsListFriends list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} renderSingleContactFromPicture={this.renderSingleContactFromPicture} sendFriend={this.sendFriend}/>  }
 
         {this.state.showNetworkListFamily &&
-        <ContactsListFamily list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} sendFriend={this.sendFriend}/>  }
+        <ContactsListFamily list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} renderSingleContactFromPicture={this.renderSingleContactFromPicture} sendFriend={this.sendFriend}/>  }
 
         {this.state.showNetworkListColleagues &&
-        <ContactsListColleagues list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} sendFriend={this.sendFriend}/>  }
+        <ContactsListColleagues list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} renderSingleContactFromPicture={this.renderSingleContactFromPicture} sendFriend={this.sendFriend}/>  }
 
         {this.state.showNetworkListPending &&
-        <ContactsListPending list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} sendFriend={this.sendFriend}/>  }
+        <ContactsListPending list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} renderSingleContactFromPicture={this.renderSingleContactFromPicture} sendFriend={this.sendFriend}/>  }
 
         {this.state.showInviteFriends &&
         <InvitationForm /> }

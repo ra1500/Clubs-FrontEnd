@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfilePicture from "./ProfilePicture";
+import ProfilePictureInList from "./ProfilePictureInList";
 
 class ContactsListPending extends React.Component {
     constructor(props) {
@@ -20,11 +20,11 @@ class ContactsListPending extends React.Component {
         this.state = { showNoneMessage: false };
          return (
             <tr class="friendsTR"key={data.friend}>
-               <td onClick={e => this.props.renderSingleContact(e)}> <ProfilePicture friendId={data.id} /> </td>
-               <td class="friendsTD2"> <p class="secondP"> {data.friend} </p></td>
-               <td class="friendsTD3"> <p class="secondP"> {data.connectionType} </p></td>
-               <td class="friendsTD"> <p class="secondP">  {data.connectionStatus} </p></td>
-               <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.renderSingleContact(e)}>  &#9658; </button> </td>
+               <td> <ProfilePictureInList renderSingleContactFromPicture={this.props.renderSingleContactFromPicture} friendId={data.id} /> </td>
+               <td class="friendsTD2"> <button class="pureTextButton" value={data.id} onClick={e => this.props.renderSingleContact(e)} >  {data.friend} </button> </td>
+               <td class="friendsTD2"> <button class="pureTextButton" value={data.id} onClick={e => this.props.renderSingleContact(e)} >  {data.connectionType} </button> </td>
+               <td class="friendsTD2"> <button class="pureTextButton" value={data.id} onClick={e => this.props.renderSingleContact(e)} >  {data.connectionStatus} </button> </td>
+               <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.renderSingleContact(e)} >  &#9658; </button> </td>
             </tr>
          )
          } // end if
