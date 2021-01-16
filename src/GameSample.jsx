@@ -37,7 +37,7 @@ class GameSample extends React.Component {
       return this.state.list.map((data, index) => {
          return (
             <tr key={data.index}>
-                <td> {data.points}</td>
+                <td> {data.points} </td>
             </tr>
          )
       })
@@ -51,6 +51,11 @@ class GameSample extends React.Component {
 
     { this.state.showGame &&
     <div>
+        <img class="arrowImage" src="http://localhost:8080/redUp.png" />
+        <img class="arrowImage" src="http://localhost:8080/orangeUp.png" />
+        <img class="arrowImage" src="http://localhost:8080/greenUp.png" />
+        <img class="arrowImage" src="http://localhost:8080/blackUp.png" />
+        <img class="arrowImage" src="http://localhost:8080/blackUpRight.png" />
         {this.renderGame()}
     </div> }
 

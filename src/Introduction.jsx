@@ -1,7 +1,8 @@
 import React from "react";
 import axios from 'axios';
 import Login from './pages/Login';
-import SampleQuestions from './SampleQuestions';
+//import SampleQuestions from './SampleQuestions';
+import GameSample from './GameSample';
 import { Redirect } from "react-router-dom";
 
 
@@ -19,7 +20,7 @@ class Introduction extends React.Component {
 
   componentDidMount() {
     this.getCurrentYear();
-    this.loadSampleGame();
+    //this.loadSampleGame();
   }
 
     goToAbout() {

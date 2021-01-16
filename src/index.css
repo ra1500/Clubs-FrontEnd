@@ -212,3 +212,4 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .alertsUserNameTD { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 140px; }
 .alertsButtonsTD { width: 370px; }
 .pureTextButton {text-align: left; height: 12px; width: 150px; border: none; background-color: white; font-size: 16px; font-family: "Geneva"; font-color: black }
+.arrowImage { height: 30px; width: 30px; }
