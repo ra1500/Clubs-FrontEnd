@@ -8,6 +8,7 @@ import ContactsListRemoved from "./ContactsListRemoved";
 import InvitationForm from "./InvitationForm";
 import ManageMyContactsRemoved from "./ManageMyContactsRemoved";
 import NetworkContactPages from "./NetworkContactPages";
+import CreateNewUserForm from "./CreateNewUserForm";
 //import NetworkContactAudit from "./NetworkContactAudit";
 //import { Link } from 'react-router-dom';
 
@@ -221,7 +222,10 @@ class Network extends React.Component {
         <ContactsListPending list={this.state.list} showNetworkListDetails={this.state.showNetworkListDetails} renderSingleContact={this.renderSingleContact} renderSingleContactFromPicture={this.renderSingleContactFromPicture} sendFriend={this.sendFriend}/>  }
 
         {this.state.showInviteFriends &&
-        <InvitationForm /> }
+        <div>
+        <InvitationForm />
+        <CreateNewUserForm />
+         </div> }
 
         {this.state.showRemovedList &&
         <ContactsListRemoved list={this.state.list} showRemovedListDetails={this.state.showRemovedListDetails} renderSingleContactRemoved={this.renderSingleContactRemoved}/> }

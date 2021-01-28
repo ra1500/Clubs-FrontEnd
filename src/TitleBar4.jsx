@@ -107,7 +107,7 @@ class TitleBar4 extends React.Component {
         <div id="titleBarDiv3">
         <button class="menuLinksOnButton" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
-        <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
+        <button class="menuLinks" onClick={this.redirectClubs}> Forums </button>
         <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
         </div> }
 
@@ -115,7 +115,7 @@ class TitleBar4 extends React.Component {
         <div id="titleBarDiv3">
         <button class="menuLinks" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinksOnButton" onClick={this.redirectNetwork}> Network </button>
-        <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
+        <button class="menuLinks" onClick={this.redirectClubs}> Forums </button>
         <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
         </div> }
 
@@ -123,7 +123,7 @@ class TitleBar4 extends React.Component {
         <div id="titleBarDiv3">
         <button class="menuLinks" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
-        <button class="menuLinksOnButton" onClick={this.redirectClubs}> Clubs </button>
+        <button class="menuLinksOnButton" onClick={this.redirectClubs}> Forums </button>
         <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
         </div> }
 
@@ -131,7 +131,7 @@ class TitleBar4 extends React.Component {
         <div id="titleBarDiv3">
         <button class="menuLinks" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
-        <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
+        <button class="menuLinks" onClick={this.redirectClubs}> Forums </button>
         <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
         </div> }
 
@@ -139,7 +139,7 @@ class TitleBar4 extends React.Component {
         <div id="titleBarDiv3">
         <button class="menuLinks" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
-        <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
+        <button class="menuLinks" onClick={this.redirectClubs}> Forums </button>
         <button class="menuLinksOnButton" onClick={this.redirectMe}> Profile </button>
         </div> }
 
@@ -147,7 +147,7 @@ class TitleBar4 extends React.Component {
         <div id="titleBarDiv3">
         <button class="menuLinks" onClick={this.redirectStart}> Alerts </button>
         <button class="menuLinks" onClick={this.redirectNetwork}> Network </button>
-        <button class="menuLinks" onClick={this.redirectClubs}> Clubs </button>
+        <button class="menuLinks" onClick={this.redirectClubs}> Forums </button>
         <button class="menuLinks" onClick={this.redirectMe}> Profile </button>
         </div> }
 

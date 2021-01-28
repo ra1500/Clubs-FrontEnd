@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import ClubMembersRemove from './ClubMembersRemove';
 
 class ClubTextEdit extends React.Component {
   constructor(props) {
@@ -8,6 +9,9 @@ class ClubTextEdit extends React.Component {
     this.handleChange3 = this.handleChange3.bind(this);
     this.handleChange6 = this.handleChange6.bind(this);
     this.handleChange7 = this.handleChange7.bind(this);
+    this.handleChange8 = this.handleChange8.bind(this);
+    this.handleChange9 = this.handleChange9.bind(this);
+    this.handleChange10 = this.handleChange10.bind(this);
     this.handleSubmit1 = this.handleSubmit1.bind(this);
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
@@ -19,6 +23,12 @@ class ClubTextEdit extends React.Component {
     clubName: null,
     description: null,
     maxSize: 20,
+    headline1: null,
+    headline2: null,
+    headline3: null,
+    showMembersList: false,
+    showMembersList2: false,
+    membersList: null,
     };
   }
 
@@ -43,7 +53,18 @@ class ClubTextEdit extends React.Component {
        this.state = {alpha2: event.target.value};
        this.setState({alpha: this.state.alpha2});
      }
-
+     handleChange8(event) {
+       this.state = {headline1b: event.target.value};
+       this.setState({headline1: this.state.headline1b});
+     }
+     handleChange9(event) {
+       this.state = {headline2b: event.target.value};
+       this.setState({headline2: this.state.headline2b});
+     }
+     handleChange10(event) {
+       this.state = {headline3b: event.target.value};
+       this.setState({headline3: this.state.headline3b});
+     }
   handleSubmit1(event) {
     event.preventDefault();
     this.postClubEditText();
@@ -66,13 +87,16 @@ class ClubTextEdit extends React.Component {
             clubName: response.data.clubName,
             description: response.data.description,
             clubAlpha: response.data.alpha,
+            headline1: response.data.headline1,
+            headline2: response.data.headline2,
+            headline3: response.data.headline3,
             membersList: response.data.members,
             maxSize: response.data.maxSize,
-            showClubsList: false,
-            showSingleClub: true,
+            showMembersList: true,
+            showMembersList2: true,
           });
           } // end if
-          else { this.setState({showClubsList: false}); }
+          else {  }
                }).catch(error => {this.setState({ isLoaded: true, error,});
                });
     }
@@ -85,11 +109,11 @@ class ClubTextEdit extends React.Component {
     const hash = btoa(token);
     const Basic = 'Basic ' + hash;
     let data = {id: this.props.clubId, clubName : this.state.clubName, description: this.state.description, maxSize: this.state.maxSize,
-     alpha: this.state.alpha,};
+     headline1: this.state.headline1, headline2: this.state.headline2, headline3: this.state.headline3};
     axios.post("http://localhost:8080/api/c/d", data,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {
-    this.setState({isLoaded: true, updatedMessage: " Club has been updated.", showSubmit: false, maxSize: response.data.maxSize,
+    this.setState({isLoaded: true, updatedMessage: " Forum updated.", showSubmit: false, maxSize: response.data.maxSize,
               });
            }).catch(error => {this.setState({ isLoaded: true, error});
            });
@@ -118,6 +142,18 @@ class ClubTextEdit extends React.Component {
           <td> Max. membership size: </td>
           <td><input id="clubTextBoxSize" maxlength="3" type="text" value={this.state.maxSize} onChange={this.handleChange6}  autocomplete="off" placeholder="#"/></td>
           </tr>
+          <tr>
+          <td class="headline1"> Headline 1 </td>
+          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.headline1} onChange={this.handleChange8}  autocomplete="off" placeholder=""/></td>
+          </tr>
+          <tr>
+          <td class="headline2"> Headline 2 </td>
+          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.headline2} onChange={this.handleChange9}  autocomplete="off" placeholder=""/></td>
+          </tr>
+          <tr>
+          <td class="headline3"> Headline 3 </td>
+          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.headline3} onChange={this.handleChange10}  autocomplete="off" placeholder=""/></td>
+          </tr>
           </table>
           </div> }
 
@@ -140,6 +176,15 @@ class ClubTextEdit extends React.Component {
           <td> Max. membership size: </td>
           <td> {this.state.maxSize} </td>
           </tr>
+          <tr>
+          <td class="headline1"> {this.state.headline1} </td>
+          </tr>
+          <tr>
+          <td class="headline2"> {this.state.headline2} </td>
+          </tr>
+          <tr>
+          <td class="headline3"> {this.state.headline3} </td>
+          </tr>
           </table>
           </div> }
 
@@ -147,6 +192,12 @@ class ClubTextEdit extends React.Component {
            <button type="submit" onClick={this.handleSubmit1} className="updateButton"> Update </button> }
            { !this.state.showSubmit &&
            <span class="updateParagraph">{this.state.updatedMessage}</span> }
+
+          { this.state.showMembersList &&
+          <div>
+           <ClubMembersRemove membersList={this.state.membersList} showMembersList2={this.state.showMembersList2} clubId={this.state.clubId} />
+          </div> }
+
     </div>
 
     );

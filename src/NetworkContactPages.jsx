@@ -220,7 +220,7 @@ class NetworkContactPages extends React.Component {
         blurb: response.data.blurb,
         education: response.data.education,
         occupation: response.data.occupation,
-        relationshipStatus: response.data.relationshipStatus,
+        // relationshipStatus: response.data.relationshipStatus,
         location: response.data.location,
         contactInfo: response.data.contactInfo,
       });
@@ -229,10 +229,10 @@ class NetworkContactPages extends React.Component {
       if (response.data.education === 3) {this.setState({education2: "Masters"})};
       if (response.data.education === 4) {this.setState({education2: "Phd or MD"})};
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
-      if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
-      if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
-      if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
+      //if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
+      //if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
+      //if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
+      //if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
       if (response.data.title != null && response.data.title != "" ) {this.setState({showTitle: true,})};
       if (response.data.blurb != null && response.data.blurb != "" ) {this.setState({showBlurb: true,})};
       if (response.data.location != null && response.data.location != "" ) {this.setState({showLocation: true,})};
@@ -353,12 +353,7 @@ class NetworkContactPages extends React.Component {
                 { !this.state.showContactDetails &&
                 <p class="secondP"> </p> }
                 </div>
-                <div>
-                { this.state.showRelationshipStatus &&
-                <p class="secondP"> Relationship status: {this.state.relationshipStatus2}</p> }
-                { !this.state.showRelationshipStatus &&
-                <p class="secondP"> </p> }
-                </div>
+
                 </div>
 
                 <MessageBoardFriend friendshipsEntityId={this.state.friendId}/>

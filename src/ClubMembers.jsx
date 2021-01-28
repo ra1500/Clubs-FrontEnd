@@ -18,7 +18,6 @@ class ClubMembers extends React.Component {
                <td> <ProfilePictureClubMember goToSingleClubMember2={this.props.goToSingleClubMember2} memberId={data.id} clubId={this.props.clubId}/> </td>
                <td class="friendsTD2"> <button class="pureTextButton" value={data.id} onClick={e => this.props.goToSingleClubMember(e)}>  {data.userName} </button> </td>
                <td class="friendsTD2"> <button class="pureTextButton" value={data.id} onClick={e => this.props.goToSingleClubMember(e)}>  {data.title} </button> </td>
-               <td class="friendsTD2"> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.goToSingleClubMember(e)}>  &#9658; </button> </td>
             </tr>
          )
       })

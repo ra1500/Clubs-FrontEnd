@@ -68,7 +68,7 @@ class Start extends React.Component {
             <div>
             <p class="headerP"> Network - You have unread messages from </p>
             <AlertsNewMessagesContacts /><br></br>
-            <p class="headerP"> Clubs - You have unread messages from </p>
+            <p class="headerP"> Forums - You have unread messages from </p>
             <AlertsNewMessagesClubs /><br></br>
             </div> }
 
@@ -76,7 +76,7 @@ class Start extends React.Component {
             <div>
             <p class="headerP"> Network Invitations </p>
             <AlertsNewContactsList goToContactDetails={this.goToContactDetails}/><br></br>
-            <p class="headerP"> Club Invitations </p>
+            <p class="headerP"> Forum Invitations </p>
             <AlertsNewClubInvitations goToClubDetails={this.goToClubDetails}/>
             </div> }
 

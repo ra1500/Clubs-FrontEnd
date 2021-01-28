@@ -56,11 +56,9 @@ class Introduction extends React.Component {
     <div>
     <div id="introDiv">
     <div class="topParentDiv">
-         <p id="intro1p">  Simply connected. Friends, family, colleagues. </p>
+         <p id="intro1p">   </p>
          <ul class="introUL">
-         <li>  Expand your network. </li>
-         <li>  Join clubs. Start a new one. </li>
-         <li>  Private and secure.  </li>
+
          </ul>
     </div>
 

@@ -43,7 +43,7 @@ class PublicUserPages extends React.Component {
         profileBlurb: response.data.blurb,
         profileEducation: response.data.education,
         profileOccupation: response.data.occupation,
-        profileRelationshipStatus: response.data.relationshipStatus,
+        //profileRelationshipStatus: response.data.relationshipStatus,
         profileLocation: response.data.location,
         profileContactInfo: response.data.contactInfo,
         list: response.data.clubsList,
@@ -54,9 +54,9 @@ class PublicUserPages extends React.Component {
       if (response.data.education === 3) {this.setState({education2: "Masters"})};
       if (response.data.education === 4) {this.setState({education2: "Phd or MD"})};
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
-      if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
-      if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
+      //if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
+      //if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
+      //if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
       } // end if
            }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
            });
@@ -127,7 +127,7 @@ class PublicUserPages extends React.Component {
         { this.state.showList &&
          <div class="topParentDiv">
          <div class="secondParentDiv">
-            <p> My clubs: </p>
+            <p> My Forums: </p>
             <table>
                <tbody>
                 {this.renderTableData()}

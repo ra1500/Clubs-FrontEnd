@@ -74,7 +74,8 @@ class ClubsEdit extends React.Component {
 
         { this.state.showClubsSome &&
          <div >
-         <p> Edit and adjust clubs in which you are the alpha member. </p>
+         <p> Edit and adjust forums in which you are the alpha member. </p>
+         <p>Update your headlines. Remove members and their message board posts. </p>
             <table>
                <tbody >
                   {this.renderTableData()}

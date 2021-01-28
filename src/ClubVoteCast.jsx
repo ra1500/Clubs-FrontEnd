@@ -43,7 +43,7 @@ class ClubVoteCast extends React.Component {
         if (response.status === 204) {
             this.setState({invitationSentMessage: " not found" });}
         else {
-            this.setState({isLoaded: true, invitationSentMessage: this.state.alphaVote + " has been nominated to be club alpha",});
+            this.setState({isLoaded: true, invitationSentMessage: this.state.alphaVote + " has been nominated to be forum alpha",});
             this.props.refreshMyCurrentAlphaVote(response.data.voteCast);
         }
                }).catch(error => {this.setState({ isLoaded: true, error});
@@ -54,7 +54,7 @@ class ClubVoteCast extends React.Component {
     return (
     <React.Fragment>
       <div class="topParentDiv">
-        <p> Vote for Club Alpha </p>
+        <p> Vote for Forum Alpha </p>
         <p></p>
         <div class="secondParentDiv">
         <input id="invitationBox" type="text" value={this.state.alphaVote} onChange={this.handleChange} placeholder=" username " />

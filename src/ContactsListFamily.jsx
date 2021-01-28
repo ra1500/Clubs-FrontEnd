@@ -24,7 +24,6 @@ class ContactsListFamily extends React.Component {
                <td class="friendsTD2"> <button class="pureTextButton" value={data.id} onClick={e => this.props.renderSingleContact(e)} >  {data.friend} </button> </td>
                <td class="friendsTD2"> <button class="pureTextButton" value={data.id} onClick={e => this.props.renderSingleContact(e)} >  {data.connectionType} </button> </td>
                <td class="friendsTD2"> <button class="pureTextButton" value={data.id} onClick={e => this.props.renderSingleContact(e)} >  {data.connectionStatus} </button> </td>
-               <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.props.renderSingleContact(e)} >  &#9658; </button> </td>
             </tr>
          )
          } // end if

@@ -37,7 +37,7 @@ class ClubInvite extends React.Component {
         const hash = btoa(token);
         const Basic = 'Basic ' + hash;
 
-        if ( this.state.receiver == u ) { this.setState({ invitationSentMessage: "but you're already in the club!" }); }
+        if ( this.state.receiver == u ) { this.setState({ invitationSentMessage: "but you're already in the forum!" }); }
         else {
 
         let data = { receiver: this.state.receiver };
@@ -46,8 +46,8 @@ class ClubInvite extends React.Component {
         .then((response) => {
         if (response.status === 204) {
         this.setState({invitationSentMessage: " user not found" });}
-        else if ( response.data.status == 5 ) { this.setState({isLoaded: true, invitationSentMessage: " Sorry, club is full",}); }
-        else if ( response.data.receiver == this.state.receiver ) { this.setState({ invitationSentMessage: response.data.receiver + " has been invited to join the club." }); }
+        else if ( response.data.status == 5 ) { this.setState({isLoaded: true, invitationSentMessage: " Sorry, forum is full",}); }
+        else if ( response.data.receiver == this.state.receiver ) { this.setState({ invitationSentMessage: response.data.receiver + " has been invited to join the forum." }); }
         else {this.setState({isLoaded: true, invitationSentMessage: response.data.receiver,}); }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
@@ -58,7 +58,7 @@ class ClubInvite extends React.Component {
     return (
     <React.Fragment>
       <div class="topParentDiv">
-        <p> Club Invitation </p>
+        <p> Forum Invitation </p>
         <p></p>
         <div class="secondParentDiv">
         <input id="invitationBox" type="text" value={this.state.receiver} onChange={this.handleChange} placeholder=" username " />

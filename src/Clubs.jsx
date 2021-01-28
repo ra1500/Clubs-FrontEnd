@@ -74,6 +74,9 @@ class Clubs extends React.Component {
         showLocation: false,
         showContactDetails: false,
         showRelationshipStatus: false,
+        headline1: null,
+        headline2: null,
+        headline3: null,
         };
     };
 
@@ -123,6 +126,9 @@ class Clubs extends React.Component {
             clubDescription: response.data.description,
             currentSize: response.data.currentSize,
             clubAlpha: response.data.alpha,
+            headline1: response.data.headline1,
+            headline2: response.data.headline2,
+            headline3: response.data.headline3,
             maxSize: response.data.maxSize,
             membersList: response.data.members,
             showClubsList: false,
@@ -131,7 +137,7 @@ class Clubs extends React.Component {
             showClubMessageBoard: true,
             showClubQuitButtons: true,
           });
-          this.getBeta();
+          // this.getBeta();
           } // end if
           else { this.setState({showClubsList: false}); }
                }).catch(error => {this.setState({ isLoaded: true, error,});
@@ -155,7 +161,7 @@ class Clubs extends React.Component {
         blurb: response.data.blurb,
         education: response.data.education,
         occupation: response.data.occupation,
-        relationshipStatus: response.data.relationshipStatus,
+        //relationshipStatus: response.data.relationshipStatus,
         location: response.data.location,
         contactInfo: response.data.contactInfo,
         singleClubMemberId: response.data.id,
@@ -165,10 +171,10 @@ class Clubs extends React.Component {
       if (response.data.education === 3) {this.setState({education2: "Masters"})};
       if (response.data.education === 4) {this.setState({education2: "Phd or MD"})};
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
-      if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
-      if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
-      if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
+      //if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
+      //if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
+      //if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
+      //if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
       if (response.data.title != null && response.data.title != "" ) {this.setState({showTitle: true,})};
       if (response.data.blurb != null && response.data.blurb != "" ) {this.setState({showBlurb: true,})};
       if (response.data.location != null && response.data.location != "" ) {this.setState({showLocation: true,})};
@@ -195,7 +201,7 @@ class Clubs extends React.Component {
         blurb: response.data.blurb,
         education: response.data.education,
         occupation: response.data.occupation,
-        relationshipStatus: response.data.relationshipStatus,
+        //relationshipStatus: response.data.relationshipStatus,
         location: response.data.location,
         contactInfo: response.data.contactInfo,
         singleClubMemberId: response.data.id,
@@ -205,10 +211,10 @@ class Clubs extends React.Component {
       if (response.data.education === 3) {this.setState({education2: "Masters"})};
       if (response.data.education === 4) {this.setState({education2: "Phd or MD"})};
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
-      if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
-      if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
-      if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
+      //if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
+      //if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
+      //if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
+      //if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
       if (response.data.title != null && response.data.title != "" ) {this.setState({showTitle: true,})};
       if (response.data.blurb != null && response.data.blurb != "" ) {this.setState({showBlurb: true,})};
       if (response.data.location != null && response.data.location != "" ) {this.setState({showLocation: true,})};
@@ -291,34 +297,34 @@ class Clubs extends React.Component {
 
             { this.state.onClubs &&
               <div class="settings2ButtonsDiv">
-                <button id="myClubsButtonOn" onClick={this.goToClubsList}> My Clubs </button>
-                <button id="myClubsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
-                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
-                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Club </button>
+                <button id="myClubsButtonOn" onClick={this.goToClubsList}> My Forums </button>
+                <button id="myClubsButton" onClick={this.goToClubInvitations}> Forum Invitations </button>
+                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Forums </button>
+                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Forum </button>
               </div> }
 
             { this.state.onInvitations &&
               <div class="settings2ButtonsDiv">
-                <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
-                <button id="myClubsButtonOn" onClick={this.goToClubInvitations}> Club Invitations </button>
-                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
-                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Club </button>
+                <button id="myClubsButton" onClick={this.goToClubsList}> My Forums </button>
+                <button id="myClubsButtonOn" onClick={this.goToClubInvitations}> Forum Invitations </button>
+                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Forums </button>
+                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Forum </button>
               </div> }
 
             { this.state.onEdit &&
               <div class="settings2ButtonsDiv">
-                <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
-                <button id="myClubsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
-                <button id="myClubsButtonOn" onClick={this.goToEditClubs}> Edit Clubs </button>
-                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Club </button>
+                <button id="myClubsButton" onClick={this.goToClubsList}> My Forums </button>
+                <button id="myClubsButton" onClick={this.goToClubInvitations}> Forum Invitations </button>
+                <button id="myClubsButtonOn" onClick={this.goToEditClubs}> Edit Forums </button>
+                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Forum </button>
               </div> }
 
             { this.state.onStart &&
               <div class="settings2ButtonsDiv">
-                <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
-                <button id="myClubsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
-                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
-                <button id="myClubsButtonOn" onClick={this.goToCreateClub}> Start a Club </button>
+                <button id="myClubsButton" onClick={this.goToClubsList}> My Forums </button>
+                <button id="myClubsButton" onClick={this.goToClubInvitations}> Forum Invitations </button>
+                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Forums </button>
+                <button id="myClubsButtonOn" onClick={this.goToCreateClub}> Start a Forum </button>
               </div> }
 
         <div class="topParentDiv">
@@ -350,7 +356,7 @@ class Clubs extends React.Component {
 
         { this.state.showCreateClubs &&
         <div>
-        <p> Start a New Club </p>
+        <p> Start a New Forum </p>
         <ClubText />
         </div> }
 
@@ -358,20 +364,21 @@ class Clubs extends React.Component {
         <div>
         <div class="topParentDiv">
         <table>
-            <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
+            <tr><td>Forum:</td><td class="clubTD"> {this.state.clubName} </td></tr>
             <tr><td>Description:</td><td class="clubTD"> {this.state.clubDescription} </td></tr>
-            <tr><td>Club alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
+            <tr><td>Forum alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
             <tr><td>Max. size:</td><td class="clubTD"> {this.state.maxSize} </td></tr>
             <tr><td>Current size:</td><td class="clubTD"> {this.state.currentSize} </td></tr>
-            <tr><td>Club beta:</td><td class="clubTD"> {this.state.clubBeta} </td></tr>
-            <tr><td>Beta vote count:</td><td class="clubTD"> {this.state.betaCount} </td></tr>
+            <tr><td class="headline1"> {this.state.headline1} </td></tr>
+            <tr><td class="headline2"> {this.state.headline2} </td></tr>
+            <tr><td class="headline3"> {this.state.headline3} </td></tr>
         </table>
+
         </div>
                       { this.state.onMessageBoard &&
                       <div class="secondLevelDiv">
                         <button id="myClubsButtonOn" onClick={this.showClubMessageBoard}> Message Board </button>
                         <button id="myClubsButton" onClick={this.showMembers}> Members </button>
-                        <button id="myClubsButton" onClick={this.showClubVoting}> Voting </button>
                         <button id="myClubsButton" onClick={this.showClubInvite}> Invite </button>
                         <button id="myClubsButton" onClick={this.showClubQuit}> Quit </button>
                       </div> }
@@ -380,7 +387,6 @@ class Clubs extends React.Component {
                       <div class="secondLevelDiv">
                         <button id="myClubsButton" onClick={this.showClubMessageBoard}> Message Board </button>
                         <button id="myClubsButtonOn" onClick={this.showMembers}> Members </button>
-                        <button id="myClubsButton" onClick={this.showClubVoting}> Voting </button>
                         <button id="myClubsButton" onClick={this.showClubInvite}> Invite </button>
                         <button id="myClubsButton" onClick={this.showClubQuit}> Quit </button>
                       </div> }
@@ -389,7 +395,6 @@ class Clubs extends React.Component {
                       <div class="secondLevelDiv">
                         <button id="myClubsButton" onClick={this.showClubMessageBoard}> Message Board </button>
                         <button id="myClubsButton" onClick={this.showMembers}> Members </button>
-                        <button id="myClubsButtonOn" onClick={this.showClubVoting}> Voting </button>
                         <button id="myClubsButton" onClick={this.showClubInvite}> Invite </button>
                         <button id="myClubsButton" onClick={this.showClubQuit}> Quit </button>
                       </div> }
@@ -398,7 +403,6 @@ class Clubs extends React.Component {
                       <div class="secondLevelDiv">
                         <button id="myClubsButton" onClick={this.showClubMessageBoard}> Message Board </button>
                         <button id="myClubsButton" onClick={this.showMembers}> Members </button>
-                        <button id="myClubsButton" onClick={this.showClubVoting}> Voting </button>
                         <button id="myClubsButtonOn" onClick={this.showClubInvite}> Invite </button>
                         <button id="myClubsButton" onClick={this.showClubQuit}> Quit </button>
                       </div> }
@@ -409,7 +413,6 @@ class Clubs extends React.Component {
                         <div>
                         <button id="myClubsButton" onClick={this.showClubMessageBoard}> Message Board </button>
                         <button id="myClubsButton" onClick={this.showMembers}> Members </button>
-                        <button id="myClubsButton" onClick={this.showClubVoting}> Voting </button>
                         <button id="myClubsButton" onClick={this.showClubInvite}> Invite </button>
                         <button id="myClubsButtonOn" onClick={this.showClubQuit}> Quit </button>
                         </div> }
@@ -423,11 +426,6 @@ class Clubs extends React.Component {
             { this.state.showClubMessageBoard &&
             <div>
              <MessageBoard clubId={this.state.clubId} clubName={this.state.clubName} />
-            </div> }
-
-            { this.state.showClubVoting &&
-            <div>
-             <ClubVoting clubId={this.state.clubId} clubAlpha={this.state.clubAlpha} clubName={this.state.clubName} />
             </div> }
 
             { this.state.showClubInvite &&

@@ -26,7 +26,7 @@ class About extends React.Component {
               <div class="topParentDiv">
 
       <div class="topParentDiv">
-            <p> NeuralJuice. Simply connected. </p>
+            <p>  </p>
         </div>
 
 

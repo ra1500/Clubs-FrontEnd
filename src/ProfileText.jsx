@@ -8,7 +8,7 @@ class ProfileText extends React.Component {
     this.handleChange2 = this.handleChange2.bind(this);
     this.handleChange3 = this.handleChange3.bind(this);
     this.handleChange4 = this.handleChange4.bind(this);
-    this.handleChange5 = this.handleChange5.bind(this);
+    //this.handleChange5 = this.handleChange5.bind(this);
     this.handleChange6 = this.handleChange6.bind(this);
     this.handleChange7 = this.handleChange7.bind(this);
     this.handleSubmit1 = this.handleSubmit1.bind(this);
@@ -50,7 +50,7 @@ class ProfileText extends React.Component {
         blurb: response.data.blurb,
         education: response.data.education,
         occupation: response.data.occupation,
-        relationshipStatus: response.data.relationshipStatus,
+        //relationshipStatus: response.data.relationshipStatus,
         location: response.data.location,
         contactInfo: response.data.contactInfo,
       });
@@ -59,9 +59,9 @@ class ProfileText extends React.Component {
       if (response.data.education === 3) {this.setState({education2: "Masters"})};
       if (response.data.education === 4) {this.setState({education2: "Phd or MD"})};
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
-      if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
-      if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
+      //if (response.data.relationshipStatus === 1) {this.setState({relationshipStatus2: "Available"})};
+      //if (response.data.relationshipStatus === 2) {this.setState({relationshipStatus2: "Not Available"})};
+      //if (response.data.relationshipStatus === 3) {this.setState({relationshipStatus2: "whatever"})};
            }).catch(error => {this.setState({ isLoaded: true, error, userScore: 0});
            });
     }
@@ -83,12 +83,12 @@ class ProfileText extends React.Component {
       if (event.target.value === "4") {this.setState({education2: "Phd or MD"})};
       if (event.target.value === "5") {this.setState({education2: "Irrelevant"})};
      }
-     handleChange5(event) {
-       this.setState({relationshipStatus: event.target.value});
-      if (event.target.value === "1") {this.setState({relationshipStatus2: "Available"})};
-      if (event.target.value === "2") {this.setState({relationshipStatus2: "Not Available"})};
-      if (event.target.value === "3") {this.setState({relationshipStatus2: "whatever"})};
-     }
+     //handleChange5(event) {
+     //  this.setState({relationshipStatus: event.target.value});
+     // if (event.target.value === "1") {this.setState({relationshipStatus2: "Available"})};
+     // if (event.target.value === "2") {this.setState({relationshipStatus2: "Not Available"})};
+     // if (event.target.value === "3") {this.setState({relationshipStatus2: "whatever"})};
+     //}
      handleChange6(event) {
        this.setState({location: event.target.value});
      }
@@ -160,21 +160,6 @@ class ProfileText extends React.Component {
           <td> <input className="clubTextBox" maxlength="80" type="text" value={this.state.contactInfo} onChange={this.handleChange7}  autocomplete="off" placeholder="optional: email or phone# etc."/> </td>
           </tr>
           </table>
-        <form>
-            <p class="paragraphInline"> Relationship Status: {this.state.relationshipStatus2} &nbsp; &nbsp;</p>
-            <div class="radioSelections">
-              <label><input value="1" onChange={this.handleChange5} type="radio" name="optradio" /> Available </label>
-            </div>
-            <div class="radioSelections">
-              <label><input value="2" onChange={this.handleChange5} type="radio" name="optradio" /> Not Available </label>
-            </div>
-            <div class="radioSelections">
-              <label><input value="3" onChange={this.handleChange5} type="radio" name="optradio" /> whatever </label>
-            </div>
-            <div class="radioSelections">
-              <label><input value="4" onChange={this.handleChange5} type="radio" name="optradio" /> (none)</label>
-            </div>
-        </form>
             <button type="submit" onClick={this.handleSubmit1} className="updateButton"> Update </button>
             <span class="updateParagraph">{this.state.updatedMessage}</span>
     </div>

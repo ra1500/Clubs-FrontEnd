@@ -56,9 +56,9 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 #myNetworkButton:active { background-color: gray;}
 #myNetworkButtonOn { border-radius: 4px; margin-right: 10px; width: 120px; display: inline; background-color: #009900; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
 #myNetworkButtonOn:active { background-color: gray;}
-#myClubsButton { border-radius: 4px; margin-right: 10px; width: 120px; display: inline; background-color: #3333cc; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#myClubsButton { border-radius: 4px; margin-right: 10px; width: 140px; display: inline; background-color: #3333cc; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
 #myClubsButton:active { background-color: gray;}
-#myClubsButtonOn { border-radius: 4px; margin-right: 10px; width: 120px; display: inline; background-color: #009900; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#myClubsButtonOn { border-radius: 4px; margin-right: 10px; width: 140px; display: inline; background-color: #009900; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
 #myClubsButtonOn:active { background-color: gray;}
 #myProfileButton { border-radius: 4px; margin-right: 10px; width: 120px; display: inline; background-color: #3333cc; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
 #myProfileButton:active { background-color: gray;}
@@ -213,3 +213,6 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .alertsButtonsTD { width: 370px; }
 .pureTextButton {text-align: left; height: 12px; width: 150px; border: none; background-color: white; font-size: 16px; font-family: "Geneva"; font-color: black }
 .arrowImage { height: 30px; width: 30px; }
+.headline1 { font-family: "Arial"; font-size: 16px; color: green; font-weight: bold; }
+.headline2 { font-family: "Arial"; font-size: 16px; color: red; font-weight: bold; }
+.headline3 { font-family: "Arial"; font-size: 16px; color: orange; font-weight: bold; }

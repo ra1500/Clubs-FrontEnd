@@ -111,7 +111,7 @@ class Profile extends React.Component {
         profileBlurb: response.data.blurb,
         profileEducation: response.data.education,
         profileOccupation: response.data.occupation,
-        profileRelationshipStatus: response.data.relationshipStatus,
+        // profileRelationshipStatus: response.data.relationshipStatus,
         profileLocation: response.data.location,
         profileContactInfo: response.data.contactInfo,
       });
@@ -120,10 +120,10 @@ class Profile extends React.Component {
       if (response.data.education === 3) {this.setState({education2: "Masters"})};
       if (response.data.education === 4) {this.setState({education2: "Phd or MD"})};
       if (response.data.education === 5) {this.setState({education2: "Irrelevant"})};
-      if (response.data.relationshipStatus === 1) {this.setState({showRelationshipStatus: true, relationshipStatus2: "Available"})};
-      if (response.data.relationshipStatus === 2) {this.setState({showRelationshipStatus: true, relationshipStatus2: "Not Available"})};
-      if (response.data.relationshipStatus === 3) {this.setState({showRelationshipStatus: true, relationshipStatus2: "whatever"})};
-      if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
+      // if (response.data.relationshipStatus === 1) {this.setState({showRelationshipStatus: true, relationshipStatus2: "Available"})};
+      // if (response.data.relationshipStatus === 2) {this.setState({showRelationshipStatus: true, relationshipStatus2: "Not Available"})};
+      //  if (response.data.relationshipStatus === 3) {this.setState({showRelationshipStatus: true, relationshipStatus2: "whatever"})};
+      //  if (response.data.relationshipStatus === 4) {this.setState({relationshipStatus2: ""  })};
       if (response.data.title != null && response.data.title != "" ) {this.setState({showTitle: true,})};
       if (response.data.blurb != null && response.data.blurb != "" ) {this.setState({showBlurb: true,})};
       if (response.data.location != null && response.data.location != "" ) {this.setState({showLocation: true,})};
@@ -191,8 +191,7 @@ class Profile extends React.Component {
                 <tr><td> Location: {this.state.profileLocation} </td></tr> }
                 { this.state.showContactDetails &&
                 <tr><td> Contact Details: {this.state.profileContactInfo} </td></tr> }
-                { this.state.showRelationshipStatus &&
-                <tr><td> Relationship Status: {this.state.relationshipStatus2} </td></tr> }
+
                 </table>
                 </div>
                 </div>

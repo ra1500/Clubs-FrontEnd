@@ -64,7 +64,7 @@ class AlertsNewClubInvitations extends React.Component {
 
 
     decline(e) {
-        if (window.confirm('Please confirm acceptance')) {
+        if (window.confirm('Please confirm decline')) {
 
         this.setState({showNewClubInvitations: false });
 
