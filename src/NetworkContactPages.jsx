@@ -331,19 +331,19 @@ class NetworkContactPages extends React.Component {
                 <div class="scoresListTD">
                 <div>
                 { this.state.showTitle &&
-                <p class="secondP"> Title: {this.state.title}</p> }
+                <p class="secondP"> Title: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.title}</p> }
                 { !this.state.showTitle &&
                 <p class="secondP"> </p> }
                 </div>
                 <div>
                 { this.state.showBlurb &&
-                <p class="secondP"> About me: {this.state.blurb}</p> }
+                <p class="secondP"> About me: &nbsp;&nbsp;{this.state.blurb}</p> }
                 { !this.state.showBlurb &&
                 <p class="secondP"> </p> }
                 </div>
                 <div>
                 { this.state.showLocation &&
-                <p class="secondP"> Location: {this.state.location}</p> }
+                <p class="secondP"> Location: &nbsp;&nbsp;&nbsp;{this.state.location}</p> }
                 { !this.state.showLocation &&
                 <p class="secondP"> </p> }
                 </div>

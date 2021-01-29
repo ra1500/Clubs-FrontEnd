@@ -169,20 +169,20 @@ class ClubTextEdit extends React.Component {
           { !this.state.showSubmit &&
           <div>
           <table>
-          <tr>
+          <tr class="clubTR">
           <td> Club name: </td>
           <td> {this.state.clubName} </td>
           </tr>
-          <tr>
+          <tr class="clubTR">
           <td> Description: </td>
           <td>{ this.state.description} </td>
           </tr>
-          <tr>
+          <tr class="clubTR">
           <td> Alpha member: </td>
           <td> {this.state.alpha} </td>
           </tr>
-          <tr>
-          <td> Max. membership size: </td>
+          <tr class="clubTR">
+          <td class="clubTR"> Max. membership size: </td>
           <td> {this.state.maxSize} </td>
           </tr>
           </table>

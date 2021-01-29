@@ -56,9 +56,9 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 #myNetworkButton:active { background-color: gray;}
 #myNetworkButtonOn { border-radius: 4px; margin-right: 10px; width: 120px; display: inline; background-color: #009900; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
 #myNetworkButtonOn:active { background-color: gray;}
-#myClubsButton { border-radius: 4px; margin-right: 10px; width: 140px; display: inline; background-color: #3333cc; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#myClubsButton { border-radius: 4px; margin-right: 10px; width: 120px; display: inline; background-color: #3333cc; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
 #myClubsButton:active { background-color: gray;}
-#myClubsButtonOn { border-radius: 4px; margin-right: 10px; width: 140px; display: inline; background-color: #009900; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
+#myClubsButtonOn { border-radius: 4px; margin-right: 10px; width: 120px; display: inline; background-color: #009900; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
 #myClubsButtonOn:active { background-color: gray;}
 #myProfileButton { border-radius: 4px; margin-right: 10px; width: 120px; display: inline; background-color: #3333cc; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
 #myProfileButton:active { background-color: gray;}
@@ -182,12 +182,13 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .friendsTD2 {display: block; padding-top: 5px;}
 .friendsTD3 {display: block; padding-bottom: 5px;}
 .friendsTD {display: block;}
-.friendsTR { margin-bottom: 500px;}
+.friendsTR { margin-bottom: 500px; line-height: 18px;}
 
 .secondLevelDiv { padding-top: 10px; }
 .noLineSpaceP { margin: 0 }
 .headerP { margin: 0; width: 370px; border-bottom: solid 1px black; padding-left: 5px; color: black;  }
-.clubTD { padding-left: 15px; }
+.clubTD { padding-left: 15px;}
+.clubTR { line-height: 17px;}
 .networkFriendTD { padding-top: 10px; padding-right: 10px; }
 .clubTextBox { width: 400px; }
 #clubTextBoxSize { width: 50px; }

@@ -364,11 +364,11 @@ class Clubs extends React.Component {
         <div>
         <div class="topParentDiv">
         <table>
-            <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
-            <tr><td>Description:</td><td class="clubTD"> {this.state.clubDescription} </td></tr>
-            <tr><td>Club alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
-            <tr><td>Max. size:</td><td class="clubTD"> {this.state.maxSize} </td></tr>
-            <tr><td>Current size:</td><td class="clubTD"> {this.state.currentSize} </td></tr>
+            <tr class="clubTR"><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
+            <tr class="clubTR"><td>Description:</td><td class="clubTD"> {this.state.clubDescription} </td></tr>
+            <tr class="clubTR"><td>Club alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
+            <tr class="clubTR"><td>Max. size:</td><td class="clubTD"> {this.state.maxSize} </td></tr>
+            <tr class="clubTR"><td>Current size:</td><td class="clubTD"> {this.state.currentSize} </td></tr>
         </table>
             <p class="headline1"> {this.state.headline1} </p>
             <p class="headline2"> {this.state.headline2} </p>
@@ -445,19 +445,19 @@ class Clubs extends React.Component {
                 <div>
                 <p class="secondP"> {this.state.memberUserName} </p><br></br>
                 { this.state.showTitle &&
-                <p class="secondP"> Title: {this.state.title}</p> }
+                <p class="secondP"> Title: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{this.state.title}</p> }
                 { !this.state.showTitle &&
                 <p class="secondP"> </p> }
                 </div>
                 <div>
                 { this.state.showBlurb &&
-                <p class="secondP"> About me: {this.state.blurb}</p> }
+                <p class="secondP"> About me: &nbsp;&nbsp;{this.state.blurb}</p> }
                 { !this.state.showBlurb &&
                 <p class="secondP"> </p> }
                 </div>
                 <div>
                 { this.state.showLocation &&
-                <p class="secondP"> Location: {this.state.location}</p> }
+                <p class="secondP"> Location: &nbsp;&nbsp;&nbsp;{this.state.location}</p> }
                 { !this.state.showLocation &&
                 <p class="secondP"> </p> }
                 </div>

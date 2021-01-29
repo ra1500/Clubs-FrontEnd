@@ -84,6 +84,9 @@ class ClubMembersRemove extends React.Component {
 
         { !this.props.showMembersList2 &&
          <div>
+         <br></br>
+         <p class="questionsParagraph"> Members:</p>
+         <p> Remove members and their messages. Asign a member to be the new alpha.</p>
          <p class="alertsSmallP"> &nbsp;(none)</p>
          </div> }
 
