@@ -213,6 +213,6 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .alertsButtonsTD { width: 370px; }
 .pureTextButton {text-align: left; height: 12px; width: 150px; border: none; background-color: white; font-size: 16px; font-family: "Geneva"; font-color: black }
 .arrowImage { height: 30px; width: 30px; }
-.headline1 { font-family: "Arial"; font-size: 16px; color: green; font-weight: bold; }
-.headline2 { font-family: "Arial"; font-size: 16px; color: red; font-weight: bold; }
-.headline3 { font-family: "Arial"; font-size: 16px; color: orange; font-weight: bold; }
+.headline1 { font-family: "Arial"; font-size: 18px; color: green; font-weight: bold; border: dotted 1px black; padding-left: 10px; margin-top: 15px; }
+.headline2 { font-family: "Arial"; font-size: 18px; color: red; font-weight: bold; border: dotted 1px black; padding-left: 10px;}
+.headline3 { font-family: "Arial"; font-size: 16px; padding-left: 10px;}

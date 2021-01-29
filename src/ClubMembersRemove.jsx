@@ -13,7 +13,7 @@ class ClubMembersRemove extends React.Component {
     }
 
     removeMember(e) {
-        if (window.confirm('Confirm removal of member and all of members messages')) {
+        if (window.confirm('Confirm removal of this member and all of this members messages')) {
 
         const name = JSON.parse(sessionStorage.getItem('tokens'));
         const u = name.userName;
@@ -27,7 +27,8 @@ class ClubMembersRemove extends React.Component {
         if (response.status === 204) {
         this.setState({quitMessage: " error." });}
         else {
-        this.setState({isLoaded: true, quitMessage: response.data, showQuitButton: false,});
+        this.setState({isLoaded: true, quitMessage: response.data,});
+        this.props.refreshMembersList();
                    }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
@@ -36,7 +37,7 @@ class ClubMembersRemove extends React.Component {
     }
 
     changeAlpha(e) {
-        if (window.confirm('Are you sure you want assign another member as the alpha?')) {
+        if (window.confirm('Are you sure you want assign this member as the alpha?')) {
 
         const name = JSON.parse(sessionStorage.getItem('tokens'));
         const u = name.userName;
@@ -64,11 +65,13 @@ class ClubMembersRemove extends React.Component {
       const sortedList = this.state.list.sort((a,b) => (a.userName > b.userName) ? 1 : ((b.userName > a.userName) ? -1 : 0));
       return this.state.list.map((data, index) => {
          return (
+            <div>
             <tr class="friendsTR"key={data.id}>
-               <td class="friendsTD2"> {data.userName} </td>
-               <td class="friendsTD2"> <button class="updateButton" value={data.id} onClick={e => this.removeMember(e)}>  Remove </button> </td>
-               <td class="friendsTD2"> <button class="updateButton" value={data.id} onClick={e => this.changeAlpha(e)}>  Alpha </button> </td>
+               <td> {data.userName} </td>
+               <td> <button class="updateButton" value={data.id} onClick={e => this.removeMember(e)}>  Remove </button> </td>
+               <td> <button class="updateButton" value={data.id} onClick={e => this.changeAlpha(e)}>  Alpha </button> </td>
             </tr>
+            </div>
          )
       })
    }
@@ -86,6 +89,9 @@ class ClubMembersRemove extends React.Component {
 
         { this.props.showMembersList2 &&
          <div>
+            <br></br>
+            <p class="questionsParagraph"> Members:</p>
+            <p> Remove members and their messages. Asign a member to be the new alpha.</p>
             <table>
                <tbody>
                   {this.renderTableData()}

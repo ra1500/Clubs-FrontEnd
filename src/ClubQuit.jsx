@@ -47,7 +47,7 @@ class ClubQuit extends React.Component {
     return (
     <React.Fragment>
       <div class="topParentDiv">
-        <p> Quit Forum </p>
+        <p> Quit Club </p>
         <p></p>
         <div class="secondParentDiv">
 

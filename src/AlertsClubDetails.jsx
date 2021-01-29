@@ -62,8 +62,8 @@ class AlertsClubDetails extends React.Component {
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
         this.setState({isLoaded: true, showButtons: false });
-        if (response.data.receiver == "OVER LIMIT") { this.setState({ message: "Sorry, you have already reached your limit of 30 forums joined" }) }
-        else { this.setState({ message: "You have joined the forum!" }) }
+        if (response.data.receiver == "OVER LIMIT") { this.setState({ message: "Sorry, you have already reached your limit of 30 clubs joined" }) }
+        else { this.setState({ message: "You have joined the club!" }) }
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
          }
@@ -83,7 +83,7 @@ class AlertsClubDetails extends React.Component {
         axios.post("http://localhost:8080/api/i/c", data,
         {headers : { 'Authorization' : Basic }})
         .then((response) => {
-        this.setState({isLoaded: true, message: "forum invitation declined", showButtons: false});
+        this.setState({isLoaded: true, message: "club invitation declined", showButtons: false});
                }).catch(error => {this.setState({ isLoaded: true, error});
                });
          }
@@ -95,12 +95,12 @@ class AlertsClubDetails extends React.Component {
     <React.Fragment>
       <div>
 
-        <p class="headerP"> Forum Invitation Details </p>
+        <p class="headerP"> Club Invitation Details </p>
 
         <table>
-            <tr><td>Forum:</td><td class="clubTD"> {this.state.clubName} </td></tr>
+            <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
             <tr><td>Description:</td><td class="clubTD"> {this.state.description} </td></tr>
-            <tr><td>Forum Alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
+            <tr><td>Club Alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
             <tr><td>Inviting Member::</td><td class="clubTD"> {this.state.inviter} </td></tr>
         </table>
 

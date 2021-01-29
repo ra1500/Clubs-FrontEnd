@@ -72,8 +72,8 @@ class ClubText extends React.Component {
     .then((response) => {
     this.setState({isLoaded: true, showSubmit: false, maxSize: response.data.maxSize, alpha: u,
               });
-    if (response.data.founder == "OVER LIMIT") { this.setState({ updatedMessage: " Sorry, you have already reached your limit of 30 forums joined" }) }
-    else { this.setState({ updatedMessage: " Forum has been added" }) };
+    if (response.data.founder == "OVER LIMIT") { this.setState({ updatedMessage: " Sorry, you have already reached your limit of 30 clubs joined" }) }
+    else { this.setState({ updatedMessage: " Club has been added" }) };
            }).catch(error => {this.setState({ isLoaded: true, error});
            });
   }
@@ -86,7 +86,7 @@ class ClubText extends React.Component {
           <div>
           <table>
           <tr>
-          <td> Forum name: </td>
+          <td> Club name: </td>
           <td><input className="clubTextBox" maxlength="40" type="text" value={this.state.clubName} onChange={this.handleChange2}  autocomplete="off" placeholder=""/></td>
           </tr>
           <tr>
@@ -98,16 +98,16 @@ class ClubText extends React.Component {
           <td><input id="clubTextBoxSize" maxlength="3" type="text" value={this.state.maxSize} onChange={this.handleChange6}  autocomplete="off" placeholder="#"/></td>
           </tr>
           <tr>
-          <td> Headline 1 </td>
-          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.headline1} onChange={this.handleChange8}  autocomplete="off" placeholder=""/></td>
+          <td class="headline1"> Green Headline </td>
+          <td><input className="clubTextBox" maxlength="110" type="text" value={this.state.headline1} onChange={this.handleChange8}  autocomplete="off" placeholder="<110 characters"/></td>
           </tr>
           <tr>
-          <td> Headline 2 </td>
-          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.headline2} onChange={this.handleChange9}  autocomplete="off" placeholder=""/></td>
+          <td class="headline2"> Red Headline </td>
+          <td><input className="clubTextBox" maxlength="110" type="text" value={this.state.headline2} onChange={this.handleChange9}  autocomplete="off" placeholder="<110 characters"/></td>
           </tr>
           <tr>
-          <td> Headline 3 </td>
-          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.headline3} onChange={this.handleChange10}  autocomplete="off" placeholder=""/></td>
+          <td class="headline3"> Blurb </td>
+          <td><input className="clubTextBox" maxlength="250" type="text" value={this.state.headline3} onChange={this.handleChange10}  autocomplete="off" placeholder="<250 characters"/></td>
           </tr>
           </table>
           </div> }
@@ -116,7 +116,7 @@ class ClubText extends React.Component {
           <div>
           <table>
           <tr>
-          <td> Forum name: </td>
+          <td> Club name: </td>
           <td> {this.state.clubName} </td>
           </tr>
           <tr>
@@ -131,16 +131,10 @@ class ClubText extends React.Component {
           <td> Max. membership size: </td>
           <td> {this.state.maxSize} </td>
           </tr>
-          <tr>
-          <td> {this.state.headline1} </td>
-          </tr>
-          <tr>
-          <td> {this.state.headline2} </td>
-          </tr>
-          <tr>
-          <td> {this.state.headline3} </td>
-          </tr>
           </table>
+            <p class="headline1"> {this.state.headline1} </p>
+            <p class="headline2"> {this.state.headline2} </p>
+            <p class="headline3"> {this.state.headline3} </p>
           </div> }
 
            { this.state.showSubmit &&

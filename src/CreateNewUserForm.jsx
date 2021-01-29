@@ -95,8 +95,8 @@ class CreateNewUserForm extends React.Component {
     return (
     <React.Fragment>
       <div class="topParentDiv">
-        <p> Create a new user to join NeuralJuice (you are limited to adding 50 new users) </p>
-        <p> After providing someone with a login they can change their password in Profile -> Settings. </p>
+        <p class="questionsParagraph"> Create a new user to join NeuralJuice (you are limited to adding 50 new users) </p>
+        <p class="questionsParagraph"> After providing someone with a login they can change their password in Profile -> Settings. </p>
 
         { this.state.showCount &&
         <div>

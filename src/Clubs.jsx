@@ -297,34 +297,34 @@ class Clubs extends React.Component {
 
             { this.state.onClubs &&
               <div class="settings2ButtonsDiv">
-                <button id="myClubsButtonOn" onClick={this.goToClubsList}> My Forums </button>
-                <button id="myClubsButton" onClick={this.goToClubInvitations}> Forum Invitations </button>
-                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Forums </button>
-                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Forum </button>
+                <button id="myClubsButtonOn" onClick={this.goToClubsList}> My Clubs </button>
+                <button id="myClubsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
+                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
+                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Club </button>
               </div> }
 
             { this.state.onInvitations &&
               <div class="settings2ButtonsDiv">
-                <button id="myClubsButton" onClick={this.goToClubsList}> My Forums </button>
-                <button id="myClubsButtonOn" onClick={this.goToClubInvitations}> Forum Invitations </button>
-                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Forums </button>
-                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Forum </button>
+                <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
+                <button id="myClubsButtonOn" onClick={this.goToClubInvitations}> Club Invitations </button>
+                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
+                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Club </button>
               </div> }
 
             { this.state.onEdit &&
               <div class="settings2ButtonsDiv">
-                <button id="myClubsButton" onClick={this.goToClubsList}> My Forums </button>
-                <button id="myClubsButton" onClick={this.goToClubInvitations}> Forum Invitations </button>
-                <button id="myClubsButtonOn" onClick={this.goToEditClubs}> Edit Forums </button>
-                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Forum </button>
+                <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
+                <button id="myClubsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
+                <button id="myClubsButtonOn" onClick={this.goToEditClubs}> Edit Clubs </button>
+                <button id="myClubsButton" onClick={this.goToCreateClub}> Start a Club </button>
               </div> }
 
             { this.state.onStart &&
               <div class="settings2ButtonsDiv">
-                <button id="myClubsButton" onClick={this.goToClubsList}> My Forums </button>
-                <button id="myClubsButton" onClick={this.goToClubInvitations}> Forum Invitations </button>
-                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Forums </button>
-                <button id="myClubsButtonOn" onClick={this.goToCreateClub}> Start a Forum </button>
+                <button id="myClubsButton" onClick={this.goToClubsList}> My Clubs </button>
+                <button id="myClubsButton" onClick={this.goToClubInvitations}> Club Invitations </button>
+                <button id="myClubsButton" onClick={this.goToEditClubs}> Edit Clubs </button>
+                <button id="myClubsButtonOn" onClick={this.goToCreateClub}> Start a Club </button>
               </div> }
 
         <div class="topParentDiv">
@@ -356,7 +356,7 @@ class Clubs extends React.Component {
 
         { this.state.showCreateClubs &&
         <div>
-        <p> Start a New Forum </p>
+        <p> Start a New Club </p>
         <ClubText />
         </div> }
 
@@ -364,15 +364,15 @@ class Clubs extends React.Component {
         <div>
         <div class="topParentDiv">
         <table>
-            <tr><td>Forum:</td><td class="clubTD"> {this.state.clubName} </td></tr>
+            <tr><td>Club:</td><td class="clubTD"> {this.state.clubName} </td></tr>
             <tr><td>Description:</td><td class="clubTD"> {this.state.clubDescription} </td></tr>
-            <tr><td>Forum alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
+            <tr><td>Club alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
             <tr><td>Max. size:</td><td class="clubTD"> {this.state.maxSize} </td></tr>
             <tr><td>Current size:</td><td class="clubTD"> {this.state.currentSize} </td></tr>
-            <tr><td class="headline1"> {this.state.headline1} </td></tr>
-            <tr><td class="headline2"> {this.state.headline2} </td></tr>
-            <tr><td class="headline3"> {this.state.headline3} </td></tr>
         </table>
+            <p class="headline1"> {this.state.headline1} </p>
+            <p class="headline2"> {this.state.headline2} </p>
+            <p class="headline3"> {this.state.headline3} </p>
 
         </div>
                       { this.state.onMessageBoard &&

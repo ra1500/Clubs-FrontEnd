@@ -13,6 +13,7 @@ class ClubTextEdit extends React.Component {
     this.handleChange9 = this.handleChange9.bind(this);
     this.handleChange10 = this.handleChange10.bind(this);
     this.handleSubmit1 = this.handleSubmit1.bind(this);
+    this.refreshMembersList = this.refreshMembersList.bind(this);
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
     this.state = {
@@ -28,6 +29,7 @@ class ClubTextEdit extends React.Component {
     headline3: null,
     showMembersList: false,
     showMembersList2: false,
+    //showMembersList3: false,
     membersList: null,
     };
   }
@@ -93,8 +95,10 @@ class ClubTextEdit extends React.Component {
             membersList: response.data.members,
             maxSize: response.data.maxSize,
             showMembersList: true,
-            showMembersList2: true,
+            //showMembersList2: true,
           });
+          if ( this.state.membersList.length < 1 ) this.setState({showMembersList2: false});
+          else this.setState({showMembersList2: true});
           } // end if
           else {  }
                }).catch(error => {this.setState({ isLoaded: true, error,});
@@ -113,11 +117,16 @@ class ClubTextEdit extends React.Component {
     axios.post("http://localhost:8080/api/c/d", data,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {
-    this.setState({isLoaded: true, updatedMessage: " Forum updated.", showSubmit: false, maxSize: response.data.maxSize,
+    this.setState({isLoaded: true, updatedMessage: " Club updated.", showSubmit: false, maxSize: response.data.maxSize,
               });
            }).catch(error => {this.setState({ isLoaded: true, error});
            });
   }
+
+    refreshMembersList() {
+        this.renderSingleClub();
+        this.setState({showMembersList: !this.state.showMembersList});
+    }
 
   render() {
     return (
@@ -143,16 +152,16 @@ class ClubTextEdit extends React.Component {
           <td><input id="clubTextBoxSize" maxlength="3" type="text" value={this.state.maxSize} onChange={this.handleChange6}  autocomplete="off" placeholder="#"/></td>
           </tr>
           <tr>
-          <td class="headline1"> Headline 1 </td>
-          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.headline1} onChange={this.handleChange8}  autocomplete="off" placeholder=""/></td>
+          <td class="headline1"> Green Headline </td>
+          <td><input className="clubTextBox" maxlength="110" type="text" value={this.state.headline1} onChange={this.handleChange8}  autocomplete="off" placeholder="<110 characters"/></td>
           </tr>
           <tr>
-          <td class="headline2"> Headline 2 </td>
-          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.headline2} onChange={this.handleChange9}  autocomplete="off" placeholder=""/></td>
+          <td class="headline2"> Red Headline </td>
+          <td><input className="clubTextBox" maxlength="110" type="text" value={this.state.headline2} onChange={this.handleChange9}  autocomplete="off" placeholder="<110 characters"/></td>
           </tr>
           <tr>
-          <td class="headline3"> Headline 3 </td>
-          <td><input className="clubTextBox" maxlength="80" type="text" value={this.state.headline3} onChange={this.handleChange10}  autocomplete="off" placeholder=""/></td>
+          <td class="headline3"> Blurb </td>
+          <td><input className="clubTextBox" maxlength="250" type="text" value={this.state.headline3} onChange={this.handleChange10}  autocomplete="off" placeholder="<250 characters"/></td>
           </tr>
           </table>
           </div> }
@@ -176,16 +185,10 @@ class ClubTextEdit extends React.Component {
           <td> Max. membership size: </td>
           <td> {this.state.maxSize} </td>
           </tr>
-          <tr>
-          <td class="headline1"> {this.state.headline1} </td>
-          </tr>
-          <tr>
-          <td class="headline2"> {this.state.headline2} </td>
-          </tr>
-          <tr>
-          <td class="headline3"> {this.state.headline3} </td>
-          </tr>
           </table>
+            <p class="headline1"> {this.state.headline1} </p>
+            <p class="headline2"> {this.state.headline2} </p>
+            <p class="headline3"> {this.state.headline3} </p>
           </div> }
 
            { this.state.showSubmit &&
@@ -195,7 +198,12 @@ class ClubTextEdit extends React.Component {
 
           { this.state.showMembersList &&
           <div>
-           <ClubMembersRemove membersList={this.state.membersList} showMembersList2={this.state.showMembersList2} clubId={this.state.clubId} />
+           <ClubMembersRemove membersList={this.state.membersList} refreshMembersList={this.refreshMembersList} showMembersList2={this.state.showMembersList2} clubId={this.state.clubId} />
+          </div> }
+
+          { !this.state.showMembersList &&
+          <div>
+           <ClubMembersRemove membersList={this.state.membersList} refreshMembersList={this.refreshMembersList} showMembersList2={this.state.showMembersList2} clubId={this.state.clubId} />
           </div> }
 
     </div>

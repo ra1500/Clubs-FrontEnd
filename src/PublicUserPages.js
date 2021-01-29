@@ -127,7 +127,7 @@ class PublicUserPages extends React.Component {
         { this.state.showList &&
          <div class="topParentDiv">
          <div class="secondParentDiv">
-            <p> My Forums: </p>
+            <p> My Clubs: </p>
             <table>
                <tbody>
                 {this.renderTableData()}
