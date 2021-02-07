@@ -77,6 +77,9 @@ class Clubs extends React.Component {
         headline1: null,
         headline2: null,
         headline3: null,
+        headline4: null,
+        headline5: null,
+        clubMode: null,
         };
     };
 
@@ -129,6 +132,8 @@ class Clubs extends React.Component {
             headline1: response.data.headline1,
             headline2: response.data.headline2,
             headline3: response.data.headline3,
+            headline4: response.data.headline4,
+            headline5: response.data.headline5,
             maxSize: response.data.maxSize,
             membersList: response.data.members,
             showClubsList: false,
@@ -137,6 +142,10 @@ class Clubs extends React.Component {
             showClubMessageBoard: true,
             showClubQuitButtons: true,
           });
+
+            if ( response.data.clubMode == 2 ) this.setState({clubMode: "Public"});
+            else this.setState({clubMode: "Private"});
+
           // this.getBeta();
           } // end if
           else { this.setState({showClubsList: false}); }
@@ -369,10 +378,14 @@ class Clubs extends React.Component {
             <tr class="clubTR"><td>Club alpha:</td><td class="clubTD"> {this.state.clubAlpha} </td></tr>
             <tr class="clubTR"><td>Max. size:</td><td class="clubTD"> {this.state.maxSize} </td></tr>
             <tr class="clubTR"><td>Current size:</td><td class="clubTD"> {this.state.currentSize} </td></tr>
+            <tr class="clubTR"><td>Club Mode:</td><td class="clubTD"> {this.state.clubMode} </td></tr>
+
         </table>
             <p class="headline1"> {this.state.headline1} </p>
             <p class="headline2"> {this.state.headline2} </p>
             <p class="headline3"> {this.state.headline3} </p>
+            <p class="headline3"> {this.state.headline4} </p>
+            <p class="headline3"> {this.state.headline5} </p>
 
         </div>
                       { this.state.onMessageBoard &&

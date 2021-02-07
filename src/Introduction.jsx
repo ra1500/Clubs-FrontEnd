@@ -56,9 +56,13 @@ class Introduction extends React.Component {
     <div>
     <div id="introDiv">
     <div class="topParentDiv">
-         <p id="intro1p">   </p>
+         <p id="intro1p"> A simple webapp like reddit, twitter and facebook combined. </p>
          <ul class="introUL">
-
+            <li> Join public clubs. See the leader's headlines and other member's comments. </li>
+            <li> Create a private club. Join one by invitation. </li>
+            <li> Maintain contacts by connecting with other users. </li>
+            <li> Expand your network by connecting with your contact's contacts.</li>
+            <li> Club leaders can remove club members. </li>
          </ul>
     </div>
 

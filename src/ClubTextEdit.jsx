@@ -12,6 +12,9 @@ class ClubTextEdit extends React.Component {
     this.handleChange8 = this.handleChange8.bind(this);
     this.handleChange9 = this.handleChange9.bind(this);
     this.handleChange10 = this.handleChange10.bind(this);
+    this.handleChange11 = this.handleChange11.bind(this);
+    this.handleChange12 = this.handleChange12.bind(this);
+    this.handleChange13 = this.handleChange13.bind(this);
     this.handleSubmit1 = this.handleSubmit1.bind(this);
     this.refreshMembersList = this.refreshMembersList.bind(this);
     const name = JSON.parse(sessionStorage.getItem('tokens'));
@@ -27,10 +30,14 @@ class ClubTextEdit extends React.Component {
     headline1: null,
     headline2: null,
     headline3: null,
+    headline4: null,
+    headline5: null,
     showMembersList: false,
     showMembersList2: false,
     //showMembersList3: false,
     membersList: null,
+    clubMode: 1,
+    clubMode2: null,
     };
   }
 
@@ -67,10 +74,21 @@ class ClubTextEdit extends React.Component {
        this.state = {headline3b: event.target.value};
        this.setState({headline3: this.state.headline3b});
      }
+     handleChange11(event) {
+       this.state = {headline4b: event.target.value};
+       this.setState({headline4: this.state.headline4b});
+     }
+     handleChange12(event) {
+       this.state = {headline5b: event.target.value};
+       this.setState({headline5: this.state.headline5b});
+     }
   handleSubmit1(event) {
     event.preventDefault();
     this.postClubEditText();
   }
+   handleChange13(event) {
+     this.setState({clubMode: event.target.value});
+   }
 
   renderSingleClub() {
         const name = JSON.parse(sessionStorage.getItem('tokens'));
@@ -92,11 +110,16 @@ class ClubTextEdit extends React.Component {
             headline1: response.data.headline1,
             headline2: response.data.headline2,
             headline3: response.data.headline3,
+            headline4: response.data.headline4,
+            headline5: response.data.headline5,
             membersList: response.data.members,
             maxSize: response.data.maxSize,
+            clubMode: response.data.clubMode,
             showMembersList: true,
             //showMembersList2: true,
           });
+          if ( this.state.clubMode == 2 ) this.setState({clubMode2: "Public"});
+          else this.setState({clubMode2: "Private"});
           if ( this.state.membersList.length < 1 ) this.setState({showMembersList2: false});
           else this.setState({showMembersList2: true});
           } // end if
@@ -106,6 +129,10 @@ class ClubTextEdit extends React.Component {
     }
 
   postClubEditText() {
+
+          if ( this.state.clubMode == 2 ) this.setState({clubMode2: "Public"});
+          else this.setState({clubMode2: "Private"});
+
     const name = JSON.parse(sessionStorage.getItem('tokens'));
     const u = name.userName;
     const p = name.password;
@@ -113,7 +140,7 @@ class ClubTextEdit extends React.Component {
     const hash = btoa(token);
     const Basic = 'Basic ' + hash;
     let data = {id: this.props.clubId, clubName : this.state.clubName, description: this.state.description, maxSize: this.state.maxSize,
-     headline1: this.state.headline1, headline2: this.state.headline2, headline3: this.state.headline3};
+     headline1: this.state.headline1, headline2: this.state.headline2, headline3: this.state.headline3, headline4: this.state.headline4, headline5: this.state.headline5, clubMode: this.state.clubMode};
     axios.post("http://localhost:8080/api/c/d", data,
     {headers : { 'Authorization' : Basic }})
     .then((response) => {
@@ -134,7 +161,20 @@ class ClubTextEdit extends React.Component {
 
           { this.state.showSubmit &&
           <div>
+                  <p> ClubMode: {this.state.clubMode2} </p>
+                  <form id="inviteRadio1">
+                      <div>
+                        <label><input value="1" onChange={this.handleChange13} type="radio" name="optradio" /> Private: By invitation only. </label>
+                      </div>
+                      <div>
+                        <label><input value="2" onChange={this.handleChange13} type="radio" name="optradio" /> Public: Anyone can join. </label>
+                      </div>
+                  </form>
           <table>
+          <tr>
+          <td> Max. membership size: </td>
+          <td><input id="clubTextBoxSize" maxlength="3" type="text" value={this.state.maxSize} onChange={this.handleChange6}  autocomplete="off" placeholder="#"/></td>
+          </tr>
           <tr>
           <td> Club name: </td>
           <td><input className="clubTextBox" maxlength="40" type="text" value={this.state.clubName} onChange={this.handleChange2}  autocomplete="off" placeholder=""/></td>
@@ -148,10 +188,6 @@ class ClubTextEdit extends React.Component {
           <td> {this.state.alpha} </td>
           </tr>
           <tr>
-          <td> Max. membership size: </td>
-          <td><input id="clubTextBoxSize" maxlength="3" type="text" value={this.state.maxSize} onChange={this.handleChange6}  autocomplete="off" placeholder="#"/></td>
-          </tr>
-          <tr>
           <td class="headline1"> Green Headline </td>
           <td><input className="clubTextBox" maxlength="110" type="text" value={this.state.headline1} onChange={this.handleChange8}  autocomplete="off" placeholder="<110 characters"/></td>
           </tr>
@@ -160,8 +196,16 @@ class ClubTextEdit extends React.Component {
           <td><input className="clubTextBox" maxlength="110" type="text" value={this.state.headline2} onChange={this.handleChange9}  autocomplete="off" placeholder="<110 characters"/></td>
           </tr>
           <tr>
-          <td class="headline3"> Blurb </td>
+          <td class="headline3"> Blurb 1 </td>
           <td><input className="clubTextBox" maxlength="250" type="text" value={this.state.headline3} onChange={this.handleChange10}  autocomplete="off" placeholder="<250 characters"/></td>
+          </tr>
+          <tr>
+          <td class="headline3"> Blurb 2 </td>
+          <td><input className="clubTextBox" maxlength="250" type="text" value={this.state.headline4} onChange={this.handleChange11}  autocomplete="off" placeholder="<250 characters"/></td>
+          </tr>
+          <tr>
+          <td class="headline3"> Blurb 3 </td>
+          <td><input className="clubTextBox" maxlength="250" type="text" value={this.state.headline5} onChange={this.handleChange12}  autocomplete="off" placeholder="<250 characters"/></td>
           </tr>
           </table>
           </div> }
@@ -169,6 +213,14 @@ class ClubTextEdit extends React.Component {
           { !this.state.showSubmit &&
           <div>
           <table>
+          <tr class="clubTR">
+          <td> Club Mode: </td>
+          <td> {this.state.clubMode2} </td>
+          </tr>
+          <tr class="clubTR">
+          <td class="clubTR"> Max. membership size: </td>
+          <td> {this.state.maxSize} </td>
+          </tr>
           <tr class="clubTR">
           <td> Club name: </td>
           <td> {this.state.clubName} </td>
@@ -181,14 +233,12 @@ class ClubTextEdit extends React.Component {
           <td> Alpha member: </td>
           <td> {this.state.alpha} </td>
           </tr>
-          <tr class="clubTR">
-          <td class="clubTR"> Max. membership size: </td>
-          <td> {this.state.maxSize} </td>
-          </tr>
           </table>
             <p class="headline1"> {this.state.headline1} </p>
             <p class="headline2"> {this.state.headline2} </p>
             <p class="headline3"> {this.state.headline3} </p>
+            <p class="headline3"> {this.state.headline4} </p>
+            <p class="headline3"> {this.state.headline5} </p>
           </div> }
 
            { this.state.showSubmit &&

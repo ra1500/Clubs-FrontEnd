@@ -61,7 +61,8 @@ class TitleBar extends React.Component {
         {this.state.redirect &&
         this.loggingOut() }
 
-
+        {this.state.signup &&
+        <Signup toggleLogin={this.toggleLogin} /> }
 
         </div>
         </div>

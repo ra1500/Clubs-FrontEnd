@@ -18,7 +18,7 @@ function Signup(props) {
     else if (userName.length < 8) { setVerifyMessage("username should be at least 8 characters long.");}
     else if (password.length < 8) { setVerifyMessage("password should be at least 8 characters long");}
     else {
-    axios.post("http://localhost:8080/api/user/signup", {
+    axios.post("http://localhost:8080/api/user/signup1", {
       userName,
       password
     }).then(result => {
@@ -30,10 +30,10 @@ function Signup(props) {
         { setVerifyMessage("Sorry, username already used. Please choose another.");}
       }
       else {
-        setIsError(true);
+        ;
       }
     }).catch(e => {
-      setIsError(true);
+      ;
     });
     }
   }
