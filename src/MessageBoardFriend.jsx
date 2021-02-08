@@ -131,7 +131,7 @@ class MessageBoardFriend extends React.Component {
         { this.state.showMessagesList &&
         <div>
 
-        <p class="noLineSpaceP"> Message Board </p>
+        <p class="noLineSpaceP"> Network Contact to Network Contact Message Board </p>
 
         <MessagesList list={this.state.list} showMessagesList2={this.state.showMessagesList2} addToList={this.addToList} />
         </div> }

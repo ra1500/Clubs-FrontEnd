@@ -58,11 +58,11 @@ class Introduction extends React.Component {
     <div>
     <div id="introDiv">
     <div class="topParentDiv">
-         <p id="intro1p"> A simplified social network and blog web app. </p>
+         <p id="intro1p"> A simplified clubs and social networking web app. </p>
          <ul class="introUL">
-            <li> Join clubs. See the leader's headlines and member comments. </li>
+            <li> Join clubs. See the leader's headlines and member posts. </li>
             <li> Start a club. Make it private or public. </li>
-            <li> Stay in touch with your contacts via your network. </li>
+            <li> Stay in touch with your network contacts. </li>
             <li> Expand your network by connecting with your contacts' contacts.</li>
             <li> Club leaders, called alphas, can remove club members as they wish. </li>
          </ul>
@@ -71,7 +71,7 @@ class Introduction extends React.Component {
     </div>
     <div id="aboutDiv">
     <p class="aboutP1">© {this.state.year} NeuralJuice   </p>
-   
+
     </div>
     </div>}
 

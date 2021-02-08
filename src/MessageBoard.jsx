@@ -122,6 +122,7 @@ class MessageBoard extends React.Component {
 
         { this.state.showMessagesList &&
         <div>
+        <p class="noLineSpaceP"> Club Message Board </p>
         <MessagesList list={this.state.list} showMessagesList2={this.state.showMessagesList2} addToList={this.addToList} />
         </div> }
         { this.state.showMessagesList3 &&
