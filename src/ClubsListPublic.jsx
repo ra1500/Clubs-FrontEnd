@@ -65,11 +65,12 @@ class ClubsListPublic extends React.Component {
     }
 
    renderTableData() {
-      const sortedList = this.state.list.sort((a,b) => (a.created > b.created) ? 1 : ((b.created > a.created) ? -1 : 0));
+      const sortedList = this.state.list.sort((a,b) => (a.currentSize > b.currentSize) ? -1 : ((b.currentSize > a.currentSize) ? 1 : 0));
       return sortedList.map((data, index) => {
          return (
             <tr key={data.id}>
                 <td> <p class="noLineSpaceP"> {data.clubName} </p></td>
+                <td> <p class="noLineSpaceP"> Size: {data.currentSize} </p></td>
                 <td> <button class="seeDetailsButton" value={data.id} onClick={e => this.joinPublicClub(e)}> Join </button> </td>
             </tr>
          )
@@ -88,6 +89,11 @@ class ClubsListPublic extends React.Component {
          <p class="alertsSmallP"> &nbsp; {this.state.joinedClubMessage} </p>
          </div> }
 
+        { !this.state.showJoinedClubMessage &&
+         <div class="questionsParagraph">
+         <p lass="questionsParagraph"> </p>
+         </div> }
+
         { this.state.showClubsNone &&
          <div>
          <p class="alertsSmallP"> &nbsp;(none)</p>
@@ -97,6 +103,7 @@ class ClubsListPublic extends React.Component {
          <div >
             <table>
                <tbody >
+                  <tr class="publicClubsTR"> Public Clubs: </tr>
                   {this.renderTableData()}
                </tbody>
             </table>

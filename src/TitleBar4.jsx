@@ -101,7 +101,7 @@ class TitleBar4 extends React.Component {
         this.setState({onAlerts: false, onNetwork: false, onClubs: false, onGuilds: false, onProfile: false, onHome2: true, onBegin: false});
     }
      redirectBegin() {
-         this.setState({begin: !this.state.begin, start: false, start2: false, clubs: false, clubs2: false, network: false, network2: false, guilds: false, guilds2: false, me: false, me2: false, home2: false, home22: false });
+         this.setState({begin: !this.state.begin, begin2: this.state.begin, start2: false, clubs: false, clubs2: false, network: false, network2: false, guilds: false, guilds2: false, me: false, me2: false, home2: false, home22: false, start: false, start2: false, });
          this.setState({onAlerts: false, onNetwork: false, onClubs: false, onGuilds: false, onProfile: false, onHome2: false, onBegin: true});
      }
 

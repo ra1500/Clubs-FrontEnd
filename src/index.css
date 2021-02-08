@@ -64,6 +64,7 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 #myProfileButton:active { background-color: gray;}
 #myProfileButtonOn { border-radius: 4px; margin-right: 10px; width: 120px; display: inline; background-color: #009900; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 1px;}
 #myProfileButtonOn:active { background-color: gray;}
+.beginP { border-radius: 4px; margin-right: 10px; display: inline; background-color: #009900; border: none; color: white; font-size: 14px; font-family: "Geneva"; padding-bottom: 2px; padding-top: 2px;}
 
  /** Top-level Parent Div **/
 .topParentDiv { padding-top: 15px; margin: auto; width: 960px; }
@@ -217,3 +218,4 @@ th { text-decoration: underline; font-weight: normal; padding-right: 5px; paddin
 .headline1 { font-family: "Arial"; font-size: 18px; color: green; font-weight: bold; border: dotted 1px black; padding-left: 10px; margin-top: 15px; }
 .headline2 { font-family: "Arial"; font-size: 18px; color: red; font-weight: bold; border: dotted 1px black; padding-left: 10px;}
 .headline3 { font-family: "Arial"; font-size: 16px; padding-left: 10px;}
+.publicClubsTR { text-decoration: underline; font-weight: bold; }

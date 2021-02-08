@@ -47,6 +47,8 @@ class Introduction extends React.Component {
     }
 
 
+// <button id="aboutButton" onClick={this.goToAbout} > About </button>
+
   render() {
 
     return (
@@ -56,20 +58,20 @@ class Introduction extends React.Component {
     <div>
     <div id="introDiv">
     <div class="topParentDiv">
-         <p id="intro1p"> A simple webapp like reddit, twitter and facebook combined. </p>
+         <p id="intro1p"> A simplified social network and blog web app. </p>
          <ul class="introUL">
-            <li> Join public clubs. See the leader's headlines and other member's comments. </li>
-            <li> Create a private club. Join one by invitation. </li>
-            <li> Maintain contacts by connecting with other users. </li>
-            <li> Expand your network by connecting with your contact's contacts.</li>
-            <li> Club leaders can remove club members. </li>
+            <li> Join clubs. See the leader's headlines and member comments. </li>
+            <li> Start a club. Make it private or public. </li>
+            <li> Stay in touch with your contacts via your network. </li>
+            <li> Expand your network by connecting with your contacts' contacts.</li>
+            <li> Club leaders, called alphas, can remove club members as they wish. </li>
          </ul>
     </div>
 
     </div>
     <div id="aboutDiv">
     <p class="aboutP1">© {this.state.year} NeuralJuice   </p>
-    <button id="aboutButton" onClick={this.goToAbout} > About </button>
+   
     </div>
     </div>}
 

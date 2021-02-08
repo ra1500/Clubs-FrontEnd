@@ -19,14 +19,16 @@ class Begin extends React.Component {
     render() {
         return (
         <React.Fragment>
-        <div class="topParentDiv">
-        <div class="secondParentDiv">
-        <div >
-         <p class="questionsParagraph"> It starts here </p>
+
+        <div class="settings2ButtonsDiv">
+         <p class="beginP"> &nbsp; It starts here &nbsp;</p> <br></br><br></br>
+         <p class="questionsParagraph"> Clubs that anyone can join are listed below. After joining, go to 'Clubs' to view.  </p>
+         <p class="questionsParagraph"> Use 'Network' to stay in contact with other users.</p>
+        </div>
+        <div>
          <ClubsListPublic />
 
-         </div>
-         </div>
+
          </div>
         </React.Fragment>
         )
