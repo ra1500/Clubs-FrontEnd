@@ -58,13 +58,9 @@ class Introduction extends React.Component {
     <div>
     <div id="introDiv">
     <div class="topParentDiv">
-         <p id="intro1p"> A simplified clubs and social networking web app. </p>
+         <p id="intro1p"> Clubs and Networking </p>
          <ul class="introUL">
-            <li> Join clubs. See the leader's headlines and member posts. </li>
-            <li> Start a club. Make it private or public. </li>
-            <li> Stay in touch with your network contacts. </li>
-            <li> Expand your network by connecting with your contacts' contacts.</li>
-            <li> Club leaders, called alphas, can remove club members as they wish. </li>
+            <li> A nice and simple way to stay connected. </li>
          </ul>
     </div>
 

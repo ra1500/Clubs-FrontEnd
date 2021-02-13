@@ -65,8 +65,7 @@ class Picture extends React.Component {
     return (
     <div id="meSettingsDiv">
         <img id="profilePic2" src={this.props.profilePicture}></img>
-        <p className="noLineSpaceP"> Must be &lt; 250kb in size and in .jpg or .jpeg format. Display is 80px X 80px.</p>
-        <p className="noLineSpaceP"> Sorry, not 'auto re-sizing' your pics yet. You'll need to down size them yourself for now.</p>
+        <p className="noLineSpaceP"> (must be in common .jpg or .jpeg format, standard 4:3 aspect ratio.)</p>
         <input className="browseButton" type="file" ref={this.fileInput} />
         <p className="noLineSpaceP"> <button type="submit" onClick={this.handleSubmit1} className="updateButton"> Upload </button> </p>
         <p className="noLineSpaceP"> <button type="submit" onClick={this.handleSubmit2} className="updateButton"> Delete </button> </p>

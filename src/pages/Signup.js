@@ -46,6 +46,7 @@ function Signup(props) {
   return (
     <React.Fragment>
       <div id="signupDiv">
+            <p> Easy Sign Up: </p>
             <input class="signupBox" maxlength="100" type="username" value={userName} onChange={e => {setUserName(e.target.value);}}placeholder="username" />
             <input class="signupBox" maxlength="100" type="password" value={password} onChange={e => {setPassword(e.target.value);}}placeholder="password" />
             <input class="signupBox" maxlength="100" type="password" value={verifyPassword} onChange={e => {setVerifyPassword(e.target.value);}}placeholder="confirm password" />

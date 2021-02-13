@@ -145,6 +145,8 @@ class Network extends React.Component {
         this.setState({friend: data.friend});
     }
 
+//         <CreateNewUserForm />  // line 227
+
   render() {
     return (
     <React.Fragment>
@@ -224,7 +226,7 @@ class Network extends React.Component {
         {this.state.showInviteFriends &&
         <div>
         <InvitationForm />
-        <CreateNewUserForm />
+
          </div> }
 
         {this.state.showRemovedList &&
